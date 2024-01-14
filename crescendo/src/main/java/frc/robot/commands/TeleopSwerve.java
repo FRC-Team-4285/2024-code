@@ -4,11 +4,11 @@ import java.util.function.DoubleSupplier;
 import java.util.function.Supplier;
 
 import edu.wpi.first.math.filter.SlewRateLimiter;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.SwerveConstants;
 import frc.robot.subsystems.SwerveBase;
 
-public class TeleopSwerve extends CommandBase {
+public class TeleopSwerve extends Command {
   /*
    * Teleoperated Swerve Drive Command
    * ---------------------------------
@@ -45,9 +45,9 @@ public class TeleopSwerve extends CommandBase {
 
     this.isFieldOriented = isFieldOriented;
 
-    this.xLimiter = new SlewRateLimiter(Swerve.kTeleDriveMaxAccelerationUnitsPerSecond);
-    this.yLimiter = new SlewRateLimiter(Swerve.kTeleDriveMaxAccelerationUnitsPerSecond);
-    this.turningLimiter = new SlewRateLimiter(Swerve.kTeleDriveMaxAngularAccelerationUnitsPerSecond);
+    this.xLimiter = new SlewRateLimiter(SwerveConstants.kTeleDriveMaxAccelerationUnitsPerSecond);
+    this.yLimiter = new SlewRateLimiter(SwerveConstants.kTeleDriveMaxAccelerationUnitsPerSecond);
+    this.turningLimiter = new SlewRateLimiter(SwerveConstants.kTeleDriveMaxAngularAccelerationUnitsPerSecond);
 
     addRequirements(subsystem);
   }
@@ -70,9 +70,9 @@ public class TeleopSwerve extends CommandBase {
     rot = Math.abs(rot) > 0.1 ? rot : 0.0;
 
     // 3. Make the driving smoother
-    fwdX = xLimiter.calculate(fwdX) * Swerve.kTeleDriveMaxSpeedMetersPerSecond;
-    fwdY = yLimiter.calculate(fwdY) * Swerve.kTeleDriveMaxSpeedMetersPerSecond;
-    rot = turningLimiter.calculate(rot) * Swerve.kTeleDriveMaxAngularSpeedRadiansPerSecond;
+    fwdX = xLimiter.calculate(fwdX) * SwerveConstants.kTeleDriveMaxSpeedMetersPerSecond;
+    fwdY = yLimiter.calculate(fwdY) * SwerveConstants.kTeleDriveMaxSpeedMetersPerSecond;
+    rot = turningLimiter.calculate(rot) * SwerveConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
 
     drive.drive(
         -fwdX,

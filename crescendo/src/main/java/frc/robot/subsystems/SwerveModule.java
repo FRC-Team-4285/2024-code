@@ -6,9 +6,9 @@ import com.ctre.phoenix.sensors.AbsoluteSensorRange;
 import com.ctre.phoenix.sensors.CANCoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.SparkMaxPIDController;
-import com.revrobotics.CANSparkMax.IdleMode;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.SparkPIDController;
+import com.revrobotics.CANSparkBase.IdleMode;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -54,8 +54,8 @@ public class SwerveModule extends SubsystemBase {
   // robot is turned on
   private final Rotation2d offset;
 
-  private final SparkMaxPIDController rotationController;
-  private final SparkMaxPIDController driveController;
+  private final SparkPIDController rotationController;
+  private final SparkPIDController driveController;
 
   public SwerveModule(
       int driveMotorId,
@@ -91,15 +91,15 @@ public class SwerveModule extends SubsystemBase {
 
     // set the output of the drive encoder to be in radians for linear measurement
     driveEncoder.setPositionConversionFactor(
-        2.0 * Math.PI / Swerve.driveGearRatio);
+        2.0 * Math.PI / SwerveConstants.driveGearRatio);
 
     // set the output of the drive encoder to be in radians per second for velocity
     // measurement
     driveEncoder.setVelocityConversionFactor(
-        2.0 * Math.PI / 60 / Swerve.driveGearRatio);
+        2.0 * Math.PI / 60 / SwerveConstants.driveGearRatio);
 
     // set the output of the rotation encoder to be in radians
-    rotationEncoder.setPositionConversionFactor(2 * Math.PI / Swerve.angleGearRatio);
+    rotationEncoder.setPositionConversionFactor(2 * Math.PI / SwerveConstants.angleGearRatio);
 
     // configure the CANCoder to output in unsigned (wrap around from 360 to 0
     // degrees)
@@ -147,12 +147,12 @@ public class SwerveModule extends SubsystemBase {
 
   public double getCurrentVelocityMetersPerSecond() {
 
-    return driveEncoder.getVelocity() * (Swerve.wheelDiameter / 2.0);
+    return driveEncoder.getVelocity() * (SwerveConstants.wheelDiameter / 2.0);
 
   }
 
   public double getCurrentDistanceMetersPerSecond() {
-    return driveEncoder.getPosition() * (Swerve.wheelDiameter / 2.0);
+    return driveEncoder.getPosition() * (SwerveConstants.wheelDiameter / 2.0);
   }
 
   // unwraps a target angle to be [0,2π]
@@ -224,13 +224,13 @@ public class SwerveModule extends SubsystemBase {
     rotationMotor.set(testRotationController.calculate(getIntegratedAngle().getRadians(), angularSetPoint));
 
     double angularVelolictySetpoint = optimizedDesiredState.speedMetersPerSecond /
-        (Swerve.wheelDiameter / 2.0);
+        (SwerveConstants.wheelDiameter / 2.0);
     if (RobotState.isAutonomous()) {
-      driveMotor.setVoltage(Swerve.driveFF.calculate(angularVelolictySetpoint));
+      driveMotor.setVoltage(SwerveConstants.driveFF.calculate(angularVelolictySetpoint));
 
     } else {
 
-      driveMotor.set(optimizedDesiredState.speedMetersPerSecond / Swerve.maxSpeed);
+      driveMotor.set(optimizedDesiredState.speedMetersPerSecond / SwerveConstants.maxSpeed);
     }
   }
 
@@ -248,13 +248,13 @@ public class SwerveModule extends SubsystemBase {
     rotationMotor.set(testRotationController.calculate(getIntegratedAngle().getRadians(), angularSetPoint));
 
     double angularVelolictySetpoint = optimizedDesiredState.speedMetersPerSecond /
-        (Swerve.wheelDiameter / 2.0);
+        (SwerveConstants.wheelDiameter / 2.0);
     if (RobotState.isAutonomous() || isAutoBalancing == true) {
-      driveMotor.setVoltage(Swerve.driveFF.calculate(angularVelolictySetpoint));
+      driveMotor.setVoltage(SwerveConstants.driveFF.calculate(angularVelolictySetpoint));
 
     } else {
 
-      driveMotor.set(optimizedDesiredState.speedMetersPerSecond / Swerve.maxSpeed);
+      driveMotor.set(optimizedDesiredState.speedMetersPerSecond / SwerveConstants.maxSpeed);
     }
   }
 

@@ -19,8 +19,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.kauailabs.navx.frc.AHRS;
 import com.ctre.phoenix.sensors.Pigeon2Configuration;
 import com.ctre.phoenix.sensors.WPI_Pigeon2;
-import com.pathplanner.lib.PathPlannerTrajectory;
-import com.pathplanner.lib.commands.PPSwerveControllerCommand;
+// import com.pathplanner.lib.PathPlannerTrajectory;
+// import com.pathplanner.lib.commands.PPSwerveControllerCommand;
 import edu.wpi.first.wpilibj.SPI;
 import frc.robot.Constants;
 
@@ -354,25 +354,25 @@ public class SwerveBase extends SubsystemBase {
     return SwerveConstants.kinematics;
   }
 
-  public Command followTrajectoryCommand(PathPlannerTrajectory traj, boolean isFirstPath) {
-    return new SequentialCommandGroup(
-         new InstantCommand(() -> {
-           // Reset odometry for the first path you run during auto
-           if(isFirstPath){
-               this.resetOdometry(traj.getInitialHolonomicPose());
-           }
-         }),
-         new PPSwerveControllerCommand(
-             traj, 
-             this::getPose, // Pose supplier
-             SwerveConstants.kinematics, // SwerveDriveKinematics
-             new PIDController(0, 0, 0), // X controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
-             new PIDController(0, 0, 0), // Y controller (usually the same values as X controller)
-             new PIDController(0, 0, 0), // Rotation controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
-             this::setModuleStates, // Module states consumer
-             this // Requires this drive subsystem
-         )
-     );
- }
+//   public Command followTrajectoryCommand(PathPlannerTrajectory traj, boolean isFirstPath) {
+//     return new SequentialCommandGroup(
+//          new InstantCommand(() -> {
+//            // Reset odometry for the first path you run during auto
+//            if(isFirstPath){
+//                this.resetOdometry(traj.getInitialHolonomicPose());
+//            }
+//          }),
+//          new PPSwerveControllerCommand(
+//              traj, 
+//              this::getPose, // Pose supplier
+//              SwerveConstants.kinematics, // SwerveDriveKinematics
+//              new PIDController(0, 0, 0), // X controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
+//              new PIDController(0, 0, 0), // Y controller (usually the same values as X controller)
+//              new PIDController(0, 0, 0), // Rotation controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
+//              this::setModuleStates, // Module states consumer
+//              this // Requires this drive subsystem
+//          )
+//      );
+//  }
   }
 
