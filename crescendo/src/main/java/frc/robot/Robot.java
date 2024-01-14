@@ -4,10 +4,18 @@
 
 package frc.robot;
 
+import java.net.Socket;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.AprilTags;
+
+import frc.robot.subsystems.AprilTagSubsystem;
+import frc.robot.subsystems.ArmPivotSubsystem;
+import frc.robot.subsystems.ClimberSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterFeederSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -19,7 +27,12 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-  private AprilTags m_aprilTags;
+  private AprilTagSubsystem m_aprilTag;
+  private ArmPivotSubsystem m_armPivot;
+  private ClimberSubsystem m_climber;
+  private IntakeSubsystem m_intake;
+  private ShooterFeederSubsystem m_shooterFeeder;
+  private ShooterSubsystem m_shooter;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -27,10 +40,18 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
+    // Instantiate our RobotContainer.
+
+    // This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
+
     m_robotContainer = new RobotContainer();
-    m_aprilTags = new AprilTags();
+    m_aprilTag = new AprilTagSubsystem();
+    m_armPivot = new ArmPivotSubsystem();
+    m_climber = new ClimberSubsystem();
+    m_intake = new IntakeSubsystem();
+    m_shooterFeeder = new ShooterFeederSubsystem();
+    m_shooter = new ShooterSubsystem();
   }
 
   /**

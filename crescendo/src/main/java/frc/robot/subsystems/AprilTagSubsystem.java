@@ -7,9 +7,9 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class AprilTags extends SubsystemBase {
+public class AprilTagSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  public AprilTags() {}
+  public AprilTagSubsystem() {}
 
   /**
    * Example command factory method.
