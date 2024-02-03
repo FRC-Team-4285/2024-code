@@ -59,8 +59,8 @@ public class ShooterSubsystem extends SubsystemBase {
   }
 
   public void shoot() {
-    shooter_motor_a.set(0.35);
-    shooter_motor_b.set(0.35);
+    shooter_motor_a.set(0.85);
+    shooter_motor_b.set(0.85);
   }
 
   public void stop() {
