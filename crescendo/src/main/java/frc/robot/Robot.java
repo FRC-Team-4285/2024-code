@@ -6,6 +6,7 @@ package frc.robot;
 
 import java.net.Socket;
 
+import edu.wpi.first.net.PortForwarder;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -27,12 +28,12 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-  private AprilTagSubsystem m_aprilTag;
-  private ArmPivotSubsystem m_armPivot;
-  private ClimberSubsystem m_climber;
-  private IntakeSubsystem m_intake;
-  private ShooterFeederSubsystem m_shooterFeeder;
-  private ShooterSubsystem m_shooter;
+  public AprilTagSubsystem m_aprilTag;
+  public ArmPivotSubsystem m_armPivot;
+  public ClimberSubsystem m_climber;
+  public IntakeSubsystem m_intake;
+  public ShooterFeederSubsystem m_shooterFeeder;
+  public ShooterSubsystem m_shooter;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -45,13 +46,15 @@ public class Robot extends TimedRobot {
     // This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
 
-    m_robotContainer = new RobotContainer();
     m_aprilTag = new AprilTagSubsystem();
     m_armPivot = new ArmPivotSubsystem();
-    m_climber = new ClimberSubsystem();
-    m_intake = new IntakeSubsystem();
-    m_shooterFeeder = new ShooterFeederSubsystem();
+    // m_climber = new ClimberSubsystem();
+    // m_intake = new IntakeSubsystem();
+    // m_shooterFeeder = new ShooterFeederSubsystem();
     m_shooter = new ShooterSubsystem();
+    m_robotContainer = new RobotContainer(this);
+
+    PortForwarder.add(5800, "photonvision.local", 5800);
   }
 
   /**
@@ -124,4 +127,13 @@ public class Robot extends TimedRobot {
   /** This function is called periodically whilst in simulation. */
   @Override
   public void simulationPeriodic() {}
+
+  public ArmPivotSubsystem getArmPivotSubsystem() {
+    return m_armPivot;
+  }
+
+  public ShooterSubsystem getShooterSubsystem() {
+    return m_shooter;
+  }
+
 }

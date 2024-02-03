@@ -9,7 +9,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class AprilTagSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  public AprilTagSubsystem() {}
+  public AprilTagSubsystem() {
+    
+  }
 
   /**
    * Example command factory method.

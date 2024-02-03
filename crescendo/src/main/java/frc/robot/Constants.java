@@ -30,8 +30,12 @@ public final class Constants {
      * These numbers must match the Spark connecting to this motor.
      */
 
-     // Kraken Motor
-    public static final int MOTOR_ARM_PIVOT = 9;
+     // 2 NEO Motor
+    public static final int MOTOR_ARM_PIVOT_A = 20;
+    public static final int MOTOR_ARM_PIVOT_B = 21;
+    public static final int POSITION_STARTING = 0;
+    public static final int POSITION_FEED = 1;
+    public static final int POSITION_TRAVEL = 2;
 
   }
 
@@ -47,7 +51,7 @@ public final class Constants {
      */
 
     // NEO Motor
-    public static final int MOTOR_INTAKE_CENTER = 10;
+    public static final int MOTOR_INTAKE_CENTER = 11;
 
     // NEO Motor
     public static final int MOTOR_INTAKE_EDGE_A = 11;
@@ -62,10 +66,10 @@ public final class Constants {
      */
 
      // Falcon Motor
-    public static final int MOTOR_SHOOTER_A = 13;
+    public static final int MOTOR_SHOOTER_A = 15;
 
     // Falcon Motor
-    public static final int MOTOR_SHOOTER_B = 14;
+    public static final int MOTOR_SHOOTER_B = 16;
   }
 
   public static class ShooterFeederConstants {
@@ -75,6 +79,7 @@ public final class Constants {
 
     // Falcon Motor
     public static final int MOTOR_SHOOTER_FEEDER_A = 15;
+
     // Falcon Motor
     public static final int MOTOR_SHOOTER_FEEDER_B = 16;
   }
@@ -82,6 +87,12 @@ public final class Constants {
   public static final class SwerveConstants {
 
     public static final SimpleMotorFeedforward driveFF = new SimpleMotorFeedforward(0.1, 0.15, 0.01);
+
+    /* Drive Controls */
+    public static final int translationAxis = 1;
+    public static final int strafeAxis = 0;
+    public static final int rotationAxis = 2; //was 4 on Xbox
+    public static final int sliderAxis = 3;
 
     /* Drivetrain Constants */
     public static final double trackWidth = Units.inchesToMeters(21.5); //measured from center of each module
