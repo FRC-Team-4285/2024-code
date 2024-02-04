@@ -129,10 +129,10 @@ public final class Constants {
     public static final int rearRightRotationMotorId = 6;
     public static final int rearRightDriveMotorId = 5;
 
-    public static final int frontLeftRotationEncoderId = 4;
-    public static final int frontRightRotationEncoderId = 1;
-    public static final int rearLeftRotationEncoderId = 3;
-    public static final int rearRightRotationEncoderId = 2;
+    public static final int frontLeftRotationEncoderId = 1;
+    public static final int frontRightRotationEncoderId = 4;
+    public static final int rearLeftRotationEncoderId = 2;
+    public static final int rearRightRotationEncoderId = 3;
 
     public static final double kTeleDriveMaxSpeedMetersPerSecond = 7.5 / 4.0;
     public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = 3.5;
