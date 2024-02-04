@@ -33,9 +33,17 @@ public final class Constants {
      // 2 NEO Motor
     public static final int MOTOR_ARM_PIVOT_A = 20;
     public static final int MOTOR_ARM_PIVOT_B = 21;
+
+    // PID Locations
     public static final int POSITION_STARTING = 0;
-    public static final int POSITION_FEED = 1;
-    public static final int POSITION_TRAVEL = 2;
+    public static final int POSITION_INTAKE_FLOOR = 1;
+    public static final int POSITION_INTAKE_FEEDER = 2;
+    public static final int POSITION_TRAVEL = 3;
+
+    public static final double POSITION_PID_STARTING = 0.96;
+    public static final double POSITION_PID_INTAKE_FLOOR = POSITION_STARTING;
+    public static final double POSITION_PID_INTAKE_FEEDER = 1.4;
+    public static final double POSITION_PID_TRAVEL = 0.22;
 
   }
 
@@ -51,11 +59,7 @@ public final class Constants {
      */
 
     // NEO Motor
-    public static final int MOTOR_INTAKE_CENTER = 11;
-
-    // NEO Motor
-    public static final int MOTOR_INTAKE_EDGE = 13;
-
+    public static final int MOTOR_INTAKE_FLOOR = 13;
     
   }
 
@@ -76,11 +80,9 @@ public final class Constants {
      * These numbers must match the Spark connecting to this motor.
      */
 
-    // Falcon Motor
-    public static final int MOTOR_SHOOTER_FEEDER_A = 15;
+    // NEO Motor
+    public static final int MOTOR_SHOOTER_FEEDER = 11;
 
-    // Falcon Motor
-    public static final int MOTOR_SHOOTER_FEEDER_B = 16;
   }
 
   public static final class SwerveConstants {

@@ -32,6 +32,8 @@ public class RobotContainer {
   private final Joystick driverJoystick;
   private JoystickButton btn_arm_pivot_down;
   private JoystickButton btn_arm_pivot_up;
+  private JoystickButton btn_shooter_feeder;
+  private JoystickButton btn_floor_feeder;
 
   /* Subsystems */
   public final SwerveBase m_swerveBase;
@@ -100,6 +102,12 @@ public class RobotContainer {
 
     btn_arm_pivot_up = new JoystickButton(driverJoystick, 5);
     btn_arm_pivot_up.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
+
+    btn_shooter_feeder = new JoystickButton(driverJoystick, 6);
+    btn_shooter_feeder.whileTrue(new ShooterFeederTest(m_robot.getShooterFeederSubsystem()));
+
+    btn_floor_feeder = new JoystickButton(driverJoystick, 1);
+    btn_floor_feeder.whileTrue(new FloorFeederTest(m_robot.getIntakeSubsystem()));
 
   }
 

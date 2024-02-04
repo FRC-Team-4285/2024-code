@@ -12,39 +12,40 @@ import com.revrobotics.SparkPIDController;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj2.command.Command.InterruptionBehavior;
 import frc.robot.Constants.IntakeConstants;
-import frc.robot.Constants.ShooterConstants;
 
 public class IntakeSubsystem extends SubsystemBase {
   /** Intake Subsystem - Feeds Notes */
 
-  private CANSparkMax armMotor_A;
-  private SparkPIDController armMotorPID_A;
-  private RelativeEncoder armMotorRelEncoder_A;
+  private CANSparkMax floor_feeder_motor;
+  private SparkPIDController floor_feeder_pid;
+  private RelativeEncoder floor_feeder_encoder;
 
-  private CANSparkMax armMotor_B;
-  private SparkPIDController armMotorPID_B;
-  private RelativeEncoder armMotorRelEncoder_B;
-  
-  private double desiredPosition;
-  private boolean inPosition;
 
   public IntakeSubsystem() {
 
-    armMotor_A = new CANSparkMax(IntakeConstants.MOTOR_INTAKE_CENTER, MotorType.kBrushless);
-    armMotorRelEncoder_A = armMotor_A.getAlternateEncoder(SparkMaxAlternateEncoder.Type.kQuadrature, 4096);
-    armMotorPID_A = armMotor_A.getPIDController();
-    armMotorPID_A.setFeedbackDevice(armMotorRelEncoder_A);
+    floor_feeder_motor = new CANSparkMax(IntakeConstants.MOTOR_INTAKE_FLOOR, MotorType.kBrushless);
+    floor_feeder_encoder = floor_feeder_motor.getAlternateEncoder(SparkMaxAlternateEncoder.Type.kQuadrature, 4096);
+    floor_feeder_pid = floor_feeder_motor.getPIDController();
+    floor_feeder_pid.setFeedbackDevice(floor_feeder_encoder);
 
-    armMotor_B = new CANSparkMax(IntakeConstants.MOTOR_INTAKE_EDGE, MotorType.kBrushless);
-    armMotorRelEncoder_B = armMotor_B.getAlternateEncoder(SparkMaxAlternateEncoder.Type.kQuadrature, 4096);
-    armMotorPID_B = armMotor_B.getPIDController();
-    armMotorPID_B.setFeedbackDevice(armMotorRelEncoder_B);
+  }
 
-    desiredPosition = 99999; // starting value.
-    inPosition = false;
+  /**
+   * @param speed
+   * @param direction
+   */
+  public void feed(double speed, boolean direction) {
+    if (direction) {
+      floor_feeder_motor.set(speed);
+    }
+    else {
+      floor_feeder_motor.set(-speed);
+    }
+  }
 
+  public void stop() {
+    floor_feeder_motor.set(0.0);
   }
 
   /**

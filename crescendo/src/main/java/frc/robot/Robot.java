@@ -49,8 +49,8 @@ public class Robot extends TimedRobot {
     m_aprilTag = new AprilTagSubsystem();
     m_armPivot = new ArmPivotSubsystem();
     // m_climber = new ClimberSubsystem();
-    // m_intake = new IntakeSubsystem();
-    // m_shooterFeeder = new ShooterFeederSubsystem();
+    m_intake = new IntakeSubsystem();
+    m_shooterFeeder = new ShooterFeederSubsystem();
     m_shooter = new ShooterSubsystem();
     m_robotContainer = new RobotContainer(this);
 
@@ -134,6 +134,14 @@ public class Robot extends TimedRobot {
 
   public ShooterSubsystem getShooterSubsystem() {
     return m_shooter;
+  }
+  
+  public ShooterFeederSubsystem getShooterFeederSubsystem() {
+    return m_shooterFeeder;
+  }
+
+  public IntakeSubsystem getIntakeSubsystem() {
+    return m_intake;
   }
 
 }
