@@ -55,9 +55,9 @@ public class SwerveBase extends SubsystemBase {
     rearLeft.resetDistance();
     rearRight.resetDistance();
 
-    rearRight.getDriveMotor().setInverted(false);
+    rearRight.getDriveMotor().setInverted(true);
     rearLeft.getDriveMotor().setInverted(false);
-    frontRight.getDriveMotor().setInverted(false);
+    frontRight.getDriveMotor().setInverted(true);
     frontLeft.getDriveMotor().setInverted(false);
 
     rearRight.getRotationMotor().setInverted(false);
@@ -82,10 +82,10 @@ public class SwerveBase extends SubsystemBase {
    * 180 degrees added to offset values to invert one side of the robot so that it
    * doesn't spin in place
    */
-  private static final double frontLeftAngleOffset = Units.degreesToRadians(0);//
-  private static final double frontRightAngleOffset = Units.degreesToRadians(0);//
-  private static final double rearLeftAngleOffset = Units.degreesToRadians(0);//
-  private static final double rearRightAngleOffset = Units.degreesToRadians(0);//
+  private static final double frontLeftAngleOffset = Units.degreesToRadians(240.29);//
+  private static final double frontRightAngleOffset = Units.degreesToRadians(159.87);//
+  private static final double rearLeftAngleOffset = Units.degreesToRadians(203.12);//
+  private static final double rearRightAngleOffset = Units.degreesToRadians(132.45);//
 
   private Pose2d m_pose = new Pose2d(0, 0, new Rotation2d());
   private final double SCALE_X = -1/0.9;
@@ -331,7 +331,7 @@ public class SwerveBase extends SubsystemBase {
 
   // get the current heading of the robot based on the gyro
   public Rotation2d getHeading() {
-    return Rotation2d.fromDegrees(pigeonSensor.getYaw() + 90);
+    return Rotation2d.fromDegrees(pigeonSensor.getYaw());
     // navX: return Rotation2d.fromDegrees(-navX.getYaw() + 90);
   }
 
