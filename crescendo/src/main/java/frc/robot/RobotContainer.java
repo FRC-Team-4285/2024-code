@@ -34,7 +34,7 @@ public class RobotContainer {
   private JoystickButton btn_arm_pivot_up;
 
   /* Subsystems */
-  //public final SwerveBase m_swerveBase;
+  public final SwerveBase m_swerveBase;
 
   /* Parent Class */
   private final Robot m_robot;
@@ -55,16 +55,16 @@ public class RobotContainer {
     /* clamps rotation to zero if button 12 is pressed */
     BiFunction<Double, Double, Double> Clamp = (val,lim) -> (Math.abs(val) < lim) ? val : Math.copySign(lim,val);
 
-    // m_swerveBase = new SwerveBase();
-    // m_swerveBase.setDefaultCommand(
-    //   new TeleopSwerve(
-    //     m_swerveBase,
-    //     () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.translationAxis), limit.getAsDouble()),
-    //     () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.strafeAxis), limit.getAsDouble()),
-    //     () -> -Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.rotationAxis), limit.getAsDouble() * stopRotation.getAsDouble()),
-    //     () -> !driverJoystick.getRawButton(1) //inverted=fieldCentric, non-inverted=RobotCentric
-    //   )
-    // );
+    m_swerveBase = new SwerveBase();
+    m_swerveBase.setDefaultCommand(
+      new TeleopSwerve(
+        m_swerveBase,
+        () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.translationAxis), limit.getAsDouble()),
+        () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.strafeAxis), limit.getAsDouble()),
+        () -> -Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.rotationAxis), limit.getAsDouble() * stopRotation.getAsDouble()),
+        () -> !driverJoystick.getRawButton(1) //inverted=fieldCentric, non-inverted=RobotCentric
+      )
+    );
 
     // Configure the trigger bindings
     configureBindings();
@@ -113,7 +113,7 @@ public class RobotContainer {
     return Autos.exampleAuto(m_exampleSubsystem);
   }
 
-  // public SwerveBase getSwerveSubsytem() {
-  //   return m_swerveBase;
-  // }
+  public SwerveBase getSwerveSubsytem() {
+    return m_swerveBase;
+  }
 }

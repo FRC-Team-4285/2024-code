@@ -27,9 +27,6 @@ public class IntakeSubsystem extends SubsystemBase {
   private SparkPIDController armMotorPID_B;
   private RelativeEncoder armMotorRelEncoder_B;
   
-  private CANSparkMax armMotor_C;
-  private SparkPIDController armMotorPID_C;
-  private RelativeEncoder armMotorRelEncoder_C;
   private double desiredPosition;
   private boolean inPosition;
 
@@ -40,15 +37,10 @@ public class IntakeSubsystem extends SubsystemBase {
     armMotorPID_A = armMotor_A.getPIDController();
     armMotorPID_A.setFeedbackDevice(armMotorRelEncoder_A);
 
-    armMotor_B = new CANSparkMax(IntakeConstants.MOTOR_INTAKE_EDGE_A, MotorType.kBrushless);
+    armMotor_B = new CANSparkMax(IntakeConstants.MOTOR_INTAKE_EDGE, MotorType.kBrushless);
     armMotorRelEncoder_B = armMotor_B.getAlternateEncoder(SparkMaxAlternateEncoder.Type.kQuadrature, 4096);
     armMotorPID_B = armMotor_B.getPIDController();
     armMotorPID_B.setFeedbackDevice(armMotorRelEncoder_B);
-    
-    armMotor_C = new CANSparkMax(IntakeConstants.MOTOR_INTAKE_EDGE_B, MotorType.kBrushless);
-    armMotorRelEncoder_C = armMotor_C.getAlternateEncoder(SparkMaxAlternateEncoder.Type.kQuadrature, 4096);
-    armMotorPID_C = armMotor_C.getPIDController();
-    armMotorPID_C.setFeedbackDevice(armMotorRelEncoder_C);
 
     desiredPosition = 99999; // starting value.
     inPosition = false;

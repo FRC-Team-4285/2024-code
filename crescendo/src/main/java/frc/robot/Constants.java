@@ -54,10 +54,9 @@ public final class Constants {
     public static final int MOTOR_INTAKE_CENTER = 11;
 
     // NEO Motor
-    public static final int MOTOR_INTAKE_EDGE_A = 11;
+    public static final int MOTOR_INTAKE_EDGE = 13;
 
-    // NEO Motor
-    public static final int MOTOR_INTAKE_EDGE_B = 12;
+    
   }
 
   public static class ShooterConstants {
@@ -116,17 +115,17 @@ public final class Constants {
     public static final double maxSpeed = 1.3; // NOT a speed unit; robot gets faster if this is lower 2.0
     public static final double maxAngularVelocity = 12.0;
 
-    public static final int frontLeftRotationMotorId = 8;
-    public static final int frontLeftDriveMotorId = 23;
+    public static final int frontLeftRotationMotorId = 2;
+    public static final int frontLeftDriveMotorId = 1;
 
-    public static final int frontRightRotationMotorId = 5;
-    public static final int frontRightDriveMotorId = 22;
+    public static final int frontRightRotationMotorId = 8;
+    public static final int frontRightDriveMotorId = 7;
 
-    public static final int rearLeftRotationMotorId = 2;
-    public static final int rearLeftDriveMotorId = 1;
+    public static final int rearLeftRotationMotorId = 4;
+    public static final int rearLeftDriveMotorId = 3;
 
-    public static final int rearRightRotationMotorId = 4;
-    public static final int rearRightDriveMotorId = 3;
+    public static final int rearRightRotationMotorId = 6;
+    public static final int rearRightDriveMotorId = 5;
 
     public static final int frontLeftRotationEncoderId = 4;
     public static final int frontRightRotationEncoderId = 1;
