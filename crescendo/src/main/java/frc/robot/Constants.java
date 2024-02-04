@@ -42,7 +42,36 @@ public final class Constants {
 
     public static final double POSITION_PID_STARTING = 0.96;
     public static final double POSITION_PID_INTAKE_FLOOR = POSITION_STARTING;
-    public static final double POSITION_PID_INTAKE_FEEDER = 1.4;
+    public static final double POSITION_PID_INTAKE_FEEDER = 1.535;
+
+    // 36 inch -- 1.31
+    // 42 inch -- 1.336
+    // 48 inch -- 1.37
+    // 54 inch -- 1.35
+    // 60 inch -- 1.36
+    // 66 inch -- 1.382
+    // 72 inch -- 1.388
+    // 78 inch -- 1.395
+    // 84 inch -- 1.42
+    // 90 inch -- 1.44
+    // 96 inch -- 1.45
+    // 102 inch -- 1.47
+    // 108 inch -- 1.48
+    // 114 inch -- 1.48
+    // 120 inch -- 1.485
+    // 126 inch -- 1.49
+    // 132 inch -- 1.495
+    // 138 inch -- 1.495
+    // 144 inch -- 1.50
+    // 150 inch -- 1.50
+    // 156 inch -- 1.505
+    // 162 inch -- 1.51
+    // 168 inch -- 1.515
+    // 174 inch -- 1.53
+    // 180 inch -- 1.5375
+    // 180 inch -- 1.5425
+
+    // public static final double POSITION_PID_INTAKE_FEEDER = 1.4;
     public static final double POSITION_PID_TRAVEL = 0.22;
 
   }

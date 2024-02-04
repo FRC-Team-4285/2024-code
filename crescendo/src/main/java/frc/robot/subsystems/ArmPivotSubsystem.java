@@ -159,10 +159,10 @@ public void go_to_mode(int MODE, double POS) {
           output = Math.min(-0.05, Math.max(-0.5, output));
       }
 
-      // arm_pivot_motor_a.set(output * flip);
-      // arm_pivot_motor_b.set(output * flip);
+      arm_pivot_motor_a.set(output * flip);
+      arm_pivot_motor_b.set(output * flip);
 
-      System.out.println("\n\n\nDesired: " + desired_location + "\nRaw Output: " + unclampedOutput + "\nOutput: " + output + "\nError: " + error + "\n\n");
+      //System.out.println("\n\n\nDesired: " + desired_location + "\nRaw Output: " + unclampedOutput + "\nOutput: " + output + "\nError: " + error + "\n\n");
     }
     else {
       arm_pivot_motor_a.set(0.0);
