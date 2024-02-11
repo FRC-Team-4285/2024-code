@@ -201,18 +201,18 @@ public final class Constants {
      */
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
         new Translation3d(-0.06, 0.2, -0.2127),
-        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45.0)));
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
         new Translation3d(-0.06, 0.2, -0.2127),
-        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45.0)));
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_3 = new Transform3d(
         new Translation3d(-0.06, 0.2, -0.2127),
-        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135.0)));
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135.0)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
         new Translation3d(-0.06, 0.2, -0.2127),
-        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135.0)));
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135.0)));
 
     public static final double FIELD_LENGTH_METERS = 16.542;
     public static final double FIELD_WIDTH_METERS = 8.2042;

@@ -43,13 +43,14 @@ public class AprilTagSubsystem extends SubsystemBase {
   EstimatedRobotPose visionPose3;
   EstimatedRobotPose visionPose4;
   StructPublisher<Pose3d> publisher;
+
   /** Creates a new ExampleSubsystem. */
-
-
+  
+  
   public AprilTagSubsystem() {
     originPosition = OriginPosition.kBlueAllianceWallRightSide;
-
-     publisher = NetworkTableInstance.getDefault()
+    
+    publisher = NetworkTableInstance.getDefault()
     .getStructTopic("MyPose", Pose3d.struct).publish();
   }
 
@@ -62,8 +63,8 @@ public class AprilTagSubsystem extends SubsystemBase {
     // Inline construction of command goes here.
     // Subsystem::RunOnce implicitly requires `this` subsystem.
     return runOnce(
-        () -> {
-          /* one-time action goes here */
+      () -> {
+        /* one-time action goes here */
         });
   }
 
@@ -85,16 +86,16 @@ public class AprilTagSubsystem extends SubsystemBase {
     boolean allianceChanged = false;
     switch (alliance) {
       case Blue:
-        allianceChanged = (originPosition == OriginPosition.kRedAllianceWallRightSide);
+      allianceChanged = (originPosition == OriginPosition.kRedAllianceWallRightSide);
         originPosition = OriginPosition.kBlueAllianceWallRightSide;
         break;
-      case Red:
+        case Red:
         allianceChanged = (originPosition == OriginPosition.kBlueAllianceWallRightSide);
         originPosition = OriginPosition.kRedAllianceWallRightSide;
         break;
       default:
         break;
-    }
+      }
 
     if (allianceChanged && sawTag) {
       // The alliance changed, which changes the coordinate system.
@@ -111,9 +112,9 @@ public class AprilTagSubsystem extends SubsystemBase {
     photonEstimator2.run();
     photonEstimator3.run();
     photonEstimator4.run();
-
+    
     // Pose3d cam1Pose = new Pose3d(new Translation3d(0, 0, 0), new Rotation3d(0, 0, 0));
-
+    
     // double lowestAmbiguity = Math.min(photonEstimator1.photonResults.getBestTarget().getPoseAmbiguity() , photonEstimator2.grabLatestEstimatedPose().)
     visionPose1 = photonEstimator1.grabLatestEstimatedPose();
     visionPose2 = photonEstimator2.grabLatestEstimatedPose();
@@ -121,33 +122,33 @@ public class AprilTagSubsystem extends SubsystemBase {
     visionPose4 = photonEstimator4.grabLatestEstimatedPose();
 
     // System.out.println("Camera4 Vision P+ose:" + visionPose4);
-    // if (visionPose1 != null) {
-    //   // New pose from vision
-    //   sawTag = true;
-    //   Pose2d pose2d1 = visionPose1.estimatedPose.toPose2d();
-    //   if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
-    //     pose2d1 = flipAlliance(pose2d1);
-    //   }
-    //   Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d1, visionPose1.timestampSeconds);
-    // }
-    // if (visionPose2 != null) {
-    //   // New pose from vision
-    //   sawTag = true;
-    //   Pose2d pose2d2 = visionPose2.estimatedPose.toPose2d();
-    //   if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
-    //     pose2d2 = flipAlliance(pose2d2);
-    //   }
-    //   Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d2, visionPose2.timestampSeconds);
-    // }
-    // if (visionPose3 != null) {
-    //   // New pose from vision
-    //   sawTag = true;
-    //   Pose2d pose2d3 = visionPose3.estimatedPose.toPose2d();
-    //   if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
-    //     pose2d3 = flipAlliance(pose2d3);
-    //   }
-    //   Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d3, visionPose3.timestampSeconds);
-    // }
+    if (visionPose1 != null) {
+      // New pose from vision
+      sawTag = true;
+      Pose2d pose2d1 = visionPose1.estimatedPose.toPose2d();
+      if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
+        pose2d1 = flipAlliance(pose2d1);
+      }
+      Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d1, visionPose1.timestampSeconds);
+    }
+    if (visionPose2 != null) {
+      // New pose from vision
+      sawTag = true;
+      Pose2d pose2d2 = visionPose2.estimatedPose.toPose2d();
+      if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
+        pose2d2 = flipAlliance(pose2d2);
+      }
+      Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d2, visionPose2.timestampSeconds);
+    }
+    if (visionPose3 != null) {
+      // New pose from vision
+      sawTag = true;
+      Pose2d pose2d3 = visionPose3.estimatedPose.toPose2d();
+      if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
+        pose2d3 = flipAlliance(pose2d3);
+      }
+      Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d3, visionPose3.timestampSeconds);
+    }
     if (visionPose4 != null) {
       // New pose from vision
       sawTag = true;
