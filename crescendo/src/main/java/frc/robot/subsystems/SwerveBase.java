@@ -6,10 +6,13 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SwerveConstants;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.math.kinematics.Odometry;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
@@ -17,8 +20,14 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.kauailabs.navx.frc.AHRS;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
+import com.pathplanner.lib.util.PIDConstants;
+import com.pathplanner.lib.util.ReplanningConfig;
 import com.ctre.phoenix.sensors.Pigeon2Configuration;
 import com.ctre.phoenix.sensors.WPI_Pigeon2;
+
+import edu.wpi.first.wpilibj.DriverStation;
 // import com.pathplanner.lib.PathPlannerTrajectory;
 // import com.pathplanner.lib.commands.PPSwerveControllerCommand;
 import edu.wpi.first.wpilibj.SPI;
@@ -65,7 +74,31 @@ public class SwerveBase extends SubsystemBase {
     frontRight.getRotationMotor().setInverted(false);
     frontLeft.getRotationMotor().setInverted(false);
 
+    AutoBuilder.configureHolonomic(
+            this::getPose, // Robot pose supplier
+            this::resetOdometry, // Method to reset odometry (will be called if your auto has a starting pose)
+            this::getRobotRelativeChassisSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
+            this::robotRelativeDrive, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
+            new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
+                    new PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
+                    new PIDConstants(5.0, 0.0, 0.0), // Rotation PID constants
+                    4.5, // Max module speed, in m/s
+                    0.4, // Drive base radius in meters. Distance from robot center to furthest module.
+                    new ReplanningConfig(true , true, 0.1 , 0.04) // Default path replanning config. See the API for the options here
+            ),
+            () -> {
+              // Boolean supplier that controls when the path will be mirrored for the red alliance
+              // This will flip the path being followed to the red side of the field.
+              // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
 
+              var alliance = DriverStation.getAlliance();
+              if (alliance.isPresent()) {
+                return alliance.get() == DriverStation.Alliance.Red;
+              }
+              return false;
+            },
+            this // Reference to this subsystem to set requirements
+    );
   }
 
   public void zeroPigeon() {
@@ -82,9 +115,9 @@ public class SwerveBase extends SubsystemBase {
    * 180 degrees added to offset values to invert one side of the robot so that it
    * doesn't spin in place
    */
-  private static final double frontLeftAngleOffset = Units.degreesToRadians(240.29);//
-  private static final double frontRightAngleOffset = Units.degreesToRadians(159.87);//
-  private static final double rearLeftAngleOffset = Units.degreesToRadians(203.12);//
+  private static final double frontLeftAngleOffset = Units.degreesToRadians(239.94);//
+  private static final double frontRightAngleOffset = Units.degreesToRadians(159.7);//
+  private static final double rearLeftAngleOffset = Units.degreesToRadians(202.85);//
   private static final double rearRightAngleOffset = Units.degreesToRadians(132.45);//
 
   private Pose2d m_pose = new Pose2d(0, 0, new Rotation2d());
@@ -138,19 +171,24 @@ public class SwerveBase extends SubsystemBase {
    * rotational motion
    * Takes in kinematics and robot angle for parameters
    */
-  private final SwerveDriveOdometry odometry = new SwerveDriveOdometry(SwerveConstants.kinematics, new Rotation2d(),
-      getModulePositions());
+
+  private final SwerveDrivePoseEstimator odometry = new SwerveDrivePoseEstimator(SwerveConstants.kinematics, new Rotation2d(),
+      getModulePositions(), new Pose2d());
   private boolean needPigeonReset = false;
 
-  public SwerveDriveOdometry getOdometry() {
+  public SwerveDrivePoseEstimator getOdometry() {
     return odometry;
+  }
+
+  public Pose3d getPose3d(){
+    return new Pose3d(getOdometry().getEstimatedPosition());
   }
   
   @Override
   public void periodic() {
 
     // update the odometry every 20ms
-    //odometry.update(getHeading(), getModulePositions());
+    odometry.update(getHeading(), getModulePositions());
 
     SmartDashboard.putString("Robot pose",
         getPose().toString());
@@ -249,6 +287,10 @@ public class SwerveBase extends SubsystemBase {
 
   }
 
+  public void robotRelativeDrive(ChassisSpeeds speeds){
+    setModuleStates(SwerveConstants.kinematics.toSwerveModuleStates(speeds));
+  }
+
   /**
    * Method to set the desired state for each swerve module
    * Uses PID and feedforward control to control the linear and rotational values
@@ -308,12 +350,16 @@ public class SwerveBase extends SubsystemBase {
 
   }
 
+  public ChassisSpeeds getRobotRelativeChassisSpeeds(){
+    return Constants.SwerveConstants.kinematics.toChassisSpeeds(getModuleStates());
+  }
+
   /**
    * Return the current position of the robot on field
    * Based on drive encoder and gyro reading
    */
   public Pose2d getPose() {
-    return odometry.getPoseMeters();
+    return odometry.getEstimatedPosition();
   }
 
   // reset the current pose to a desired pose
@@ -331,7 +377,7 @@ public class SwerveBase extends SubsystemBase {
 
   // get the current heading of the robot based on the gyro
   public Rotation2d getHeading() {
-    return Rotation2d.fromDegrees(pigeonSensor.getYaw());
+    return Rotation2d.fromDegrees(pigeonSensor.getYaw()+180);
     // navX: return Rotation2d.fromDegrees(-navX.getYaw() + 90);
   }
 

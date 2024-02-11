@@ -4,17 +4,30 @@
 
 package frc.robot;
 
+import static frc.robot.Constants.VisionConstants.FIELD_LENGTH_METERS;
+import static frc.robot.Constants.VisionConstants.FIELD_WIDTH_METERS;
+
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Rotation3d;
+import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.geometry.Translation3d;
+import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
 
 /**
- * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
- * constants. This class should not be used for any other purpose. All constants should be declared
+ * The Constants class provides a convenient place for teams to hold robot-wide
+ * numerical or boolean
+ * constants. This class should not be used for any other purpose. All constants
+ * should be declared
  * globally (i.e. public static). Do not put anything functional in this class.
  *
- * <p>It is advised to statically import this class (or one of its inner classes) wherever the
+ * <p>
+ * It is advised to statically import this class (or one of its inner classes)
+ * wherever the
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
@@ -30,7 +43,7 @@ public final class Constants {
      * These numbers must match the Spark connecting to this motor.
      */
 
-     // 2 NEO Motor
+    // 2 NEO Motor
     public static final int MOTOR_ARM_PIVOT_A = 20;
     public static final int MOTOR_ARM_PIVOT_B = 21;
 
@@ -40,9 +53,10 @@ public final class Constants {
     public static final int POSITION_INTAKE_FEEDER = 2;
     public static final int POSITION_TRAVEL = 3;
 
-    public static final double POSITION_PID_STARTING = 0.96;
+    public static final double POSITION_PID_STARTING = 0.819;// 0.96
     public static final double POSITION_PID_INTAKE_FLOOR = POSITION_STARTING;
-    public static final double POSITION_PID_INTAKE_FEEDER = 1.535;
+    public static final double POSITION_PID_INTAKE_FEEDER = 1.31;
+    // public static final double POSITION_PID_HUMAN_FEEDER = 0.647;
 
     // 36 inch -- 1.31
     // 42 inch -- 1.336
@@ -69,7 +83,11 @@ public final class Constants {
     // 168 inch -- 1.515
     // 174 inch -- 1.53
     // 180 inch -- 1.5375
-    // 180 inch -- 1.5425
+    // 186 inch -- 1.5425
+    // 192 inch -- 1.54525
+    // 198 inch -- 1.54
+    // 204 inch -- 1.535
+    // 216 inch --1.5375 This value shoot good disk high and bad disk low
 
     // public static final double POSITION_PID_INTAKE_FEEDER = 1.4;
     public static final double POSITION_PID_TRAVEL = 0.22;
@@ -89,7 +107,7 @@ public final class Constants {
 
     // NEO Motor
     public static final int MOTOR_INTAKE_FLOOR = 13;
-    
+
   }
 
   public static class ShooterConstants {
@@ -97,7 +115,7 @@ public final class Constants {
      * These numbers must match the Spark connecting to this motor.
      */
 
-     // Falcon Motor
+    // Falcon Motor
     public static final int MOTOR_SHOOTER_A = 15;
 
     // Falcon Motor
@@ -121,29 +139,29 @@ public final class Constants {
     /* Drive Controls */
     public static final int translationAxis = 1;
     public static final int strafeAxis = 0;
-    public static final int rotationAxis = 2; //was 4 on Xbox
+    public static final int rotationAxis = 2; // was 4 on Xbox
     public static final int sliderAxis = 3;
 
     /* Drivetrain Constants */
-    public static final double trackWidth = Units.inchesToMeters(21.5); //measured from center of each module
+    public static final double trackWidth = Units.inchesToMeters(21.5); // measured from center of each module
     public static final double wheelBase = Units.inchesToMeters(21.5);
 
     // nominal (real) divided by fudge factor
-    public static final double wheelDiameter = Units.inchesToMeters(4.0 / 1.0); //was 1.04085
+    public static final double wheelDiameter = Units.inchesToMeters(4.0 / 1.0); // was 1.04085
     public static final double wheelCircumference = wheelDiameter * Math.PI;
 
-    public static final double driveGearRatio = 8.16; // Mk3 Standard drive ratio 
+    public static final double driveGearRatio = 8.16; // Mk3 Standard drive ratio
     public static final double angleGearRatio = 12.8; // Mk3 Standard steer ratio (does this need encoder stuff??)
 
     public static final SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
-                    new Translation2d(trackWidth / 2.0, wheelBase / 2.0), // front left, ++ quadrant
-                    new Translation2d(trackWidth / 2.0, -wheelBase / 2.0), // front right, +- quadrant
-                    new Translation2d(-trackWidth / 2.0, wheelBase / 2.0), // rear left, -+ quadrant
-                    new Translation2d(-trackWidth / 2.0, -wheelBase / 2.0) // rear right, -- quadrant
+        new Translation2d(trackWidth / 2.0, wheelBase / 2.0), // front left, ++ quadrant
+        new Translation2d(trackWidth / 2.0, -wheelBase / 2.0), // front right, +- quadrant
+        new Translation2d(-trackWidth / 2.0, wheelBase / 2.0), // rear left, -+ quadrant
+        new Translation2d(-trackWidth / 2.0, -wheelBase / 2.0) // rear right, -- quadrant
     );
 
     /* Swerve Profiling Values */
-    public static final double maxSpeed = 1.3; // NOT a speed unit; robot gets faster if this is lower 2.0
+    public static final double maxSpeed = 1.9; // NOT a speed unit; robot gets faster if this is lower 2.0//was 1.3
     public static final double maxAngularVelocity = 12.0;
 
     public static final int frontLeftRotationMotorId = 2;
@@ -172,6 +190,40 @@ public final class Constants {
 
     public static final int PIGEON_SENSOR_ID = 0;
 
+  }
+
+  public static final class VisionConstants {
+
+    //TODO Calculate and get these values, Units need to be in meters and radians
+    /**
+     * Physical location of the apriltag camera on the robot, relative to the center
+     * of the robot.
+     */
+    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
+        new Translation3d(-0.06, 0.2, -0.2127),
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45.0)));
+
+    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
+        new Translation3d(-0.06, 0.2, -0.2127),
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
+    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_3 = new Transform3d(
+        new Translation3d(-0.06, 0.2, -0.2127),
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135.0)));
+
+    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
+        new Translation3d(-0.06, 0.2, -0.2127),
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135.0)));
+
+    public static final double FIELD_LENGTH_METERS = 16.542;
+    public static final double FIELD_WIDTH_METERS = 8.2042;
+
+    public static final Pose2d FLIPPING_POSE = new Pose2d(
+      new Translation2d(FIELD_LENGTH_METERS , FIELD_WIDTH_METERS),
+      new Rotation2d(Math.PI)
+    );
+
+    /** Minimum target ambiguity. Targets with higher ambiguity will be discarded */
+    public static final double APRILTAG_AMBIGUITY_THRESHOLD = 0.2;
   }
 
 }

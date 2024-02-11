@@ -27,9 +27,9 @@ import frc.robot.subsystems.ShooterSubsystem;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
-  private RobotContainer m_robotContainer;
+  public static RobotContainer m_robotContainer;
   public AprilTagSubsystem m_aprilTag;
-  public ArmPivotSubsystem m_armPivot;
+  public static ArmPivotSubsystem m_armPivot;
   public ClimberSubsystem m_climber;
   public IntakeSubsystem m_intake;
   public ShooterFeederSubsystem m_shooterFeeder;
@@ -108,7 +108,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+
+  }
 
   @Override
   public void testInit() {

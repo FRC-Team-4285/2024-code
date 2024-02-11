@@ -27,16 +27,19 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private final ArmPivotSubsystem m_ArmPivotSubsystem = Robot.m_armPivot;
 
   /* Human interfaces */
   private final Joystick driverJoystick;
+  private final Joystick loupedeck;
   private JoystickButton btn_arm_pivot_down;
   private JoystickButton btn_arm_pivot_up;
   private JoystickButton btn_shooter_feeder;
   private JoystickButton btn_floor_feeder;
+  private JoystickButton btn_armP_pivot_stop;
 
   /* Subsystems */
-  public final SwerveBase m_swerveBase;
+  public SwerveBase m_swerveBase;
 
   /* Parent Class */
   private final Robot m_robot;
@@ -50,6 +53,7 @@ public class RobotContainer {
     m_robot = robot;
 
     driverJoystick = new Joystick(0);
+    loupedeck =new Joystick(1);
 
     DoubleSupplier limit = () -> 0.55 - 0.45*driverJoystick.getRawAxis(SwerveConstants.sliderAxis);
     /*maps sliderAxis to be between 0.1 and 1.0*/
@@ -76,6 +80,10 @@ public class RobotContainer {
     return driverJoystick;
   }
 
+  public Joystick getLoupedeck() {
+    return loupedeck;
+  }
+
   /**
    * Use this method to define your trigger->command mappings. Triggers can be created via the
    * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary
@@ -94,20 +102,25 @@ public class RobotContainer {
     // cancelling on release.
     m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
     
-    btn_arm_pivot_down = new JoystickButton(driverJoystick, 3);
+    btn_arm_pivot_down = new JoystickButton(loupedeck, 11);
     btn_arm_pivot_down.whileTrue(new ArmPivotDown(m_robot.getArmPivotSubsystem()));
 
-    btn_arm_pivot_up = new JoystickButton(driverJoystick, 4);
+    btn_arm_pivot_up = new JoystickButton(loupedeck, 12);
     btn_arm_pivot_up.whileTrue(new ArmPivotUp(m_robot.getArmPivotSubsystem()));
 
-    btn_arm_pivot_up = new JoystickButton(driverJoystick, 5);
+    btn_arm_pivot_up = new JoystickButton(loupedeck, 9);
     btn_arm_pivot_up.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
 
-    btn_shooter_feeder = new JoystickButton(driverJoystick, 6);
+    btn_shooter_feeder = new JoystickButton(loupedeck, 10);
     btn_shooter_feeder.whileTrue(new ShooterFeederTest(m_robot.getShooterFeederSubsystem()));
 
-    btn_floor_feeder = new JoystickButton(driverJoystick, 1);
+    btn_floor_feeder = new JoystickButton(loupedeck, 7);
     btn_floor_feeder.whileTrue(new FloorFeederTest(m_robot.getIntakeSubsystem()));
+
+    btn_armP_pivot_stop = new JoystickButton(loupedeck, 5);
+    btn_armP_pivot_stop.whileTrue(m_ArmPivotSubsystem.stopCommand());
+
+
 
   }
 
