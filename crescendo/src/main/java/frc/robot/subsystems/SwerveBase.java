@@ -24,6 +24,9 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
+
+import java.sql.Driver;
+
 import com.ctre.phoenix.sensors.Pigeon2Configuration;
 import com.ctre.phoenix.sensors.WPI_Pigeon2;
 
@@ -31,6 +34,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 // import com.pathplanner.lib.PathPlannerTrajectory;
 // import com.pathplanner.lib.commands.PPSwerveControllerCommand;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import frc.robot.Constants;
 
 
@@ -47,6 +51,10 @@ public class SwerveBase extends SubsystemBase {
     pigeonSensor.configFactoryDefault();
     pigeonSensor.reset();
     zeroPigeon();
+
+    // if(DriverStation.getAlliance().get() == Alliance.Red){
+    //   pigeonSensor.addYaw(90);
+    // }
     pigeonSensor.getAllConfigs(pigeonConfig);
 
 
@@ -74,17 +82,19 @@ public class SwerveBase extends SubsystemBase {
     frontRight.getRotationMotor().setInverted(false);
     frontLeft.getRotationMotor().setInverted(false);
 
+    double driveBaseRadius = Constants.SwerveConstants.mDriveRadius.getNorm();
+
     AutoBuilder.configureHolonomic(
             this::getPose, // Robot pose supplier
             this::resetOdometry, // Method to reset odometry (will be called if your auto has a starting pose)
             this::getRobotRelativeChassisSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
             this::robotRelativeDrive, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
             new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-                    new PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
+                    new PIDConstants(5, 0.0, 0.0), // Translation PID constants
                     new PIDConstants(5.0, 0.0, 0.0), // Rotation PID constants
-                    4.5, // Max module speed, in m/s
-                    0.4, // Drive base radius in meters. Distance from robot center to furthest module.
-                    new ReplanningConfig(true , true, 0.1 , 0.04) // Default path replanning config. See the API for the options here
+                    5.7912, // Max module speed, in m/s
+                    driveBaseRadius, // Drive base radius in meters. Distance from robot center to furthest module.
+                    new ReplanningConfig(true , true, 1 , 0.25) // Default path replanning config. See the API for the options here
             ),
             () -> {
               // Boolean supplier that controls when the path will be mirrored for the red alliance

@@ -150,7 +150,7 @@ public final class Constants {
     public static final double wheelDiameter = Units.inchesToMeters(4.0 / 1.0); // was 1.04085
     public static final double wheelCircumference = wheelDiameter * Math.PI;
 
-    public static final double driveGearRatio = 8.16; // Mk3 Standard drive ratio
+    public static final double driveGearRatio = 5.14; // Mk3 Standard drive ratio
     public static final double angleGearRatio = 12.8; // Mk3 Standard steer ratio (does this need encoder stuff??)
 
     public static final SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
@@ -160,6 +160,7 @@ public final class Constants {
         new Translation2d(-trackWidth / 2.0, -wheelBase / 2.0) // rear right, -- quadrant
     );
 
+    public static Translation2d mDriveRadius = new Translation2d(trackWidth/2, wheelBase / 2);
     /* Swerve Profiling Values */
     public static final double maxSpeed = 1.9; // NOT a speed unit; robot gets faster if this is lower 2.0//was 1.3
     public static final double maxAngularVelocity = 12.0;
