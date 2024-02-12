@@ -104,22 +104,22 @@ public class RobotContainer {
     // cancelling on release.
     m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
     
-    btn_arm_pivot_down = new JoystickButton(loupedeck, 11);
+    btn_arm_pivot_down = new JoystickButton(driverJoystick, 11);
     btn_arm_pivot_down.whileTrue(new ArmPivotDown(m_robot.getArmPivotSubsystem()));
 
-    btn_arm_pivot_up = new JoystickButton(loupedeck, 12);
+    btn_arm_pivot_up = new JoystickButton(driverJoystick, 12);
     btn_arm_pivot_up.whileTrue(new ArmPivotUp(m_robot.getArmPivotSubsystem()));
 
-    btn_arm_pivot_up = new JoystickButton(loupedeck, 9);
+    btn_arm_pivot_up = new JoystickButton(driverJoystick, 9);
     btn_arm_pivot_up.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
 
-    btn_shooter_feeder = new JoystickButton(loupedeck, 10);
+    btn_shooter_feeder = new JoystickButton(driverJoystick, 10);
     btn_shooter_feeder.whileTrue(new ShooterFeederTest(m_robot.getShooterFeederSubsystem()));
 
-    btn_floor_feeder = new JoystickButton(loupedeck, 7);
+    btn_floor_feeder = new JoystickButton(driverJoystick, 7);
     btn_floor_feeder.whileTrue(new FloorFeederTest(m_robot.getIntakeSubsystem()));
 
-    btn_armP_pivot_stop = new JoystickButton(loupedeck, 5);
+    btn_armP_pivot_stop = new JoystickButton(driverJoystick, 5);
     btn_armP_pivot_stop.whileTrue(m_ArmPivotSubsystem.stopCommand());
 
 
