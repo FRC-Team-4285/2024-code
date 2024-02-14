@@ -13,6 +13,7 @@ import java.util.function.BiFunction;
 import java.util.function.DoubleSupplier;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -34,14 +35,18 @@ public class RobotContainer {
   /* Human interfaces */
   private final Joystick driverJoystick;
   private final Joystick loupedeck;
-  private JoystickButton btn_arm_pivot_down;
+  //private JoystickButton btn_arm_pivot_down;
   private JoystickButton btn_arm_pivot_up;
   private JoystickButton btn_shooter_feeder;
   private JoystickButton btn_floor_feeder;
   private JoystickButton btn_armP_pivot_stop;
+ // private JoystickButton btn_amp_scoring_pos;
+  private JoystickButton btn_shooting;
+ private JoystickButton btn_human_feeder;
+ private JoystickButton btn_store;
 
   /* Subsystems */
-  public SwerveBase m_swerveBase;
+  public static SwerveBase m_swerveBase;
 
   /* Parent Class */
   private final Robot m_robot;
@@ -97,32 +102,54 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    new Trigger(m_exampleSubsystem::exampleCondition)
-        .onTrue(new ExampleCommand(m_exampleSubsystem));
+    // new Trigger(m_exampleSubsystem::exampleCondition)
+    //     .onTrue(new ExampleCommand(m_exampleSubsystem));
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
     
-    btn_arm_pivot_down = new JoystickButton(driverJoystick, 11);
-    btn_arm_pivot_down.whileTrue(new ArmPivotDown(m_robot.getArmPivotSubsystem()));
+    // btn_arm_pivot_down = new JoystickButton(driverJoystick, 11);
+    // btn_arm_pivot_down.whileTrue(new ArmPivotDown(m_robot.getArmPivotSubsystem()));
 
-    btn_arm_pivot_up = new JoystickButton(driverJoystick, 12);
-    btn_arm_pivot_up.whileTrue(new ArmPivotUp(m_robot.getArmPivotSubsystem()));
+    // btn_arm_pivot_up = new JoystickButton(driverJoystick, 12);
+    // btn_arm_pivot_up.whileTrue(new ArmPivotUp(m_robot.getArmPivotSubsystem()));
 
+   
+    //Floor Intake When Held
+    btn_floor_feeder = new JoystickButton(driverJoystick, 6);
+    btn_floor_feeder.whileTrue(new FloorFeederTest(m_robot.getIntakeSubsystem()));
+   
+    //Turns on Shooter Wheels when held
     btn_arm_pivot_up = new JoystickButton(driverJoystick, 9);
     btn_arm_pivot_up.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
-
+    //Turns on Feeding shooter when held
     btn_shooter_feeder = new JoystickButton(driverJoystick, 10);
     btn_shooter_feeder.whileTrue(new ShooterFeederTest(m_robot.getShooterFeederSubsystem()));
 
-    btn_floor_feeder = new JoystickButton(driverJoystick, 7);
-    btn_floor_feeder.whileTrue(new FloorFeederTest(m_robot.getIntakeSubsystem()));
-
+    //Emergency Stop For Pivot
     btn_armP_pivot_stop = new JoystickButton(driverJoystick, 5);
-    btn_armP_pivot_stop.whileTrue(m_ArmPivotSubsystem.stopCommand());
+    btn_armP_pivot_stop.toggleOnTrue(m_ArmPivotSubsystem.stopCommand());
+    //Moves Pivit Based of of feild position
+   // btn_shooting = new JoystickButton(driverJoystick, 1);
+   // btn_shooting.whileTrue(new ArmPivotShooting (m_robot.getArmPivotSubsystem()));
+    //Moves to get note from Feeder
+    btn_human_feeder = new JoystickButton(driverJoystick, 7);
+    btn_human_feeder.whileTrue(new ArmPivotHumanFeeder (m_robot.getArmPivotSubsystem()));
+    //Moves Pivit to stored position
+    btn_store = new JoystickButton(driverJoystick, 8);
+    btn_store.whileTrue(new ArmPivotStore (m_robot.getArmPivotSubsystem()));
+
+    btn_store = new JoystickButton(driverJoystick, 4);
+    btn_store.whileTrue(new ArmPivotErrected (m_robot.getArmPivotSubsystem()));
+    
+     
 
 
+
+    //Lets Pathplanner acsess commands
+    NamedCommands.registerCommand("Shoot", (new ArmPivotShooting (m_robot.getArmPivotSubsystem())));
+    NamedCommands.registerCommand("Store", (new ArmPivotStore (m_robot.getArmPivotSubsystem())));
 
   }
 

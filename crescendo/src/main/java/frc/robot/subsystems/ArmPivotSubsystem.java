@@ -31,7 +31,7 @@ import frc.robot.Constants.ArmPivotConstants;
 
 public class ArmPivotSubsystem extends SubsystemBase {
   private final AprilTagFieldLayout field;
-  // private final SwerveBase mSwerveBase;
+  private final SwerveBase mSwerveBase;
   private Pose2d goalPose;
   /** Pivots the arm. */
 
@@ -60,7 +60,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
 
     field = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
 
-    // mSwerveBase = RobotContainer.m_swerveBase;
+    mSwerveBase = RobotContainer.m_swerveBase;
     goalPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
     
     angleTreeMap = new InterpolatingDoubleTreeMap();
@@ -205,34 +205,54 @@ public class ArmPivotSubsystem extends SubsystemBase {
       else if (MODE == ArmPivotConstants.POSITION_INTAKE_FEEDER) {
         desired_location = ArmPivotConstants.POSITION_PID_INTAKE_FEEDER;
       }
-      else if (MODE == ArmPivotConstants.POSITION_TRAVEL) {
-        desired_location = ArmPivotConstants.POSITION_PID_TRAVEL;
+      else if (MODE == ArmPivotConstants.POSITION_AMP_SCORING) {
+        desired_location = ArmPivotConstants.POSITION_PID_AMP_SCORING;
       }
+      else if (MODE == ArmPivotConstants.POSITION_SHOOTING) {
+        desired_location = angleTreeMap.get(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(goalPose.getTranslation())));
+      }
+      else if (MODE == ArmPivotConstants.POSITION_HUMAN_FEEDER) {
+        desired_location = ArmPivotConstants.POSITION_PID_HUMAN_FEEDER;
+      }
+       else if (MODE == ArmPivotConstants.POSITION_STORE) {
+        desired_location = ArmPivotConstants.POSITION_PID_STORE;
+      }
+       else if (MODE == ArmPivotConstants.POSITION_ERRECTED) {
+        desired_location = ArmPivotConstants.POSITION_PID_ERRECTED;
+      }
+      // Example
+      // else if (MODE == ArmPivotConstants. (Name of COnstant)) {
+      //   desired_location = ArmPivotConstants.(Comand);
+      // }
       else {
           System.out.println("Unknown position defined.");
           return;
       }
   }
 
-public void go_to_mode(int MODE, double POS) {
-      if (MODE == ArmPivotConstants.POSITION_STARTING) {
-        desired_location = ArmPivotConstants.POSITION_PID_STARTING;
-      }
-      else if (MODE == ArmPivotConstants.POSITION_INTAKE_FLOOR) {
-        desired_location = ArmPivotConstants.POSITION_PID_INTAKE_FLOOR;
-      }
-      else if (MODE == ArmPivotConstants.POSITION_INTAKE_FEEDER) {
-        desired_location = ArmPivotConstants.POSITION_PID_INTAKE_FEEDER;
-      }
-      else if (MODE == ArmPivotConstants.POSITION_TRAVEL) {
-        desired_location = ArmPivotConstants.POSITION_PID_TRAVEL;
-      }
-      else {
-          System.out.println("Unknown position defined.");
-          return;
-      }
+// public void go_to_mode(int MODE, double POS) {
+//       if (MODE == ArmPivotConstants.POSITION_STARTING) {
+//         desired_location = ArmPivotConstants.POSITION_PID_STARTING;
+//       }
+//       else if (MODE == ArmPivotConstants.POSITION_INTAKE_FLOOR) {
+//         desired_location = ArmPivotConstants.POSITION_PID_INTAKE_FLOOR;
+//       }
+//       else if (MODE == ArmPivotConstants.POSITION_INTAKE_FEEDER) {
+//         desired_location = ArmPivotConstants.POSITION_PID_INTAKE_FEEDER;
+//       }
+//       else if (MODE == ArmPivotConstants.POSITION_TRAVEL) {
+//         desired_location = ArmPivotConstants.POSITION_PID_TRAVEL;
+//       }
+//       else if (MODE == ArmPivotConstants.POSITION_AMP_SCORING){
+//         desired_location = ArmPivotConstants.POSITION_PID_AMP_SCORING;
+//       }
 
-  }
+//       else {
+//           System.out.println("Unknown position defined.");
+//           return;
+//       }
+
+//   }
 
   public void stop() {
     m_armMotorPivot1.set(0.0);
@@ -347,8 +367,9 @@ public void go_to_mode(int MODE, double POS) {
        * the control type to kSmartMotion
        */
     //TODO You can comment the line under to set the setpoint to a desired angle in rotations
-    // arm_pid_Controller.setReference(setPoint, CANSparkMax.ControlType.kSmartMotion);
-    // arm_pid_Controller.setReference(angleTreeMap.get(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(goalPose.getTranslation()))), CANSparkMax.ControlType.kSmartMotion);
+     //arm_pid_Controller.setReference(setPoint, CANSparkMax.ControlType.kSmartMotion);//Use for testing only
+     //arm_pid_Controller.setReference(angleTreeMap.get(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(goalPose.getTranslation()))), CANSparkMax.ControlType.kSmartMotion);
+     arm_pid_Controller.setReference(desired_location, CANSparkMax.ControlType.kSmartMotion);
 
     processVariable = arm_pivot_encoder.getPosition();
     // SmartDashboard.putNumber("SetPoint", setPoint);

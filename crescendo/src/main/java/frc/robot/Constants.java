@@ -48,15 +48,23 @@ public final class Constants {
     public static final int MOTOR_ARM_PIVOT_B = 21;
 
     // PID Locations
-    public static final int POSITION_STARTING = 0;
+     public static final int POSITION_STARTING = 0;
     public static final int POSITION_INTAKE_FLOOR = 1;
     public static final int POSITION_INTAKE_FEEDER = 2;
     public static final int POSITION_TRAVEL = 3;
+    public static final int POSITION_AMP_SCORING = 4;
+    public static final int POSITION_SHOOTING = 5;
+    public static final int POSITION_HUMAN_FEEDER = 6;
+    public static final int POSITION_STORE = 7;
+    public static final int POSITION_ERRECTED = 8;
 
     public static final double POSITION_PID_STARTING = 0.819;// 0.96
     public static final double POSITION_PID_INTAKE_FLOOR = POSITION_STARTING;
     public static final double POSITION_PID_INTAKE_FEEDER = 1.31;
-    // public static final double POSITION_PID_HUMAN_FEEDER = 0.647;
+    public static final double POSITION_PID_AMP_SCORING = -2.3333;
+    public static final double POSITION_PID_HUMAN_FEEDER = -2.7857;
+    public static final double POSITION_PID_STORE = 5.5;
+    public static final double POSITION_PID_ERRECTED = 0;
 
     // 36 inch -- 1.31
     // 42 inch -- 1.336
@@ -201,7 +209,7 @@ public final class Constants {
      * of the robot.
      */
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
-        new Translation3d(-0.06, 0.2, -0.2127),
+        new Translation3d(-0.06, 0.2, -0.2127),// Get from CAD Model In meters
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
