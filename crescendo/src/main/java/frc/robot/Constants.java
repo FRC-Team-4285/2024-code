@@ -57,14 +57,22 @@ public final class Constants {
     public static final int POSITION_HUMAN_FEEDER = 6;
     public static final int POSITION_STORE = 7;
     public static final int POSITION_ERRECTED = 8;
+    public static final int POSITION_SHOOTING_WITHOUT_CAMERAS = 9;
+    public static final int POSITION_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG = 10;
+    public static final int POSITION_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 11;
+    public static final int AMP_SCORING_POS = 12;
 
-    public static final double POSITION_PID_STARTING = 0.819;// 0.96
+    public static final double POSITION_PID_STARTING = 5.5;// Robot Will go here on start
     public static final double POSITION_PID_INTAKE_FLOOR = POSITION_STARTING;
     public static final double POSITION_PID_INTAKE_FEEDER = 1.31;
     public static final double POSITION_PID_AMP_SCORING = -2.3333;
-    public static final double POSITION_PID_HUMAN_FEEDER = -2.7857;
+    public static final double POSITION_PID_HUMAN_FEEDER = -2.904;
     public static final double POSITION_PID_STORE = 5.5;
     public static final double POSITION_PID_ERRECTED = 0;
+    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS = 2.1666;
+    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 3.41;
+    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG = 3.15;
+    public static final double AMP_PID_SCORING_POS = -1.9; //-1.738;
 
     // 36 inch -- 1.31
     // 42 inch -- 1.336
@@ -208,20 +216,69 @@ public final class Constants {
      * Physical location of the apriltag camera on the robot, relative to the center
      * of the robot.
      */
+//Robot In         CAD        RealLife
+//Height       0.567547072    0.562
+//Front Back   0.0631137      0.063
+//Left Right   0.3109483      0.30125
+//
+//BTY Values -0.06, 0.2, -0.2127
+//
+    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
+    //     new Translation3d(-0.063, 0.30125, -0.562),// Get from CAD Model In meters
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
+
+    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
+    //     new Translation3d(0.063, 0.30125, -0.562),
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45.0)));
+    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_3 = new Transform3d(
+    //     new Translation3d(-0.063, -0.30125, -0.562),
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135.0)));
+
+    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
+    //     new Translation3d(0.063, -0.30125, -0.562),
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135.0)));
+    
+
+    //     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
+    //     new Translation3d(-0.063, 0.30125, -0.562),// Get from CAD Model In meters
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
+
+    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
+    //     new Translation3d(-0.063, -0.30125, -0.562),
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135)));
+    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_3 = new Transform3d(
+    //     new Translation3d(0.063, -0.30125, -0.562),
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135)));
+
+    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
+    //     new Translation3d(0.063, 0.30125, -0.562),
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45)));
+    //  
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
-        new Translation3d(-0.06, 0.2, -0.2127),// Get from CAD Model In meters
+        new Translation3d(0.063, -0.30125, -0.562),// Get from CAD Model In meters
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
-        new Translation3d(-0.06, 0.2, -0.2127),
-        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45.0)));
+        new Translation3d(0.063, 0.30125, -0.562),
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135)));
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_3 = new Transform3d(
-        new Translation3d(-0.06, 0.2, -0.2127),
-        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135.0)));
+        new Translation3d(-0.063, 0.30125, -0.562),
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
-        new Translation3d(-0.06, 0.2, -0.2127),
-        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135.0)));
+        new Translation3d(-0.063, -0.30125, -0.562),
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45)));
+    
+    //Lime Light 
+    //          CAD             RealLife
+    // Height  0.6673348        0.669
+    //Front    0.792804         0.059
+    //Right    0.3028135        0.303
+    //Angle    29.7169722 Deg   30 Deg
+    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
+    //     new Translation3d(0.3109483, 0.0631137, -0.567547072),
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135.0)));
+
 
     public static final double FIELD_LENGTH_METERS = 16.542;
     public static final double FIELD_WIDTH_METERS = 8.2042;

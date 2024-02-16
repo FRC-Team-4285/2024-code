@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
+import frc.robot.Constants.ArmPivotConstants;
 import frc.robot.Constants.ShooterConstants;
 
 public class ShooterSubsystem extends SubsystemBase {
@@ -31,9 +32,7 @@ public class ShooterSubsystem extends SubsystemBase {
     shooter_motor_a = new TalonFX(ShooterConstants.MOTOR_SHOOTER_A);
     shooter_motor_b = new TalonFX(ShooterConstants.MOTOR_SHOOTER_B);
     shooter_motor_b.setInverted(true);
-
   }
-
   /**
    * Example command factory method.
    *
@@ -59,10 +58,13 @@ public class ShooterSubsystem extends SubsystemBase {
   }
 
   public void shoot() {
-    shooter_motor_a.set(0.15);//0.85
-    shooter_motor_b.set(0.15);//0.85
+    shooter_motor_a.set(0.85);
+    shooter_motor_b.set(0.85);
   }
-
+  public void suck() { 
+    shooter_motor_a.set(-0.15);//0.85
+    shooter_motor_b.set(-0.15);
+  }
   public void stop() {
     shooter_motor_a.set(0.0);
     shooter_motor_b.set(0.0);

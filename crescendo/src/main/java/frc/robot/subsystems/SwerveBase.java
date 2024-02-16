@@ -90,7 +90,7 @@ public class SwerveBase extends SubsystemBase {
             this::getRobotRelativeChassisSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
             this::robotRelativeDrive, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
             new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-                    new PIDConstants(5, 0.0, 0.0), // Translation PID constants
+                    new PIDConstants(5, 0.0, 0.5), // Translation PID constants
                     new PIDConstants(5.0, 0.0, 0.0), // Rotation PID constants
                     5.7912, // Max module speed, in m/s
                     driveBaseRadius, // Drive base radius in meters. Distance from robot center to furthest module.
@@ -388,6 +388,7 @@ public class SwerveBase extends SubsystemBase {
   // get the current heading of the robot based on the gyro
   public Rotation2d getHeading() {
     return Rotation2d.fromDegrees(pigeonSensor.getYaw()+180);
+  
     // navX: return Rotation2d.fromDegrees(-navX.getYaw() + 90);
   }
 

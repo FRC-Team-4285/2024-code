@@ -4,20 +4,22 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.Constants.ArmPivotConstants;
+import frc.robot.subsystems.ArmPivotSubsystem;
+import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
-public class FloorFeederTest extends Command {
+public class ShootingWithoutCameras2ndStageLeg extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final IntakeSubsystem m_subsystem;
+  private final ArmPivotSubsystem m_subsystem;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public FloorFeederTest(IntakeSubsystem subsystem) {
+  public ShootingWithoutCameras2ndStageLeg(ArmPivotSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -30,14 +32,12 @@ public class FloorFeederTest extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.feed(0.75, true);
+    m_subsystem.go_to_mode(ArmPivotConstants.POSITION_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG);
   }
-
+  
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    m_subsystem.stop();
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override

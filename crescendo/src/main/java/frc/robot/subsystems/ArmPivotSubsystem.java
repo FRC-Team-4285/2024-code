@@ -106,11 +106,11 @@ public class ArmPivotSubsystem extends SubsystemBase {
 
     m_armMotorPivot2.follow(m_armMotorPivot1);
     // PID coefficients
-    kP = 5e-4; // 0.0005 
-    kI = 0;
-    kD = 0; 
+    kP = 0.0005; // 0.0005 
+    kI = 0.0;
+    kD = 0.00000001; 
     kIz = 0; 
-    kFF = 0.000106; 
+    kFF = 0.000106;//0.000106 
     kMaxOutput = 0.15; 
     kMinOutput = -0.15;
     maxRPM = 5700;
@@ -219,6 +219,18 @@ public class ArmPivotSubsystem extends SubsystemBase {
       }
        else if (MODE == ArmPivotConstants.POSITION_ERRECTED) {
         desired_location = ArmPivotConstants.POSITION_PID_ERRECTED;
+      }
+      else if (MODE == ArmPivotConstants.POSITION_SHOOTING_WITHOUT_CAMERAS) {
+        desired_location = ArmPivotConstants.POSITION_PID_SHOOTING_WITHOUT_CAMERAS;
+      }
+      else if (MODE == ArmPivotConstants.POSITION_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG) {
+        desired_location = ArmPivotConstants.POSITION_PID_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG;
+      }
+       else if (MODE == ArmPivotConstants.POSITION_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG) {
+        desired_location = ArmPivotConstants.POSITION_PID_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG;
+      }
+       else if (MODE == ArmPivotConstants.AMP_SCORING_POS) {
+        desired_location = ArmPivotConstants.AMP_PID_SCORING_POS;
       }
       // Example
       // else if (MODE == ArmPivotConstants. (Name of COnstant)) {
@@ -368,7 +380,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
        */
     //TODO You can comment the line under to set the setpoint to a desired angle in rotations
      //arm_pid_Controller.setReference(setPoint, CANSparkMax.ControlType.kSmartMotion);//Use for testing only
-     //arm_pid_Controller.setReference(angleTreeMap.get(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(goalPose.getTranslation()))), CANSparkMax.ControlType.kSmartMotion);
+    // BADDDDDDD arm_pid_Controller.setReference(angleTreeMap.get(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(goalPose.getTranslation()))), CANSparkMax.ControlType.kSmartMotion);
      arm_pid_Controller.setReference(desired_location, CANSparkMax.ControlType.kSmartMotion);
 
     processVariable = arm_pivot_encoder.getPosition();

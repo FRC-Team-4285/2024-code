@@ -44,7 +44,11 @@ public class RobotContainer {
   private JoystickButton btn_shooting;
  private JoystickButton btn_human_feeder;
  private JoystickButton btn_store;
-
+ private JoystickButton btn_shooting_without_cameras;
+ private JoystickButton btn_shooting_without_cameras_stage_leg;
+ private JoystickButton btn_shooting_without_cameras_2nd_stage_leg;
+ private JoystickButton btn_amp_scoring_pos;
+ 
   /* Subsystems */
   public static SwerveBase m_swerveBase;
 
@@ -119,13 +123,20 @@ public class RobotContainer {
     //Floor Intake When Held
     btn_floor_feeder = new JoystickButton(driverJoystick, 6);
     btn_floor_feeder.whileTrue(new FloorFeederTest(m_robot.getIntakeSubsystem()));
-   
+    btn_floor_feeder.whileTrue(new ArmPivotErrected (m_robot.getArmPivotSubsystem()));
+    btn_floor_feeder.whileTrue(new ShooterFeederPickUp(m_robot.getShooterFeederSubsystem()));
+    //btn_floor_feeder.whileFalse(new ArmPivotStore (m_robot.getArmPivotSubsystem()));
+
     //Turns on Shooter Wheels when held
     btn_arm_pivot_up = new JoystickButton(driverJoystick, 9);
     btn_arm_pivot_up.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
-    //Turns on Feeding shooter when held
+
+    //Will Push the Note at full speed into shooter
+   // btn_shooter_feeder = new JoystickButton(driverJoystick, 10);
+   // btn_shooter_feeder.whileTrue(new ShooterFeederFire(m_robot.getShooterFeederSubsystem()));
+
     btn_shooter_feeder = new JoystickButton(driverJoystick, 10);
-    btn_shooter_feeder.whileTrue(new ShooterFeederTest(m_robot.getShooterFeederSubsystem()));
+    btn_shooter_feeder.whileTrue(new ShooterFeederAMP(m_robot.getShooterFeederSubsystem()));
 
     //Emergency Stop For Pivot
     btn_armP_pivot_stop = new JoystickButton(driverJoystick, 5);
@@ -136,6 +147,9 @@ public class RobotContainer {
     //Moves to get note from Feeder
     btn_human_feeder = new JoystickButton(driverJoystick, 7);
     btn_human_feeder.whileTrue(new ArmPivotHumanFeeder (m_robot.getArmPivotSubsystem()));
+    btn_human_feeder.whileTrue(new ShooterRevers(m_robot.getShooterSubsystem()));
+    //btn_human_feeder.whileFalse(new ArmPivotStore (m_robot.getArmPivotSubsystem()));
+    btn_human_feeder.whileTrue(new ShooterFeederReverse(m_robot.getShooterFeederSubsystem()));
     //Moves Pivit to stored position
     btn_store = new JoystickButton(driverJoystick, 8);
     btn_store.whileTrue(new ArmPivotStore (m_robot.getArmPivotSubsystem()));
@@ -143,9 +157,25 @@ public class RobotContainer {
     btn_store = new JoystickButton(driverJoystick, 4);
     btn_store.whileTrue(new ArmPivotErrected (m_robot.getArmPivotSubsystem()));
     
-     
+    //btn_shooting_without_cameras = new JoystickButton(driverJoystick, 3);
+    //btn_shooting_without_cameras.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
+    //btn_shooting_without_cameras.whileTrue(new ShootingWithoutCameras(m_robot.getArmPivotSubsystem()));
+    //btn_shooting_without_cameras.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
+    
+    //btn_shooting_without_cameras_stage_leg = new JoystickButton(driverJoystick, 11);
+    //btn_shooting_without_cameras_stage_leg.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
+    //btn_shooting_without_cameras_stage_leg.whileTrue(new ShootingWithoutCamerasStageLeg(m_robot.getArmPivotSubsystem()));
+    //btn_shooting_without_cameras_stage_leg.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
 
+    //btn_shooting_without_cameras_2nd_stage_leg = new JoystickButton(driverJoystick, 12);
+    //btn_shooting_without_cameras_2nd_stage_leg.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
+    //btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShootingWithoutCameras2ndStageLeg(m_robot.getArmPivotSubsystem()));
+    //btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
 
+    btn_amp_scoring_pos = new JoystickButton(driverJoystick, 1);
+    //btn_amp_scoring_pos.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
+    btn_amp_scoring_pos.whileTrue(new AMPScoringPos(m_robot.getArmPivotSubsystem()));
+    btn_amp_scoring_pos.whileTrue(new ShooterAMP(m_robot.getShooterFeederSubsystem()));
 
     //Lets Pathplanner acsess commands
     NamedCommands.registerCommand("Shoot", (new ArmPivotShooting (m_robot.getArmPivotSubsystem())));
