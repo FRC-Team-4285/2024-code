@@ -69,6 +69,10 @@ public class ShooterSubsystem extends SubsystemBase {
     shooter_motor_a.set(0.0);
     shooter_motor_b.set(0.0);
   }
+   public void shootAMP() {
+    shooter_motor_a.set(0.079);
+    shooter_motor_b.set(0.079);
+  }
 
   @Override
   public void periodic() {
