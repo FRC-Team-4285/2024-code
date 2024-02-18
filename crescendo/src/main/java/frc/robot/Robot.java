@@ -12,11 +12,13 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 import frc.robot.subsystems.AprilTagSubsystem;
-import frc.robot.subsystems.ArmPivotSubsystem;
+//import frc.robot.subsystems.ArmPivotSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.PowerDistributionPanel;
 import frc.robot.subsystems.ShooterFeederSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.LineBreak;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -29,12 +31,13 @@ public class Robot extends TimedRobot {
 
   public static RobotContainer m_robotContainer;
   public AprilTagSubsystem m_aprilTag;
-  public static ArmPivotSubsystem m_armPivot;
+  //public static ArmPivotSubsystem m_armPivot;
   public ClimberSubsystem m_climber;
   public IntakeSubsystem m_intake;
   public ShooterFeederSubsystem m_shooterFeeder;
   public ShooterSubsystem m_shooter;
-
+  public PowerDistributionPanel newPower;
+  public LineBreak m_LineBreak;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -43,16 +46,14 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.
 
-    // This will perform all our button bindings, and put our
-    // autonomous chooser on the dashboard.
-
-    m_aprilTag = new AprilTagSubsystem();
-    m_armPivot = new ArmPivotSubsystem();
+    m_LineBreak = new LineBreak();
+    m_shooter = new ShooterSubsystem();
+    m_robotContainer = new RobotContainer(this);
     // m_climber = new ClimberSubsystem();
     m_intake = new IntakeSubsystem();
     m_shooterFeeder = new ShooterFeederSubsystem();
-    m_shooter = new ShooterSubsystem();
-    m_robotContainer = new RobotContainer(this);
+    m_aprilTag = new AprilTagSubsystem();
+    //m_armPivot = new ArmPivotSubsystem();
 
     PortForwarder.add(5800, "photonvision.local", 5800);
   }
@@ -130,9 +131,9 @@ public class Robot extends TimedRobot {
   @Override
   public void simulationPeriodic() {}
 
-  public ArmPivotSubsystem getArmPivotSubsystem() {
-    return m_armPivot;
-  }
+  // public ArmPivotSubsystem getArmPivotSubsystem() {
+  //   return m_armPivot;
+  // }
 
   public ShooterSubsystem getShooterSubsystem() {
     return m_shooter;
@@ -144,6 +145,10 @@ public class Robot extends TimedRobot {
 
   public IntakeSubsystem getIntakeSubsystem() {
     return m_intake;
+  }
+
+  public LineBreak getLineBreak() {
+    return m_LineBreak;
   }
 
 }

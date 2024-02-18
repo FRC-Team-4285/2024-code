@@ -7,6 +7,8 @@ package frc.robot;
 import static frc.robot.Constants.VisionConstants.FIELD_LENGTH_METERS;
 import static frc.robot.Constants.VisionConstants.FIELD_WIDTH_METERS;
 
+import org.ejml.equation.ManagerFunctions.Input1;
+
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -17,6 +19,7 @@ import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -166,8 +169,8 @@ public final class Constants {
     public static final double wheelDiameter = Units.inchesToMeters(4.0 / 1.0); // was 1.04085
     public static final double wheelCircumference = wheelDiameter * Math.PI;
 
-    public static final double driveGearRatio = 5.14; // Mk3 Standard drive ratio
-    public static final double angleGearRatio = 12.8; // Mk3 Standard steer ratio (does this need encoder stuff??)
+    public static final double driveGearRatio = 5.14; // Mk4 drive ratio
+    public static final double angleGearRatio = 12.8; // Mk4 steer ratio (does this need encoder stuff??)
 
     public static final SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
         new Translation2d(trackWidth / 2.0, wheelBase / 2.0), // front left, ++ quadrant
@@ -223,21 +226,21 @@ public final class Constants {
 //
 //BTY Values -0.06, 0.2, -0.2127
 //
-    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
-    //     new Translation3d(-0.06, 0.2, -0.2127),// Get from CAD Model In meters
-    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
+    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
+        new Translation3d(-0.06, 0.2, -0.2127),// Get from CAD Model In meters
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
 
-    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
-    //     new Translation3d(-0.06, 0.2, -0.2127),
-    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45.0)));
+    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
+        new Translation3d(-0.06, 0.2, -0.2127),
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45.0)));
 
-    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_3 = new Transform3d(
-    //     new Translation3d(-0.06, 0.2, -0.2127),
-    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135.0)));
+    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_3 = new Transform3d(
+        new Translation3d(-0.06, 0.2, -0.2127),
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135.0)));
 
-    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
-    //     new Translation3d(-0.06, 0.2, -0.2127),
-    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135.0)));
+    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
+        new Translation3d(-0.06, 0.2, -0.2127),
+        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135.0)));
     
 
     //     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
@@ -255,21 +258,21 @@ public final class Constants {
     //     new Translation3d(0.063, 0.3125, -0.562),
     //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45)));
     //  
-    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
-        new Translation3d(-0.06, 0.2, -0.562),// Get from CAD Model In meters
-        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
+    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
+    //     new Translation3d(-0.06, 0.2, -0.562),// Get from CAD Model In meters
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
 
-    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
-        new Translation3d(-0.06, -0.2, -0.562),
-        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135)));
+    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
+    //     new Translation3d(-0.06, -0.2, -0.562),
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135)));
 
-    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_3 = new Transform3d(
-        new Translation3d(0.06, -0.2, -0.562),
-        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135)));
+    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_3 = new Transform3d(
+    //     new Translation3d(0.06, -0.2, -0.562),
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135)));
 
-    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
-        new Translation3d(0.06, 0.2, -0.562),
-        new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45)));
+    // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
+    //     new Translation3d(0.06, 0.2, -0.562),
+    //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45)));
     
     //Lime Light 
     //          CAD             RealLife
@@ -293,5 +296,9 @@ public final class Constants {
     /** Minimum target ambiguity. Targets with higher ambiguity will be discarded */
     public static final double APRILTAG_AMBIGUITY_THRESHOLD = 0.2;
   }
+// public static class LineBreakConstants {
 
+//     public static boolean LineBreakState = false;
+
+//   }
 }

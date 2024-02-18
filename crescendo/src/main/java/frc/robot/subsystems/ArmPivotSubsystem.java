@@ -31,7 +31,7 @@ import frc.robot.Constants.ArmPivotConstants;
 
 public class ArmPivotSubsystem extends SubsystemBase {
   private final AprilTagFieldLayout field;
-  private final SwerveBase mSwerveBase;
+private final SwerveBase mSwerveBase = RobotContainer.m_swerveBase; //private final SwerveBase mSwerveBase;  //
   private Pose2d goalPose;
   /** Pivots the arm. */
 
@@ -60,7 +60,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
 
     field = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
 
-    mSwerveBase = RobotContainer.m_swerveBase;
+    //mSwerveBase = RobotContainer.m_swerveBase;
     goalPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
     
     angleTreeMap = new InterpolatingDoubleTreeMap();
@@ -260,7 +260,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
 //       }
 
 //       else {
-//           System.out.println("Unknown position defined.");
+//           System.out.print("Unknown position defined.");
 //           return;
 //       }
 
@@ -380,7 +380,9 @@ public class ArmPivotSubsystem extends SubsystemBase {
        */
     //TODO You can comment the line under to set the setpoint to a desired angle in rotations
      //arm_pid_Controller.setReference(setPoint, CANSparkMax.ControlType.kSmartMotion);//Use for testing only
-    // BADDDDDDD arm_pid_Controller.setReference(angleTreeMap.get(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(goalPose.getTranslation()))), CANSparkMax.ControlType.kSmartMotion);
+
+     //bad do not touch without permission wass i am talking to you 
+     arm_pid_Controller.setReference(angleTreeMap.get(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(goalPose.getTranslation()))), CANSparkMax.ControlType.kSmartMotion);
      arm_pid_Controller.setReference(desired_location, CANSparkMax.ControlType.kSmartMotion);
 
     processVariable = arm_pivot_encoder.getPosition();

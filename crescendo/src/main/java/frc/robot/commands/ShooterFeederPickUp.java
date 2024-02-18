@@ -7,6 +7,7 @@ package frc.robot.commands;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.subsystems.ShooterFeederSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.LineBreak;
 
 /** An example command that uses an example subsystem. */
 public class ShooterFeederPickUp extends Command {
@@ -36,8 +37,11 @@ public class ShooterFeederPickUp extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
+  
+  public void end(boolean interrupted) {        // public void end(resting_bottom_bitch_state = false) {
     m_subsystem.stop();
+
+
   }
 
   // Returns true when the command should end.

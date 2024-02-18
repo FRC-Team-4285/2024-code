@@ -14,7 +14,6 @@ import java.util.function.DoubleSupplier;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -30,7 +29,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  private final ArmPivotSubsystem m_ArmPivotSubsystem = Robot.m_armPivot;
+  private final ArmPivotSubsystem m_ArmPivotSubsystem;
 
   /* Human interfaces */
   private final Joystick driverJoystick;
@@ -62,7 +61,7 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer(Robot robot) {
     m_robot = robot;
-
+    
     driverJoystick = new Joystick(0);
     loupedeck = new Joystick(1);
 
@@ -71,6 +70,8 @@ public class RobotContainer {
     DoubleSupplier stopRotation = () -> driverJoystick.getRawButton(12) ? 0.0 : 1.0;
     /* clamps rotation to zero if button 12 is pressed */
     BiFunction<Double, Double, Double> Clamp = (val,lim) -> (Math.abs(val) < lim) ? val : Math.copySign(lim,val);
+
+    
 
     m_swerveBase = new SwerveBase();
     m_swerveBase.setDefaultCommand(
@@ -82,7 +83,7 @@ public class RobotContainer {
         () -> !driverJoystick.getRawButton(1) //inverted=fieldCentric, non-inverted=RobotCentric
       )
     );
-
+    m_ArmPivotSubsystem= new ArmPivotSubsystem();
     // Configure the trigger bindings
     configureBindings();
   }
@@ -123,7 +124,7 @@ public class RobotContainer {
     //Floor Intake When Held
     btn_floor_feeder = new JoystickButton(loupedeck, 1);
     btn_floor_feeder.whileTrue(new FloorFeederTest(m_robot.getIntakeSubsystem()));
-    btn_floor_feeder.whileTrue(new ArmPivotErrected (m_robot.getArmPivotSubsystem()));
+    btn_floor_feeder.whileTrue(new ArmPivotErrected (m_ArmPivotSubsystem));
     btn_floor_feeder.whileTrue(new ShooterFeederPickUp(m_robot.getShooterFeederSubsystem()));
     //btn_floor_feeder.whileFalse(new ArmPivotStore (m_robot.getArmPivotSubsystem()));
 
@@ -146,40 +147,40 @@ public class RobotContainer {
     // btn_shooting.whileTrue(new ArmPivotShooting (m_robot.getArmPivotSubsystem()));
     //Moves to get note from Feeder
     btn_human_feeder = new JoystickButton(loupedeck, 4);
-    btn_human_feeder.whileTrue(new ArmPivotHumanFeeder (m_robot.getArmPivotSubsystem()));
+    btn_human_feeder.whileTrue(new ArmPivotHumanFeeder (m_ArmPivotSubsystem));
     btn_human_feeder.whileTrue(new ShooterRevers(m_robot.getShooterSubsystem()));
     //btn_human_feeder.whileFalse(new ArmPivotStore (m_robot.getArmPivotSubsystem()));
     btn_human_feeder.whileTrue(new ShooterFeederReverse(m_robot.getShooterFeederSubsystem()));
     //Moves Pivit to stored position
     btn_store = new JoystickButton(loupedeck, 5);
-    btn_store.whileTrue(new ArmPivotStore (m_robot.getArmPivotSubsystem()));
+    btn_store.whileTrue(new ArmPivotStore (m_ArmPivotSubsystem));
 
     btn_store = new JoystickButton(loupedeck, 6);
-    btn_store.whileTrue(new ArmPivotErrected (m_robot.getArmPivotSubsystem()));
+    btn_store.whileTrue(new ArmPivotErrected (m_ArmPivotSubsystem));
     
     btn_shooting_without_cameras = new JoystickButton(loupedeck, 7);
     //btn_shooting_without_cameras.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
-    btn_shooting_without_cameras.whileTrue(new ShootingWithoutCameras(m_robot.getArmPivotSubsystem()));
+    btn_shooting_without_cameras.whileTrue(new ShootingWithoutCameras(m_ArmPivotSubsystem));
     btn_shooting_without_cameras.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
     
     btn_shooting_without_cameras_stage_leg = new JoystickButton(loupedeck, 8);
     //btn_shooting_without_cameras_stage_leg.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
-    btn_shooting_without_cameras_stage_leg.whileTrue(new ShootingWithoutCamerasStageLeg(m_robot.getArmPivotSubsystem()));
+    btn_shooting_without_cameras_stage_leg.whileTrue(new ShootingWithoutCamerasStageLeg(m_ArmPivotSubsystem));
     btn_shooting_without_cameras_stage_leg.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
 
     btn_shooting_without_cameras_2nd_stage_leg = new JoystickButton(loupedeck, 9);
     //btn_shooting_without_cameras_2nd_stage_leg.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
-    btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShootingWithoutCameras2ndStageLeg(m_robot.getArmPivotSubsystem()));
+    btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShootingWithoutCameras2ndStageLeg(m_ArmPivotSubsystem));
     btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
 
     btn_amp_scoring_pos = new JoystickButton(loupedeck, 10);
     //btn_amp_scoring_pos.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
-    btn_amp_scoring_pos.whileTrue(new AMPScoringPos(m_robot.getArmPivotSubsystem()));
+    btn_amp_scoring_pos.whileTrue(new AMPScoringPos(m_ArmPivotSubsystem));
     btn_amp_scoring_pos.whileTrue(new ShooterAMP(m_robot.getShooterSubsystem()));
 
     //Lets Pathplanner acsess commands
-    NamedCommands.registerCommand("Shoot", (new ArmPivotShooting (m_robot.getArmPivotSubsystem())));
-    NamedCommands.registerCommand("Store", (new ArmPivotStore (m_robot.getArmPivotSubsystem())));
+    NamedCommands.registerCommand("Shoot", (new ArmPivotShooting (m_ArmPivotSubsystem)));
+    NamedCommands.registerCommand("Store", (new ArmPivotStore (m_ArmPivotSubsystem)));
 
   }
 
