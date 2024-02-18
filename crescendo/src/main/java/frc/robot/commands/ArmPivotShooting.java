@@ -22,7 +22,7 @@ public class ArmPivotShooting extends Command {
   public ArmPivotShooting(ArmPivotSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
+    addRequirements(m_subsystem);
   }
 
   // Called when the command is initially scheduled.

@@ -28,8 +28,8 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  private final ArmPivotSubsystem m_ArmPivotSubsystem = new ArmPivotSubsystem();
+  private  ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private ArmPivotSubsystem m_ArmPivotSubsystem = new ArmPivotSubsystem();
 
   /* Human interfaces */
   private final Joystick driverJoystick;
@@ -73,7 +73,7 @@ public class RobotContainer {
 
     
 
-    //m_swerveBase = new SwerveBase();
+    m_swerveBase = new SwerveBase();
     m_swerveBase.setDefaultCommand(
       new TeleopSwerve(
         m_swerveBase,
@@ -83,7 +83,7 @@ public class RobotContainer {
         () -> !driverJoystick.getRawButton(1) //inverted=fieldCentric, non-inverted=RobotCentric
       )
     );
-    //m_ArmPivotSubsystem= new ArmPivotSubsystem();
+    m_ArmPivotSubsystem= new ArmPivotSubsystem();
     // Configure the trigger bindings
     configureBindings();
   }

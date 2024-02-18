@@ -40,7 +40,7 @@ private final SwerveBase mSwerveBase = RobotContainer.m_swerveBase; //private fi
   // private PIDController arm_pid_controller;
   private double desired_location;
 
-  private static final int deviceID = 1;
+  //private static final int deviceID = 1;
   private CANSparkMax m_armMotorPivot1;
   private CANSparkMax m_armMotorPivot2;
   private SparkPIDController arm_pid_Controller;
@@ -382,7 +382,7 @@ private final SwerveBase mSwerveBase = RobotContainer.m_swerveBase; //private fi
      //arm_pid_Controller.setReference(setPoint, CANSparkMax.ControlType.kSmartMotion);//Use for testing only
 
      //bad do not touch without permission wass i am talking to you 
-     arm_pid_Controller.setReference(angleTreeMap.get(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(goalPose.getTranslation()))), CANSparkMax.ControlType.kSmartMotion);
+    // arm_pid_Controller.setReference(angleTreeMap.get(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(goalPose.getTranslation()))), CANSparkMax.ControlType.kSmartMotion);
      arm_pid_Controller.setReference(desired_location, CANSparkMax.ControlType.kSmartMotion);
 
     processVariable = arm_pivot_encoder.getPosition();
