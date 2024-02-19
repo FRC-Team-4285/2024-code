@@ -31,7 +31,7 @@ import frc.robot.Constants.ArmPivotConstants;
 
 public class ArmPivotSubsystem extends SubsystemBase {
   private final AprilTagFieldLayout field;
-private final SwerveBase mSwerveBase = RobotContainer.m_swerveBase; //private final SwerveBase mSwerveBase;  //
+  private SwerveBase mSwerveBase; //private final SwerveBase mSwerveBase;  //
   private Pose2d goalPose;
   /** Pivots the arm. */
 
@@ -52,14 +52,16 @@ private final SwerveBase mSwerveBase = RobotContainer.m_swerveBase; //private fi
 
   private int active_mode;
   
-  public ArmPivotSubsystem() {
+  public ArmPivotSubsystem(SwerveBase mSwerveBase) {
     // Define the motors via spark max interface.
     m_armMotorPivot1 = new CANSparkMax(ArmPivotConstants.MOTOR_ARM_PIVOT_A, MotorType.kBrushless);
     m_armMotorPivot1.setIdleMode(IdleMode.kBrake);
     m_armMotorPivot2 = new CANSparkMax(ArmPivotConstants.MOTOR_ARM_PIVOT_B, MotorType.kBrushless);
 
-    field = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
 
+
+    field = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
+    this.mSwerveBase = mSwerveBase;
     //mSwerveBase = RobotContainer.m_swerveBase;
     goalPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
     

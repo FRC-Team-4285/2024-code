@@ -26,6 +26,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
   private TalonFX shooter_motor_a;
   private TalonFX shooter_motor_b;
+  private boolean is_firing;
 
   /** Creates a new ExampleSubsystem. */
   public ShooterSubsystem() {
@@ -58,18 +59,22 @@ public class ShooterSubsystem extends SubsystemBase {
   }
 
   public void shoot() {
+    is_firing = true;
     shooter_motor_a.set(0.85);
     shooter_motor_b.set(0.85);
   }
-  public void suck() { 
-    shooter_motor_a.set(-0.15);//0.85
-    shooter_motor_b.set(-0.15);
+  public void suck(double speed) { 
+    shooter_motor_a.set(speed);//0.85
+    shooter_motor_b.set(speed);
   }
+
   public void stop() {
+    is_firing = false;
     shooter_motor_a.set(0.0);
     shooter_motor_b.set(0.0);
   }
    public void shootAMP() {
+    is_firing = true;
     shooter_motor_a.set(0.079);
     shooter_motor_b.set(0.079);
   }
@@ -82,5 +87,8 @@ public class ShooterSubsystem extends SubsystemBase {
   @Override
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation
+  }
+  public boolean getIsFiring() {
+    return is_firing;
   }
 }

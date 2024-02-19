@@ -31,7 +31,7 @@ public class ShooterFeederReverse extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.feed(-0.30, true);
+    m_subsystem.shoot(0.30, false);
   }
 
   // Called once the command ends or is interrupted.

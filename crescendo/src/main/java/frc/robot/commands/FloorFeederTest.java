@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 /** An example command that uses an example subsystem. */
 public class FloorFeederTest extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final IntakeSubsystem m_subsystem;
+  private IntakeSubsystem m_subsystem;
 
   /**
    * Creates a new ExampleCommand.
@@ -18,7 +18,7 @@ public class FloorFeederTest extends Command {
    * @param subsystem The subsystem used by this command.
    */
   public FloorFeederTest(IntakeSubsystem subsystem) {
-    m_subsystem = subsystem;
+    this.m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
@@ -30,7 +30,7 @@ public class FloorFeederTest extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.feed(0.75, true);
+    m_subsystem.feed(0.5, true);
   }
 
   // Called once the command ends or is interrupted.

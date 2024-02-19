@@ -79,38 +79,17 @@ public LineBreak() {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
-
-
-
-      resting_bottom_bitch_state = resting_bottom_bitch.get();
-      top_toe_hoe_state = top_toe_hoe.get();
-
-
-      //System.out.println("Resting Bottom Bitch State:" + resting_bottom_bitch_state);
-      //System.out.println("Top Toe Hoe State:" + top_toe_hoe_state);
-
-
-      if (resting_bottom_bitch_state == false) {
-        
-       // System.out.println("Note In Shooter");
-
-       // ShooterFeederPickUp.end();
-
-        return;
-
-      }
-     
-     else { 
-     
-        // System.out.println("Shooter Empty");
-         return;
-     }      
-
-     }
+    // This method will be called once per scheduler run   
+  }
 
     
+  public Boolean getBottomState() {
+    return resting_bottom_bitch.get();
+  }
   
+  public Boolean getTopState() {
+    return top_toe_hoe.get();
+  }
   
 
   @Override

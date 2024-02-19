@@ -31,7 +31,7 @@ public class ShooterFeederFire extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.feed(1.00, true);
+    m_subsystem.shoot(1.00, true);
   }
 
   // Called once the command ends or is interrupted.

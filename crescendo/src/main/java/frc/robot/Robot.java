@@ -30,14 +30,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   public static RobotContainer m_robotContainer;
-  public AprilTagSubsystem m_aprilTag;
   //public static ArmPivotSubsystem m_armPivot;
-  public ClimberSubsystem m_climber;
-  public IntakeSubsystem m_intake;
-  public ShooterFeederSubsystem m_shooterFeeder;
-  public ShooterSubsystem m_shooter;
-  public PowerDistributionPanel newPower;
-  public LineBreak m_LineBreak;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -45,15 +38,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     // Instantiate our RobotContainer.
-
-    m_LineBreak = new LineBreak();
-    m_shooter = new ShooterSubsystem();
     m_robotContainer = new RobotContainer(this);
     // m_climber = new ClimberSubsystem();
-    m_intake = new IntakeSubsystem();
-    m_shooterFeeder = new ShooterFeederSubsystem();
-    m_aprilTag = new AprilTagSubsystem();
-    //m_armPivot = new ArmPivotSubsystem();
 
     PortForwarder.add(5800, "photonvision.local", 5800);
   }
@@ -135,20 +121,6 @@ public class Robot extends TimedRobot {
   //   return m_armPivot;
   // }
 
-  public ShooterSubsystem getShooterSubsystem() {
-    return m_shooter;
-  }
-  
-  public ShooterFeederSubsystem getShooterFeederSubsystem() {
-    return m_shooterFeeder;
-  }
 
-  public IntakeSubsystem getIntakeSubsystem() {
-    return m_intake;
-  }
-
-  public LineBreak getLineBreak() {
-    return m_LineBreak;
-  }
 
 }

@@ -149,6 +149,11 @@ public final class Constants {
     // NEO Motor
     public static final int MOTOR_SHOOTER_FEEDER = 11;
 
+    public static final int SHOOTER_FEEDER_STATE_FLOOR_FEEDING = 0;
+    public static final int SHOOTER_FEEDER_STATE_HUMAN_FEEDING = 1;
+
+    public static final boolean LINEBREAK_BLOCKED = false;
+    public static final boolean LINEBREAK_OPEN = true;
   }
 
   public static final class SwerveConstants {
@@ -275,17 +280,22 @@ public final class Constants {
     //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45)));
     
     //Lime Light 
-    //          CAD             RealLife
-    // Height  0.6673348        0.669
-    //Front    0.792804         0.059
-    //Right    0.3028135        0.303
-    //Angle    29.7169722 Deg   30 Deg
+    //          CAD             RealLife   OldVaules 
+    // Height  0.6673348        0.684      0.669
+    //Front    0.792804         0.072      0.059
+    //Right    0.3028135        0.311      0.303
+    //Angle    29.7169722 Deg   30 Deg     30 deg
     // public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
     //     new Translation3d(0.3109483, 0.0631137, -0.567547072),
     //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135.0)));
+    public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_5 = new Transform3d(
+        new Translation3d(0.072, 0.311, -0.669),
+        new Rotation3d(30.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-90)));
 
-
-    public static final double FIELD_LENGTH_METERS = 16.542;
+    
+    
+    
+        public static final double FIELD_LENGTH_METERS = 16.542;
     public static final double FIELD_WIDTH_METERS = 8.2042;
 
     public static final Pose2d FLIPPING_POSE = new Pose2d(
