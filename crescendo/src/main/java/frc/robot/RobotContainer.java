@@ -131,8 +131,7 @@ public class RobotContainer {
     // btn_arm_pivot_up = new JoystickButton(loupedeck, 12);
     // btn_arm_pivot_up.whileTrue(new ArmPivotUp(m_robot.getArmPivotSubsystem()));
 
-   
-    //Floor Intake When Held
+            //Intakes Note From Floor And Uses Line Breaks To Stop Note At Specific Position
     btn_floor_feeder = new JoystickButton(loupedeck, 1);
     //btn_floor_feeder.whileTrue(new FloorFeederTest(m_intake));
     //btn_floor_feeder.whileTrue(new ArmPivotErrected (m_ArmPivotSubsystem));
@@ -143,10 +142,11 @@ public class RobotContainer {
     // btn_arm_pivot_up = new JoystickButton(loupedeck, 2);
     // btn_arm_pivot_up.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
 
-    //Will Push the Note at full speed into shooter
+            //Will Push The Note At Full Speed Into Shooter
     btn_arm_pivot_up = new JoystickButton(loupedeck, 2);
     btn_arm_pivot_up.whileTrue(new ShooterFeederFire(m_shooterFeeder));
-
+  
+            //Feeds Note At Slower Speed For AMP 
     btn_shooter_feeder = new JoystickButton(loupedeck, 3);
     btn_shooter_feeder.whileTrue(new ShooterFeederAMP(m_shooterFeeder));
 
@@ -154,44 +154,58 @@ public class RobotContainer {
     // btn_armP_pivot_stop = new JoystickButton(loupedeck, 4);
     // btn_armP_pivot_stop.toggleOnTrue(m_ArmPivotSubsystem.stopCommand());
     //Moves Pivit Based of of feild position
+    
+            //IDK
     btn_shooting = new JoystickButton(driverJoystick, 12);
     btn_shooting.whileTrue(new ArmPivotShooting (m_ArmPivotSubsystem));
 
-    //Moves to get note from Feeder
+            //Gets Note From Human Feeder And Uses Line Breaks To Stop Note At Specific Position
     btn_human_feeder = new JoystickButton(loupedeck, 4);
     btn_human_feeder.whileTrue(new ArmPivotHumanFeeder (m_ArmPivotSubsystem));
     btn_human_feeder.whileTrue(new ShooterFeederHuman(m_shooterFeeder));
     //btn_human_feeder.whileFalse(new ArmPivotStore (m_robot.getArmPivotSubsystem()));
     // btn_human_feeder.whileTrue(new ShooterFeederReverse(m_shooterFeeder));
+    
+            //Moves Arm Into Travel Position
     btn_store = new JoystickButton(loupedeck, 5);
     btn_store.whileTrue(new ArmPivotStore (m_ArmPivotSubsystem));
 
+            //Moves Arm Into Starting Position
     btn_store = new JoystickButton(loupedeck, 6);
     btn_store.whileTrue(new ArmPivotErrected (m_ArmPivotSubsystem));
     
+            //Shoots Note From Directly In Front Of Speaker
     btn_shooting_without_cameras = new JoystickButton(loupedeck, 7);
     //btn_shooting_without_cameras.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
     btn_shooting_without_cameras.whileTrue(new ShootingWithoutCameras(m_ArmPivotSubsystem));
     btn_shooting_without_cameras.whileTrue(new ShooterTest(m_shooter));
-    
+            //Shoots Note From Front Leg Of Stage
     btn_shooting_without_cameras_stage_leg = new JoystickButton(loupedeck, 8);
     //btn_shooting_without_cameras_stage_leg.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
     btn_shooting_without_cameras_stage_leg.whileTrue(new ShootingWithoutCamerasStageLeg(m_ArmPivotSubsystem));
     btn_shooting_without_cameras_stage_leg.whileTrue(new ShooterTest(m_shooter));
 
+            ////Shoots Note From Right Leg Of Stage
     btn_shooting_without_cameras_2nd_stage_leg = new JoystickButton(driverJoystick, 11);
     //btn_shooting_without_cameras_2nd_stage_leg.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
     btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShootingWithoutCameras2ndStageLeg(m_ArmPivotSubsystem));
     btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShooterTest(m_shooter));
 
+            //Shoots Note To Go Into AMP
     btn_amp_scoring_pos = new JoystickButton(loupedeck, 10);
     //btn_amp_scoring_pos.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
     btn_amp_scoring_pos.whileTrue(new AMPScoringPos(m_ArmPivotSubsystem));
     btn_amp_scoring_pos.whileTrue(new ShooterAMP(m_shooter));
 
     //Lets Pathplanner acsess commands
-    NamedCommands.registerCommand("Shoot", (new ArmPivotShooting (m_ArmPivotSubsystem)));
+    //NamedCommands.registerCommand("Shoot", (new ArmPivotShooting (m_ArmPivotSubsystem)));
     NamedCommands.registerCommand("Store", (new ArmPivotStore (m_ArmPivotSubsystem)));
+    NamedCommands.registerCommand("ShootFrontofSpeaker", (new ShootingWithoutCameras (m_ArmPivotSubsystem)));
+    NamedCommands.registerCommand("ShootLeg1", (new ShootingWithoutCamerasStageLeg (m_ArmPivotSubsystem)));
+    NamedCommands.registerCommand("ShootLeg2", (new ShootingWithoutCameras2ndStageLeg (m_ArmPivotSubsystem)));
+    NamedCommands.registerCommand("Shoot", (new ShooterTest (m_shooter)));
+    NamedCommands.registerCommand("Feed", (new ShooterFeederFire (m_shooterFeeder)));
+    NamedCommands.registerCommand("Intake", (new FloorFeederTest (m_intake)));
 
   }
 
