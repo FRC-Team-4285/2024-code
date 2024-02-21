@@ -5,12 +5,14 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SwerveConstants;
+import frc.robot.RobotContainer;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.Odometry;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -21,6 +23,10 @@ import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.kauailabs.navx.frc.AHRS;
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.path.PathConstraints;
+//import com.pathplanner.lib.path.PathPlanner;
+import com.pathplanner.lib.path.PathPlannerTrajectory;
+import com.pathplanner.lib.path.PathPoint;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
@@ -411,25 +417,50 @@ public class SwerveBase extends SubsystemBase {
     return SwerveConstants.kinematics;
   }
 
-//   public Command followTrajectoryCommand(PathPlannerTrajectory traj, boolean isFirstPath) {
-//     return new SequentialCommandGroup(
-//          new InstantCommand(() -> {
-//            // Reset odometry for the first path you run during auto
-//            if(isFirstPath){
-//                this.resetOdometry(traj.getInitialHolonomicPose());
-//            }
-//          }),
-//          new PPSwerveControllerCommand(
-//              traj, 
-//              this::getPose, // Pose supplier
-//              SwerveConstants.kinematics, // SwerveDriveKinematics
-//              new PIDController(0, 0, 0), // X controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
-//              new PIDController(0, 0, 0), // Y controller (usually the same values as X controller)
-//              new PIDController(0, 0, 0), // Rotation controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
-//              this::setModuleStates, // Module states consumer
-//              this // Requires this drive subsystem
-//          )
-//      );
-//  }
-  }
+  // public Command goToNode(int apriltag, int node) {
+  //   Rotation2d heading;
+  //   Translation3d nodeTrans = Field.getNodeCoordinatesFieldRelative(apriltag, node);
+  //   ChassisSpeeds currentSpeeds = getRobotRelativeChassisSpeeds();
+
+  //   double linearVel =
+  //       Math.sqrt(
+  //           (currentSpeeds.vxMetersPerSecond * currentSpeeds.vxMetersPerSecond)
+  //               + (currentSpeeds.vyMetersPerSecond * currentSpeeds.vyMetersPerSecond));
+
+
+  //   Translation2d goal = new Translation2d(
+  //       Field.fieldLayout.getTagPose(apriltag).get().getTranslation().getX() + Field.DIST_FROM_NODE_X_METERS,
+  //   nodeTrans.getY());
+  //   if (getPose().getY() > goal.getY()) {
+  //     heading = Rotation2d.fromDegrees(-90);
+  //   }
+  //   else {
+  //     heading = Rotation2d.fromDegrees(90);
+  //   }
+
+  //   PathPoint initialPoint = new PathPoint(
+  //     getPose().getTranslation(), heading, getPose().getRotation(), linearVel);
+  //   PathPlannerTrajectory trajToGoal = PathPlanner.generatePath(
+  //       new PathConstraints(1, 1.5),
+  //       //PathPoint.fromCurrentHolonomicState(getPose(), getChassisSpeeds()),
+  //       initialPoint,
+  //       new PathPoint(goal, Rotation2d.fromDegrees(180), Rotation2d.fromDegrees(180), -1)); // position, heading(direction of
+  //                                                                                     // travel), holonomic rotation
+  //   //return followTrajectoryCommand(trajToGoal, false);
+  //   return AutoBuilder.followPath(trajToGoal);
+  // }
+
+
+
+      // Different idea
+        // Pose3d currentPose = getPose3d();
+        // Pose3d tagPose = Vision.aprilTags.getTagPose(4).get();
+
+        // return PathPlanner.generatePath(
+        //   PathConstraints(2.0, 4.0),
+        //   PathPoint(currentPose.translation, currentPose.rotation),
+        //   PathPoint(tagPose.translation.toTranslation2d() - Translation2d(2.0, 0.0), currentPose.rotation),
+        // );
+
+}
 
