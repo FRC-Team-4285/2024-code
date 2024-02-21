@@ -2,7 +2,7 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3771774811958186,
+      "x": 2.4399011268331336,
       "y": 4.114397967513275
     },
     "rotation": 180.0
@@ -11,12 +11,6 @@
     "type": "sequential",
     "data": {
       "commands": [
-        {
-          "type": "path",
-          "data": {
-            "pathName": "C-N3"
-          }
-        },
         {
           "type": "parallel",
           "data": {

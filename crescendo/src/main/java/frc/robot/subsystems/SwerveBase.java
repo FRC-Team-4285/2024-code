@@ -387,7 +387,7 @@ public class SwerveBase extends SubsystemBase {
 
   // get the current heading of the robot based on the gyro
   public Rotation2d getHeading() {
-    return Rotation2d.fromDegrees(pigeonSensor.getYaw()+180);
+    return Rotation2d.fromDegrees(pigeonSensor.getYaw() + 180);
   
     // navX: return Rotation2d.fromDegrees(-navX.getYaw() + 90);
   }

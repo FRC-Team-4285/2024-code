@@ -21,8 +21,8 @@ public class LineBreak extends SubsystemBase {
       public boolean resting_bottom_bitch_state = false;
       public boolean top_toe_hoe_state = false;
 
-      DigitalInput resting_bottom_bitch = new DigitalInput(8);  
-      DigitalInput top_toe_hoe = new DigitalInput(7);
+      DigitalInput bottom_sensor = new DigitalInput(8);  
+      DigitalInput top_sensor = new DigitalInput(7);
 
 
 
@@ -82,13 +82,12 @@ public LineBreak() {
     // This method will be called once per scheduler run   
   }
 
-    
   public Boolean getBottomState() {
-    return resting_bottom_bitch.get();
+    return bottom_sensor.get();
   }
   
   public Boolean getTopState() {
-    return top_toe_hoe.get();
+    return top_sensor.get();
   }
   
 

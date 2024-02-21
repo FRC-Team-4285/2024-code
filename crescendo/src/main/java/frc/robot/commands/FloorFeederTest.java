@@ -30,7 +30,7 @@ public class FloorFeederTest extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.feed(0.5, true);
+    m_subsystem.feed(0.8, true);
   }
 
   // Called once the command ends or is interrupted.

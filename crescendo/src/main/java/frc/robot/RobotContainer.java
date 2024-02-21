@@ -133,8 +133,8 @@ public class RobotContainer {
 
             //Intakes Note From Floor And Uses Line Breaks To Stop Note At Specific Position
     btn_floor_feeder = new JoystickButton(loupedeck, 1);
-    //btn_floor_feeder.whileTrue(new FloorFeederTest(m_intake));
-    //btn_floor_feeder.whileTrue(new ArmPivotErrected (m_ArmPivotSubsystem));
+    btn_floor_feeder.whileTrue(new FloorFeederTest(m_intake));
+    btn_floor_feeder.whileTrue(new ArmPivotErrected (m_ArmPivotSubsystem));
     btn_floor_feeder.whileTrue(new ShooterFeederPickUp(m_shooterFeeder));
     //btn_floor_feeder.whileFalse(new ArmPivotStore (m_robot.getArmPivotSubsystem()));
 
@@ -186,7 +186,7 @@ public class RobotContainer {
     btn_shooting_without_cameras_stage_leg.whileTrue(new ShooterTest(m_shooter));
 
             ////Shoots Note From Right Leg Of Stage
-    btn_shooting_without_cameras_2nd_stage_leg = new JoystickButton(driverJoystick, 11);
+    btn_shooting_without_cameras_2nd_stage_leg = new JoystickButton(driverJoystick, 9);
     //btn_shooting_without_cameras_2nd_stage_leg.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
     btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShootingWithoutCameras2ndStageLeg(m_ArmPivotSubsystem));
     btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShooterTest(m_shooter));
@@ -203,9 +203,11 @@ public class RobotContainer {
     NamedCommands.registerCommand("ShootFrontofSpeaker", (new ShootingWithoutCameras (m_ArmPivotSubsystem)));
     NamedCommands.registerCommand("ShootLeg1", (new ShootingWithoutCamerasStageLeg (m_ArmPivotSubsystem)));
     NamedCommands.registerCommand("ShootLeg2", (new ShootingWithoutCameras2ndStageLeg (m_ArmPivotSubsystem)));
+    NamedCommands.registerCommand("Errected", (new ArmPivotErrected (m_ArmPivotSubsystem)));
     NamedCommands.registerCommand("Shoot", (new ShooterTest (m_shooter)));
     NamedCommands.registerCommand("Feed", (new ShooterFeederFire (m_shooterFeeder)));
     NamedCommands.registerCommand("Intake", (new FloorFeederTest (m_intake)));
+    NamedCommands.registerCommand("FeederIntake", (new ShooterFeederPickUp (m_shooterFeeder)));
 
   }
 
@@ -217,7 +219,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     // return Autos.exampleAuto(m_exampleSubsystem);
-    return AutoBuilder.buildAuto("New Auto");
+    return AutoBuilder.buildAuto("BigTester1");
   }
 
   public SwerveBase getSwerveSubsytem() {
