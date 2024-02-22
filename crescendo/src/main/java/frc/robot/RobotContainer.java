@@ -180,7 +180,7 @@ public class RobotContainer {
     btn_shooting_without_cameras.whileTrue(new ShootingWithoutCameras(m_ArmPivotSubsystem));
     btn_shooting_without_cameras.whileTrue(new ShooterTest(m_shooter));
             //Shoots Note From Front Leg Of Stage
-    btn_shooting_without_cameras_stage_leg = new JoystickButton(loupedeck, 8);
+    btn_shooting_without_cameras_stage_leg = new JoystickButton(driverJoystick, 9);
     //btn_shooting_without_cameras_stage_leg.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
     btn_shooting_without_cameras_stage_leg.whileTrue(new ShootingWithoutCamerasStageLeg(m_ArmPivotSubsystem));
     btn_shooting_without_cameras_stage_leg.whileTrue(new ShooterTest(m_shooter));
@@ -219,7 +219,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     // return Autos.exampleAuto(m_exampleSubsystem);
-    return AutoBuilder.buildAuto("BigTester1");
+    return AutoBuilder.buildAuto("BigTester2");
   }
 
   public SwerveBase getSwerveSubsytem() {

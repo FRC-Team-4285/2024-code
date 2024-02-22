@@ -125,7 +125,7 @@ public class AprilTagSubsystem extends SubsystemBase {
       visionPose4 = photonEstimator4.grabLatestEstimatedPose();
       visionPose5 = photonEstimator5.grabLatestEstimatedPose();
  
-     System.out.println("Camera5 Vision P+ose:" + visionPose5);
+     //System.out.println("Camera5 Vision P+ose:" + visionPose5);
      
     if (visionPose1 != null) {
       // New pose from vision

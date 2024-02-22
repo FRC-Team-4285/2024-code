@@ -185,35 +185,21 @@ public class ArmPivotSubsystem extends SubsystemBase {
     // angleTreeMap.put(198.0, 1.54);
     // angleTreeMap.put(204.0, 1.535);
 
-    angleTreeMap.put(36.0, 1.31);
-    angleTreeMap.put(42.0, 1.336);
-    angleTreeMap.put(48.0, 1.37);
-    angleTreeMap.put(54.0, 1.35);
-    angleTreeMap.put(60.0, 1.36);
-    angleTreeMap.put(66.0, 1.382);
-    angleTreeMap.put(72.0, 1.388);
-    angleTreeMap.put(78.0, 1.395);
-    angleTreeMap.put(84.0 , 1.42);
-    angleTreeMap.put(90.0, 1.44);
-    angleTreeMap.put(96.0, 1.45);
-    angleTreeMap.put(102.0, 1.47);
-    angleTreeMap.put(108.0,  1.48);
-    angleTreeMap.put(114.0, 1.48);
-    angleTreeMap.put(120.0, 1.485);
-    angleTreeMap.put(126.0, 1.49);
-    angleTreeMap.put(132.0, 1.495);
-    angleTreeMap.put(138.0, 1.495);
-    angleTreeMap.put(144.0, 1.50);
-    angleTreeMap.put(150.0, 1.5);
-    angleTreeMap.put(156.0, 1.505);
-    angleTreeMap.put(162.0, 1.51);
-    angleTreeMap.put(168.0, 1.515);
-    angleTreeMap.put(174.0, 1.53);
-    angleTreeMap.put(180.0, 1.5375);
-    angleTreeMap.put(186.0, 1.5425);
-    angleTreeMap.put(192.0, 1.54525);
-    angleTreeMap.put(198.0, 1.54);
-    angleTreeMap.put(204.0, 1.535);
+    angleTreeMap.put(36.0, -1.57);
+    angleTreeMap.put(48.0, -1.75);
+    angleTreeMap.put(60.0, -2.0);
+    angleTreeMap.put(72.0, -2.25);
+    angleTreeMap.put(84.0 , -2.5);
+    angleTreeMap.put(96.0, -2.75);
+    angleTreeMap.put(108.0,  -3.0);
+    angleTreeMap.put(120.0, -3.125);
+    angleTreeMap.put(138.0, -3.25);
+    angleTreeMap.put(150.0, -3.375);
+    angleTreeMap.put(162.0, -3.5);
+    angleTreeMap.put(174.0, -3.675);
+    angleTreeMap.put(186.0, -3.75);
+    angleTreeMap.put(198.0, -3.875);
+    angleTreeMap.put(204.0, -4.0);
     
     // 180 inch -- 1.5375
     // 186 inch -- 1.5425
