@@ -82,7 +82,7 @@ public class SwerveModule extends SubsystemBase {
     rotationMotor.setIdleMode(IdleMode.kBrake);
 
     //TODO if brownout error occurs then lower smart current
-    driveMotor.setSmartCurrentLimit(30);//was 60 change to help fix comminiczton error
+    driveMotor.setSmartCurrentLimit(75);//was 60 change to help fix comminiczton error
 
     rotationController = rotationMotor.getPIDController();
     driveController = driveMotor.getPIDController();
@@ -133,12 +133,13 @@ public class SwerveModule extends SubsystemBase {
 
   public Rotation2d getIntegratedAngle() {
 
-    double unsignedAngle = rotationEncoder.getPosition() % (2 * Math.PI);
+    // double unsignedAngle = rotationEncoder.getPosition() % (2 * Math.PI);
 
-    if (unsignedAngle < 0)
-      unsignedAngle += 2 * Math.PI;
+    // if (unsignedAngle < 0)
+    //   unsignedAngle += 2 * Math.PI;
 
-    return new Rotation2d(unsignedAngle);
+    // return new Rotation2d(unsignedAngle);
+    return new Rotation2d(rotationEncoder.getPosition());
 
   }
 
@@ -193,19 +194,28 @@ public class SwerveModule extends SubsystemBase {
    * @param desiredState The desired state.
    * @param currentAngle The current module angle.
    */
-  public static SwerveModuleState optimize(
-      SwerveModuleState desiredState, Rotation2d currentAngle) {
+  // public static SwerveModuleState optimize(
+  //     SwerveModuleState desiredState, Rotation2d currentAngle) {
 
-    double targetAngle = placeInAppropriate0To360Scope(desiredState.angle.getRadians());
+  //   double targetAngle = placeInAppropriate0To360Scope(desiredState.angle.getRadians());
 
-    double targetSpeed = desiredState.speedMetersPerSecond;
-    double delta = (targetAngle - currentAngle.getRadians());
-    if (Math.abs(delta) > (Math.PI / 2)) {
-      targetSpeed = -targetSpeed;
-      targetAngle = delta > Math.PI / 2 ? (targetAngle -= Math.PI) : (targetAngle += Math.PI);
-    }
-    return new SwerveModuleState(targetSpeed, new Rotation2d(targetAngle));
-  }
+  //   double targetSpeed = desiredState.speedMetersPerSecond;
+  //   double delta = (targetAngle - currentAngle.getRadians());
+  //   if (Math.abs(delta) > (Math.PI / 2 )) {
+  //     delta -= Math.PI * Math.signum(delta);
+  //     targetSpeed = -targetSpeed;
+  //     //targetAngle = delta > Math.PI / 2 ? (targetAngle -= Math.PI) : (targetAngle += Math.PI);
+  //   }
+
+  //   double targetPosition = targetAngle + delta;
+  //   return new SwerveModuleState(targetSpeed, new Rotation2d(targetPosition));
+  //   //return new SwerveModuleState(targetSpeed, new Rotation2d(targetAngle));
+  // }
+
+    // if(math.abs(deltaDegrees) > 90.0) {
+    //   deltaDegrees -= 180.0 * Math.signum(deltaDegrees);
+    //   speed = -speed;
+    // }
 
   /**
    * Method to set the desired state of the swerve module
@@ -219,10 +229,12 @@ public class SwerveModule extends SubsystemBase {
       return;
     }
 
-    SwerveModuleState optimizedDesiredState = optimize(unoptimizedDesiredState, getIntegratedAngle());
-
-    double angularSetPoint = placeInAppropriate0To360Scope(
-        optimizedDesiredState.angle.getRadians());
+    //SwerveModuleState optimizedDesiredState = optimize(unoptimizedDesiredState, getIntegratedAngle());
+    //SwerveModuleState optimizedDesiredState = unoptimizedDesiredState;
+    SwerveModuleState optimizedDesiredState = SwerveModuleState.optimize(unoptimizedDesiredState, getState().angle);
+    // double angularSetPoint = placeInAppropriate0To360Scope(
+    //     optimizedDesiredState.angle.getRadians());
+    double angularSetPoint = optimizedDesiredState.angle.getRadians();
 
     rotationMotor.set(testRotationController.calculate(getIntegratedAngle().getRadians(), angularSetPoint));
 
@@ -237,29 +249,29 @@ public class SwerveModule extends SubsystemBase {
     }
   }
 
-  public void setDesiredStateClosedLoop(SwerveModuleState unoptimizedDesiredState, boolean isAutoBalancing) {
-    if (Math.abs(unoptimizedDesiredState.speedMetersPerSecond) < 0.001) {
-      stop();
-      return;
-    }
+  // public void setDesiredStateClosedLoop(SwerveModuleState unoptimizedDesiredState, boolean isAutoBalancing) {
+  //   if (Math.abs(unoptimizedDesiredState.speedMetersPerSecond) < 0.001) {
+  //     stop();
+  //     return;
+  //   }
 
-    SwerveModuleState optimizedDesiredState = optimize(unoptimizedDesiredState, getIntegratedAngle());
+  //   SwerveModuleState optimizedDesiredState = optimize(unoptimizedDesiredState, getIntegratedAngle());
 
-    double angularSetPoint = placeInAppropriate0To360Scope(
-        optimizedDesiredState.angle.getRadians());
+  //   double angularSetPoint = placeInAppropriate0To360Scope(
+  //       optimizedDesiredState.angle.getRadians());
 
-    rotationMotor.set(testRotationController.calculate(getIntegratedAngle().getRadians(), angularSetPoint));
+  //   rotationMotor.set(testRotationController.calculate(getIntegratedAngle().getRadians(), angularSetPoint));
 
-    double angularVelolictySetpoint = optimizedDesiredState.speedMetersPerSecond /
-        (SwerveConstants.wheelDiameter / 2.0);
-    if (RobotState.isAutonomous() || isAutoBalancing == true) {
-      driveMotor.setVoltage(SwerveConstants.driveFF.calculate(angularVelolictySetpoint));
+  //   double angularVelolictySetpoint = optimizedDesiredState.speedMetersPerSecond /
+  //       (SwerveConstants.wheelDiameter / 2.0);
+  //   if (RobotState.isAutonomous() || isAutoBalancing == true) {
+  //     driveMotor.setVoltage(SwerveConstants.driveFF.calculate(angularVelolictySetpoint));
 
-    } else {
+  //   } else {
 
-      driveMotor.set(optimizedDesiredState.speedMetersPerSecond / SwerveConstants.maxSpeed);
-    }
-  }
+  //     driveMotor.set(optimizedDesiredState.speedMetersPerSecond / SwerveConstants.maxSpeed);
+  //   }
+  // }
 
   public void resetEncoders() {
 
@@ -271,5 +283,9 @@ public class SwerveModule extends SubsystemBase {
   public void stop() {
     driveMotor.set(0);
     rotationMotor.set(0);
+  }
+
+  public SwerveModuleState getState() {
+    return new SwerveModuleState(getCurrentVelocityRadiansPerSecond() , new Rotation2d(getIntegratedAngle().getRadians()));
   }
 }

@@ -201,6 +201,7 @@ public class RobotContainer {
     //NamedCommands.registerCommand("Shoot", (new ArmPivotShooting (m_ArmPivotSubsystem)));
     NamedCommands.registerCommand("Store", (new ArmPivotStore (m_ArmPivotSubsystem)));
     NamedCommands.registerCommand("ShootFrontofSpeaker", (new ShootingWithoutCameras (m_ArmPivotSubsystem)));
+    NamedCommands.registerCommand("ShootN1", (new ShootingWithoutCamerasN1 (m_ArmPivotSubsystem)));
     NamedCommands.registerCommand("ShootLeg1", (new ShootingWithoutCamerasStageLeg (m_ArmPivotSubsystem)));
     NamedCommands.registerCommand("ShootLeg2", (new ShootingWithoutCameras2ndStageLeg (m_ArmPivotSubsystem)));
     NamedCommands.registerCommand("Errected", (new ArmPivotErrected (m_ArmPivotSubsystem)));
@@ -219,7 +220,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     // return Autos.exampleAuto(m_exampleSubsystem);
-    return AutoBuilder.buildAuto("BigTester2");
+    return AutoBuilder.buildAuto("B-N2-Shoot");
   }
 
   public SwerveBase getSwerveSubsytem() {

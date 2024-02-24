@@ -63,9 +63,10 @@ public final class Constants {
     public static final int POSITION_SHOOTING_WITHOUT_CAMERAS = 9;
     public static final int POSITION_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG = 10;
     public static final int POSITION_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 11;
-    public static final int AMP_SCORING_POS = 12;
+    public static final int POSITION_AMP_SCORING_POS = 12;
+    public static final int POSITION_SHOOTING_WITHOUT_CAMERAS_N1 = 13;
 
-    public static final double POSITION_PID_STARTING = 5.5;// Robot Will go here on start
+    public static final double POSITION_PID_STARTING = 0;// Robot Will go here on start
     public static final double POSITION_PID_INTAKE_FLOOR = POSITION_STARTING;
     public static final double POSITION_PID_INTAKE_FEEDER = 1.31;
     public static final double POSITION_PID_AMP_SCORING = -2.3333;
@@ -75,7 +76,8 @@ public final class Constants {
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS = 2.1666;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 3.41;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG = 3.15;
-    public static final double AMP_PID_SCORING_POS = -1.9; //-1.738;
+    public static final double POSITION_PID_AMP_SCORING_POS = -1.9; //-1.738;
+    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_N1 = 2.1666;
 
     // 36 inch -- 1.31
     // 42 inch -- 1.336

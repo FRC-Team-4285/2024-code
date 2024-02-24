@@ -185,21 +185,36 @@ public class ArmPivotSubsystem extends SubsystemBase {
     // angleTreeMap.put(198.0, 1.54);
     // angleTreeMap.put(204.0, 1.535);
 
-    angleTreeMap.put(36.0, -1.57);
-    angleTreeMap.put(48.0, -1.75);
-    angleTreeMap.put(60.0, -2.0);
-    angleTreeMap.put(72.0, -2.25);
-    angleTreeMap.put(84.0 , -2.5);
-    angleTreeMap.put(96.0, -2.75);
-    angleTreeMap.put(108.0,  -3.0);
-    angleTreeMap.put(120.0, -3.125);
-    angleTreeMap.put(138.0, -3.25);
-    angleTreeMap.put(150.0, -3.375);
-    angleTreeMap.put(162.0, -3.5);
-    angleTreeMap.put(174.0, -3.675);
-    angleTreeMap.put(186.0, -3.75);
-    angleTreeMap.put(198.0, -3.875);
-    angleTreeMap.put(204.0, -4.0);
+    // angleTreeMap.put(36.0, -1.57);
+    // angleTreeMap.put(48.0, -1.75);
+    // angleTreeMap.put(60.0, -2.0);
+    // angleTreeMap.put(72.0, -2.25);
+    // angleTreeMap.put(84.0 , -2.5);
+    // angleTreeMap.put(96.0, -2.75);
+    // angleTreeMap.put(108.0,  -3.0);
+    // angleTreeMap.put(120.0, -3.125);
+    // angleTreeMap.put(138.0, -3.25);
+    // angleTreeMap.put(150.0, -3.375);
+    // angleTreeMap.put(162.0, -3.5);
+    // angleTreeMap.put(174.0, -3.675);
+    // angleTreeMap.put(186.0, -3.75);
+    // angleTreeMap.put(198.0, -3.875);
+    // angleTreeMap.put(204.0, -4.0);
+
+    // .4525 Meters From Center Of Robot
+    angleTreeMap.put(36.0, 2.1428);
+    angleTreeMap.put(48.0, 2.49999);
+    angleTreeMap.put(60.0, 2.73809);
+    angleTreeMap.put(72.0, 2.76190);
+    angleTreeMap.put(84.0 , 2.88095);
+    angleTreeMap.put(96.0, 3.03280);
+    angleTreeMap.put(108.0,  3.09523);
+    angleTreeMap.put(120.0, 3.21428);
+    angleTreeMap.put(132.0, 3.21428);
+    angleTreeMap.put(144.0, 3.30952);
+    // angleTreeMap.put(156.0, 3.28571);
+    // angleTreeMap.put(168.0, 3.40475);
+    // angleTreeMap.put(180.0, 3.40475);
     
     // 180 inch -- 1.5375
     // 186 inch -- 1.5425
@@ -247,8 +262,11 @@ public class ArmPivotSubsystem extends SubsystemBase {
        else if (MODE == ArmPivotConstants.POSITION_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG) {
         desired_location = ArmPivotConstants.POSITION_PID_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG;
       }
-       else if (MODE == ArmPivotConstants.AMP_SCORING_POS) {
-        desired_location = ArmPivotConstants.AMP_PID_SCORING_POS;
+       else if (MODE == ArmPivotConstants.POSITION_AMP_SCORING_POS) {
+        desired_location = ArmPivotConstants.POSITION_PID_AMP_SCORING_POS;
+      }
+      else if (MODE == ArmPivotConstants.POSITION_SHOOTING_WITHOUT_CAMERAS_N1) {
+        desired_location = ArmPivotConstants.POSITION_PID_SHOOTING_WITHOUT_CAMERAS_N1;
       }
       // Example
       // else if (MODE == ArmPivotConstants. (Name of COnstant)) {

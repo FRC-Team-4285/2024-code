@@ -10,7 +10,7 @@ import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
-public class AMPScoringPos extends Command {
+public class ShootingWithoutCamerasN1 extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final ArmPivotSubsystem m_subsystem;
 
@@ -19,7 +19,7 @@ public class AMPScoringPos extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public AMPScoringPos(ArmPivotSubsystem subsystem) {
+  public ShootingWithoutCamerasN1(ArmPivotSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_subsystem);
@@ -32,7 +32,7 @@ public class AMPScoringPos extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.go_to_mode(ArmPivotConstants.POSITION_AMP_SCORING_POS);
+    m_subsystem.go_to_mode(ArmPivotConstants.POSITION_SHOOTING_WITHOUT_CAMERAS_N1);
   }
   
   // Called once the command ends or is interrupted.

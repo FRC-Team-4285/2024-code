@@ -296,9 +296,9 @@ public class SwerveBase extends SubsystemBase {
 
     // use kinematics (wheel placements) to convert overall robot state to array of
     // individual module states
-    SwerveModuleState[] states = SwerveConstants.kinematics.toSwerveModuleStates(speeds);
+    // SwerveModuleState[] states = SwerveConstants.kinematics.toSwerveModuleStates(speeds);
 
-    setModuleStates(states, isAutoBalancing);
+    // setModuleStates(states, isAutoBalancing);
 
   }
 
@@ -326,15 +326,15 @@ public class SwerveBase extends SubsystemBase {
    * Uses PID and feedforward control to control the linear and rotational values
    * for the modules
    */
-  public void setModuleStates(SwerveModuleState[] moduleStates, boolean isAutoBalancing) {
-    // make sure the wheels don't try to spin faster than the maximum speed possible
-    SwerveDriveKinematics.desaturateWheelSpeeds(moduleStates, SwerveConstants.maxSpeed);
-    frontLeft.setDesiredStateClosedLoop(moduleStates[0], isAutoBalancing);
-    frontRight.setDesiredStateClosedLoop(moduleStates[1], isAutoBalancing);
-    rearLeft.setDesiredStateClosedLoop(moduleStates[2], isAutoBalancing);
-    rearRight.setDesiredStateClosedLoop(moduleStates[3], isAutoBalancing);
+  // public void setModuleStates(SwerveModuleState[] moduleStates, boolean isAutoBalancing) {
+  //   // make sure the wheels don't try to spin faster than the maximum speed possible
+  //   SwerveDriveKinematics.desaturateWheelSpeeds(moduleStates, SwerveConstants.maxSpeed);
+  //   frontLeft.setDesiredStateClosedLoop(moduleStates[0], isAutoBalancing);
+  //   frontRight.setDesiredStateClosedLoop(moduleStates[1], isAutoBalancing);
+  //   rearLeft.setDesiredStateClosedLoop(moduleStates[2], isAutoBalancing);
+  //   rearRight.setDesiredStateClosedLoop(moduleStates[3], isAutoBalancing);
 
-  }
+  // }
 
   // returns an array of SwerveModuleState
   public SwerveModuleState[] getModuleStates() {
