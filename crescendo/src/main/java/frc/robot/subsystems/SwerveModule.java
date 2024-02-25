@@ -29,7 +29,7 @@ public class SwerveModule extends SubsystemBase {
   private static SwerveBase swerveDrive;
   public PIDController testRotationController;
 
-  private static final double rotationkP = 0.5;
+  private static final double rotationkP = 0.36;
   private static final double rotationkD = 0.0;
 
   private static final double drivekP = 0.015;
@@ -102,7 +102,7 @@ public class SwerveModule extends SubsystemBase {
         2.0 * Math.PI / 60 / SwerveConstants.driveGearRatio);
 
     // set the output of the rotation encoder to be in radians
-    rotationEncoder.setPositionConversionFactor(2 * Math.PI / SwerveConstants.angleGearRatio);
+    rotationEncoder.setPositionConversionFactor(2.0 * Math.PI / SwerveConstants.angleGearRatio);
 
     // configure the CANCoder to output in unsigned (wrap around from 360 to 0
     // degrees)
@@ -286,6 +286,6 @@ public class SwerveModule extends SubsystemBase {
   }
 
   public SwerveModuleState getState() {
-    return new SwerveModuleState(getCurrentVelocityRadiansPerSecond() , new Rotation2d(getIntegratedAngle().getRadians()));
+    return new SwerveModuleState(getCurrentVelocityRadiansPerSecond() , getIntegratedAngle());
   }
 }

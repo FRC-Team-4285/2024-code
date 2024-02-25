@@ -66,7 +66,7 @@ public class TeleopSwerve extends Command {
 
     // 2. Apply deadband/deadzone, can edit this later to have smoother behavior
     fwdX = Math.abs(fwdX) > 0.1 ? fwdX : 0.0; 
-    fwdY = Math.abs(fwdY) > 0.1 ? fwdY : 0.0;
+    fwdY = Math.abs(fwdY) > 0.04 ? fwdY : 0.0;
     rot = Math.abs(rot) > 0.3 ? rot : 0.0;
 
     // 3. Make the driving smoother

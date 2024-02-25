@@ -191,6 +191,10 @@ public class SwerveBase extends SubsystemBase {
       getModulePositions(), new Pose2d());
   private boolean needPigeonReset = false;
 
+  public void setNeedPigeonReset(boolean set) {
+    needPigeonReset = set;
+  }
+
   public SwerveDrivePoseEstimator getOdometry() {
     return odometry;
   }
@@ -395,6 +399,12 @@ public class SwerveBase extends SubsystemBase {
     return Rotation2d.fromDegrees(pigeonSensor.getYaw() + 180);
   
     // navX: return Rotation2d.fromDegrees(-navX.getYaw() + 90);
+  }
+
+  public Rotation2d getAngleToSpeaker(){
+    Translation2d robotPose = getPose().getTranslation();
+    Translation2d diffPose = RobotContainer.m_ArmPivotSubsystem.getSpeakerPose().getTranslation().minus(robotPose);
+    return new Rotation2d(Math.atan2(diffPose.getY(), diffPose.getX()));
   }
 
   public void stopModules() {

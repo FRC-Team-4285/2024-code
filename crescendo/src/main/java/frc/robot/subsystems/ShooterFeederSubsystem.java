@@ -63,6 +63,7 @@ public class ShooterFeederSubsystem extends SubsystemBase {
     boolean bottomState = m_robot_container.getLineBreakSubsystem().getBottomState();
     boolean topState = m_robot_container.getLineBreakSubsystem().getTopState();
     ShooterSubsystem shooter_subsystem = m_robot_container.getShooterSubsystem();
+  //}
 
     if (shooter_subsystem.getIsFiring()) {
       return;

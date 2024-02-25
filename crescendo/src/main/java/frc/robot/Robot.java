@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 import frc.robot.subsystems.AprilTagSubsystem;
-//import frc.robot.subsystems.ArmPivotSubsystem;
+import frc.robot.subsystems.ArmPivotSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.PowerDistributionPanel;
@@ -30,7 +30,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   public static RobotContainer m_robotContainer;
-  //public static ArmPivotSubsystem m_armPivot;
+  // public static ArmPivotSubsystem m_armPivot;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -41,7 +41,7 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer(this);
     // m_climber = new ClimberSubsystem();
 
-    PortForwarder.add(5800, "photonvision.local", 5800);
+   // PortForwarder.add(5800, "photonvision.local", 5800);
   }
 
   /**
@@ -70,6 +70,7 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
+    m_robotContainer.m_ArmPivotSubsystem.setGoalPose();
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
@@ -88,6 +89,8 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+
+    m_robotContainer.m_ArmPivotSubsystem.setGoalPose();
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
@@ -117,6 +120,7 @@ public class Robot extends TimedRobot {
   @Override
   public void simulationPeriodic() {}
 
+  // to bring back arm pivot
   // public ArmPivotSubsystem getArmPivotSubsystem() {
   //   return m_armPivot;
   // }

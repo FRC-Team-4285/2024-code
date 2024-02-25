@@ -7,6 +7,9 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
+
+import java.sql.Driver;
+
 import com.revrobotics.CANSparkBase;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -17,6 +20,7 @@ import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -32,7 +36,8 @@ import frc.robot.Constants.ArmPivotConstants;
 public class ArmPivotSubsystem extends SubsystemBase {
   private final AprilTagFieldLayout field;
   private SwerveBase mSwerveBase; //private final SwerveBase mSwerveBase;  //
-  private Pose2d goalPose;
+  private Pose2d speakerPose;
+  private Pose2d ampPose;
   /** Pivots the arm. */
 
   private RelativeEncoder arm_pivot_encoder;
@@ -63,7 +68,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
     field = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
     this.mSwerveBase = mSwerveBase;
     //mSwerveBase = RobotContainer.m_swerveBase;
-    goalPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
+    // goalPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
     
     angleTreeMap = new InterpolatingDoubleTreeMap();
 
@@ -96,11 +101,11 @@ public class ArmPivotSubsystem extends SubsystemBase {
     m_armMotorPivot1.enableSoftLimit(CANSparkBase.SoftLimitDirection.kReverse, true);
     m_armMotorPivot2.enableSoftLimit(CANSparkBase.SoftLimitDirection.kReverse, true);
 
-    m_armMotorPivot1.setSoftLimit(CANSparkBase.SoftLimitDirection.kForward, 6);
-    m_armMotorPivot2.setSoftLimit(CANSparkBase.SoftLimitDirection.kForward, 6);
+    m_armMotorPivot1.setSoftLimit(CANSparkBase.SoftLimitDirection.kForward, (float)6.6);
+    m_armMotorPivot2.setSoftLimit(CANSparkBase.SoftLimitDirection.kForward, (float)6.6);
 
-    m_armMotorPivot1.setSoftLimit(CANSparkBase.SoftLimitDirection.kReverse, -4);
-    m_armMotorPivot2.setSoftLimit(CANSparkBase.SoftLimitDirection.kReverse, -4);
+    m_armMotorPivot1.setSoftLimit(CANSparkBase.SoftLimitDirection.kReverse, (float)-4);
+    m_armMotorPivot2.setSoftLimit(CANSparkBase.SoftLimitDirection.kReverse, (float)-4);
 
     // initialze PID controller and encoder objects
     arm_pid_Controller = m_armMotorPivot1.getPIDController();
@@ -225,6 +230,25 @@ public class ArmPivotSubsystem extends SubsystemBase {
   }
 
 
+  public void setGoalPose() {
+    speakerPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
+  }
+
+  public Pose2d getSpeakerPose(){
+    return speakerPose;
+  }
+
+  public void setAmpPose(){
+    ampPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(5).get().toPose2d() : field.getTagPose(6).get().toPose2d();
+  }
+
+  public Rotation2d getAmpAngle(){
+    return DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(-90) : Rotation2d.fromDegrees(90);
+  }
+
+  public Pose2d getAmpPose(){
+    return ampPose;
+  }
   /**
    * Puts the arm into the desired mode.
    */
@@ -242,7 +266,8 @@ public class ArmPivotSubsystem extends SubsystemBase {
         desired_location = ArmPivotConstants.POSITION_PID_AMP_SCORING;
       }
       else if (MODE == ArmPivotConstants.POSITION_SHOOTING) {
-        desired_location = angleTreeMap.get(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(goalPose.getTranslation())));
+        SmartDashboard.putNumber("Distance to Goal", Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(speakerPose.getTranslation())));
+        desired_location = angleTreeMap.get(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(speakerPose.getTranslation())));
       }
       else if (MODE == ArmPivotConstants.POSITION_HUMAN_FEEDER) {
         desired_location = ArmPivotConstants.POSITION_PID_HUMAN_FEEDER;

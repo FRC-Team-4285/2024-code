@@ -71,7 +71,7 @@ public final class Constants {
     public static final double POSITION_PID_INTAKE_FEEDER = 1.31;
     public static final double POSITION_PID_AMP_SCORING = -2.3333;
     public static final double POSITION_PID_HUMAN_FEEDER = -2.904;
-    public static final double POSITION_PID_STORE = 5.5;
+    public static final double POSITION_PID_STORE = 6.6;
     public static final double POSITION_PID_ERRECTED = 0;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS = 2.1666;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 3.41;
@@ -270,15 +270,15 @@ public final class Constants {
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
-        new Translation3d(-0.063, -0.3125, 0.562),
+        new Translation3d(0.063, -0.3125, 0.562),
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_3 = new Transform3d(
-        new Translation3d(-0.063, -0.3125, 0.562),
+        new Translation3d(0.063, 0.3125, 0.562),
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
-        new Translation3d(-0.063, -0.3125, 0.562),
+        new Translation3d(-0.063, 0.3125, 0.562),
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45)));
     
     //Lime Light 
