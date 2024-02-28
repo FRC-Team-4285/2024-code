@@ -12,7 +12,7 @@
         "y": 5.966852028715935
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "B Shoot Close"
     },
     {
       "anchor": {
@@ -32,16 +32,16 @@
     },
     {
       "anchor": {
-        "x": 7.7705,
-        "y": 4.1056
+        "x": 7.77,
+        "y": 4.1036
       },
       "prevControl": {
-        "x": 6.0473116670698905,
-        "y": 4.221645307898693
+        "x": 6.04681166706989,
+        "y": 4.219645307898693
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "N6 Start Pick Up"
     }
   ],
   "rotationTargets": [],

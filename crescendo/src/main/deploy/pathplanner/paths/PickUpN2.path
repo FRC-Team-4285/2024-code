@@ -12,20 +12,20 @@
         "y": 5.55
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "N2 Start Pick Up"
     },
     {
       "anchor": {
-        "x": 2.67,
+        "x": 2.9,
         "y": 5.55
       },
       "prevControl": {
-        "x": 2.653461968187015,
+        "x": 2.8834619681870146,
         "y": 5.55
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "N2"
     }
   ],
   "rotationTargets": [],

@@ -38,6 +38,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
   private SwerveBase mSwerveBase; //private final SwerveBase mSwerveBase;  //
   private Pose2d speakerPose;
   private Pose2d ampPose;
+  private Pose2d humanfeederPose;
   /** Pivots the arm. */
 
   private RelativeEncoder arm_pivot_encoder;
@@ -206,21 +207,64 @@ public class ArmPivotSubsystem extends SubsystemBase {
     // angleTreeMap.put(198.0, -3.875);
     // angleTreeMap.put(204.0, -4.0);
 
-    // .4525 Meters From Center Of Robot
-    angleTreeMap.put(36.0, 2.1428);
-    angleTreeMap.put(48.0, 2.49999);
-    angleTreeMap.put(60.0, 2.73809);
-    angleTreeMap.put(72.0, 2.76190);
-    angleTreeMap.put(84.0 , 2.88095);
-    angleTreeMap.put(96.0, 3.03280);
-    angleTreeMap.put(108.0,  3.09523);
-    angleTreeMap.put(120.0, 3.21428);
-    angleTreeMap.put(132.0, 3.21428);
-    angleTreeMap.put(144.0, 3.30952);
-    // angleTreeMap.put(156.0, 3.28571);
-    // angleTreeMap.put(168.0, 3.40475);
-    // angleTreeMap.put(180.0, 3.40475);
+    // .4525 Meters From Center Of Robot 
+    //Add 15 inches to measurements without bumpers retest with 6 to one
+    //  angleTreeMap.put(30.0, 2.0);
+    // angleTreeMap.put(36.0, 2.2381);
+    // angleTreeMap.put(42.0, 2.3571);
+    // angleTreeMap.put(48.0, 2.3571);
+    // angleTreeMap.put(54.0, 2.5476);
+    // angleTreeMap.put(60.0, 2.7142);
+    // angleTreeMap.put(66.0, 2.7857);
+    // angleTreeMap.put(72.0, 2.9285);
+    // angleTreeMap.put(78.0, 2.8809);
+    // angleTreeMap.put(84.0, 3.0238);
+    // angleTreeMap.put(90.0, 3.0714);
+    // angleTreeMap.put(96.0, 3.1666);
+    // angleTreeMap.put(102.0, 3.1190);
+    // angleTreeMap.put(108.0, 3.0714);
+    // angleTreeMap.put(114.0, 3.1428);
+    // angleTreeMap.put(120.0, 3.2380);
+    // angleTreeMap.put(126.0, 3.2857);
+    // angleTreeMap.put(132.0, 3.2619);
+    // angleTreeMap.put(138.0, 3.2380);
+    // angleTreeMap.put(144.0, 3.3333);
+    // angleTreeMap.put(150.0, 3.3333);
+    // angleTreeMap.put(156.0, 3.3809);
+    // angleTreeMap.put(162.0, 3.3571);
+    // angleTreeMap.put(168.0, 3.3809);
+    // angleTreeMap.put(174.0, 3.3809);
+    // angleTreeMap.put(180.0, 3.4285);
     
+
+
+//with plus 15
+    angleTreeMap.put(45.0, 2.0);
+    angleTreeMap.put(51.0, 2.2381);
+    angleTreeMap.put(57.0, 2.3571);
+    angleTreeMap.put(63.0, 2.3571);
+    angleTreeMap.put(69.0, 2.5476);
+    angleTreeMap.put(75.0, 2.7142);
+    angleTreeMap.put(81.0, 2.7857);
+    angleTreeMap.put(87.0, 2.9285);
+    angleTreeMap.put(93.0, 2.8809);
+    angleTreeMap.put(99.0, 3.0238);
+    angleTreeMap.put(105.0, 3.0714);
+    angleTreeMap.put(111.0, 3.1666);
+    angleTreeMap.put(117.0, 3.1190);
+    angleTreeMap.put(123.0, 3.0714);
+    angleTreeMap.put(129.0, 3.1428);
+    angleTreeMap.put(135.0, 3.2380);
+    angleTreeMap.put(141.0, 3.2857);
+    angleTreeMap.put(147.0, 3.2619);
+    angleTreeMap.put(153.0, 3.2380);
+    angleTreeMap.put(159.0, 3.3333);
+    angleTreeMap.put(165.0, 3.3333);
+    angleTreeMap.put(171.0, 3.3809);
+    angleTreeMap.put(177.0, 3.3571);
+    angleTreeMap.put(183.0, 3.3809);
+    angleTreeMap.put(189.0, 3.3809);
+    angleTreeMap.put(195.0, 3.4285);
     // 180 inch -- 1.5375
     // 186 inch -- 1.5425
     // 192 inch -- 1.54525
@@ -249,6 +293,18 @@ public class ArmPivotSubsystem extends SubsystemBase {
   public Pose2d getAmpPose(){
     return ampPose;
   }
+
+  public void setHumanFeederPose(){
+    humanfeederPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(9).get().toPose2d() : field.getTagPose(1).get().toPose2d();
+  }
+
+  public Rotation2d getHumanFeederAngle(){
+    return DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(-45) : Rotation2d.fromDegrees(45);
+  }
+
+  public Pose2d getHumanFeederPose(){
+    return humanfeederPose;
+  }
   /**
    * Puts the arm into the desired mode.
    */
@@ -266,7 +322,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
         desired_location = ArmPivotConstants.POSITION_PID_AMP_SCORING;
       }
       else if (MODE == ArmPivotConstants.POSITION_SHOOTING) {
-        SmartDashboard.putNumber("Distance to Goal", Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(speakerPose.getTranslation())));
+       // SmartDashboard.putNumber("Distance to Goal", Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(speakerPose.getTranslation())));
         desired_location = angleTreeMap.get(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(speakerPose.getTranslation())));
       }
       else if (MODE == ArmPivotConstants.POSITION_HUMAN_FEEDER) {

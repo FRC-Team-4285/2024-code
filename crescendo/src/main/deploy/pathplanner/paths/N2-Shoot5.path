@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.67,
+        "x": 2.9,
         "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.6641455658208244,
+        "x": 2.894145565820824,
         "y": 5.547612425391122
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "N2"
     },
     {
       "anchor": {
@@ -25,7 +25,7 @@
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "N2 Shoot"
     }
   ],
   "rotationTargets": [],

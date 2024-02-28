@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.41,
-        "y": 4.1022
+        "x": 1.4356760304969556,
+        "y": 4.114397967513275
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.4161851323946502,
-        "y": 4.1022
+        "x": 1.4418611628916058,
+        "y": 4.114397967513275
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "C"
     },
     {
       "anchor": {
-        "x": 0.9263275506607991,
-        "y": 4.420390379242297
+        "x": 0.7726924717507405,
+        "y": 4.289893615416685
       },
       "prevControl": {
-        "x": 0.9263275506607991,
-        "y": 4.420390379242297
+        "x": 0.7726924717507406,
+        "y": 4.289893615416685
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Shoot3"
     }
   ],
   "rotationTargets": [],
@@ -33,7 +33,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 1.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
@@ -45,8 +45,8 @@
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 180.0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

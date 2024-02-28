@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.42,
-        "y": 6.9978
+        "x": 2.888390004808514,
+        "y": 6.980826883268969
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.438933789428119,
-        "y": 6.9978
+        "x": 2.907323794236633,
+        "y": 6.980826883268969
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "N1 Start Pick Up"
     },
     {
       "anchor": {
-        "x": 2.57,
-        "y": 6.9978
+        "x": 2.9,
+        "y": 7.0
       },
       "prevControl": {
-        "x": 2.553461968187015,
-        "y": 6.9978
+        "x": 2.883461968187015,
+        "y": 7.0
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "N1"
     }
   ],
   "rotationTargets": [],
@@ -45,8 +45,8 @@
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 180.0,
-    "velocity": 0
+    "rotation": 0,
+    "velocity": 0.0
   },
   "useDefaultConstraints": true
 }

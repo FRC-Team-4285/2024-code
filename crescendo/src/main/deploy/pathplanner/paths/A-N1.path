@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.405787882800837,
-        "y": 6.9978
+        "x": 1.41,
+        "y": 7.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8618599060559946,
-        "y": 7.00252336015897
+        "x": 1.8660720232551575,
+        "y": 7.0047233601589705
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "A"
     },
     {
       "anchor": {
-        "x": 2.42,
-        "y": 6.9978
+        "x": 2.888390004808514,
+        "y": 6.980826883268969
       },
       "prevControl": {
-        "x": 1.8384715971711147,
-        "y": 7.00252336015897
+        "x": 2.3068616019796284,
+        "y": 6.985550243427939
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "N1 Start Pick Up"
     }
   ],
   "rotationTargets": [],

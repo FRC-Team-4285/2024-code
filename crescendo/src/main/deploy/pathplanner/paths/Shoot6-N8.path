@@ -12,20 +12,20 @@
         "y": 3.383166101249068
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "C Shoot Mid"
     },
     {
       "anchor": {
         "x": 7.77,
-        "y": 0.74
+        "y": 0.7436
       },
       "prevControl": {
         "x": 6.77,
-        "y": 0.7400000000000002
+        "y": 0.7436000000000003
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "N8 Start Pick Up "
     }
   ],
   "rotationTargets": [],

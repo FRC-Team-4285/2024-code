@@ -60,8 +60,8 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public void shoot() {
     is_firing = true;
-    shooter_motor_a.set(0.85);
-    shooter_motor_b.set(0.85);
+    shooter_motor_a.set(0.90);
+    shooter_motor_b.set(0.90);
   }
   public void suck(double speed) { 
     shooter_motor_a.set(speed);//0.85

@@ -4,15 +4,20 @@
 
 package frc.robot.commands;
 
+import frc.robot.Constants.ArmPivotConstants;
 import frc.robot.Constants.ShooterConstants;
+import frc.robot.subsystems.ArmPivotSubsystem;
 import frc.robot.subsystems.ShooterFeederSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+
+//private int active_mode;
 
 /** An example command that uses an example subsystem. */
 public class ShooterFeederFire extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final ShooterFeederSubsystem m_subsystem;
-
+  public static ArmPivotSubsystem m_ArmPivotSubsystem;
+  
   /**
    * Creates a new ExampleCommand.
    *
@@ -31,6 +36,9 @@ public class ShooterFeederFire extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    //if (MODE == ArmPivotConstants.POSITION_STARTING ) { m_subsystem.shoot(0.075, true);}
+    //if else {}
+   // Was working on makeing one command for shooter feeder speed
     m_subsystem.shoot(1.00, true);
   }
 

@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.92,
-        "y": 5.78
+        "x": 8.3,
+        "y": 5.7836
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.608572547311367,
-        "y": 7.107573740088099
+        "x": 5.988572547311367,
+        "y": 7.111173740088098
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "N5"
     },
     {
       "anchor": {
-        "x": 4.682345516710037,
+        "x": 4.79934261531231,
         "y": 5.55
       },
       "prevControl": {
-        "x": 4.614097209192044,
+        "x": 4.731094307794317,
         "y": 6.688334136763285
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "A Stage Shoot"
     }
   ],
   "rotationTargets": [],

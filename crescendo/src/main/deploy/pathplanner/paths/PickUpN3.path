@@ -4,28 +4,28 @@
     {
       "anchor": {
         "x": 2.42,
-        "y": 4.1022
+        "y": 4.1
       },
       "prevControl": null,
       "nextControl": {
         "x": 2.438933789428119,
-        "y": 4.1022
+        "y": 4.1
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "N3 Start Pick Up"
     },
     {
       "anchor": {
         "x": 2.58,
-        "y": 4.1022
+        "y": 4.1
       },
       "prevControl": {
         "x": 2.563461968187015,
-        "y": 4.1022
+        "y": 4.1
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "N3"
     }
   ],
   "rotationTargets": [],

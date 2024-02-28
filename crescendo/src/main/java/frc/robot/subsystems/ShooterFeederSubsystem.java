@@ -29,12 +29,16 @@ public class ShooterFeederSubsystem extends SubsystemBase {
     m_robot_container = robot_container;
     reached_top_sensor = false;
     reached_bottom_sensor = false;
-
+     
+   
+   
     feeder_motor = new CANSparkMax(
       ShooterFeederConstants.MOTOR_SHOOTER_FEEDER,
       MotorType.kBrushless
-    );
 
+      
+    );
+feeder_motor.setInverted(true);
     feeder_motor_encoder = feeder_motor.getAlternateEncoder(
       SparkMaxAlternateEncoder.Type.kQuadrature,
       4096
