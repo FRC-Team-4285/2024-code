@@ -16,7 +16,7 @@ public class LineBreak extends SubsystemBase {
       public boolean top_toe_hoe_state = false;
 
       DigitalInput bottom_sensor = new DigitalInput(LineBreakConstants.DIO_BOTTOM_SENSOR);  
-      DigitalInput top_sensor = new DigitalInput(7);
+      DigitalInput top_sensor = new DigitalInput(LineBreakConstants.DIO_TOP_SENSOR);
 
 
   public LineBreak() {
