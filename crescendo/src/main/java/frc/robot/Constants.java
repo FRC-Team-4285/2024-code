@@ -305,9 +305,19 @@ public final class Constants {
       new Rotation2d(Math.PI)
     );
 
+
     /** Minimum target ambiguity. Targets with higher ambiguity will be discarded */
     public static final double APRILTAG_AMBIGUITY_THRESHOLD = 0.2;
   }
+
+  public static class LEDConstants {
+      public static final int DIO_LED_IS_BLUE = 4;
+      public static final int DIO_LED_IS_RED = 5;
+      public static final int DIO_LED_WIN = 6;
+
+      public static final Boolean DIO_ENABLE = false;
+      public static final Boolean DIO_DISABLE = false;
+    }
 // public static class LineBreakConstants {
 
 //     public static boolean LineBreakState = false;
