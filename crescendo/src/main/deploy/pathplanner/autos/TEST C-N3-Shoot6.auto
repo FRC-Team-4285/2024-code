@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3771774811958186,
-      "y": 5.55
+      "x": 1.4356760304969556,
+      "y": 4.114397967513275
     },
     "rotation": 180.0
   },
@@ -16,9 +16,9 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
+                "type": "path",
                 "data": {
-                  "waitTime": 0.75
+                  "pathName": "C-Shoot3"
                 }
               },
               {
@@ -40,7 +40,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.6
+                        "waitTime": 1.2
                       }
                     },
                     {
@@ -68,7 +68,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "B-N2"
+                  "pathName": "Shoot3-N3"
                 }
               },
               {
@@ -104,9 +104,15 @@
           "data": {
             "commands": [
               {
+                "type": "wait",
+                "data": {
+                  "waitTime": 1.5
+                }
+              },
+              {
                 "type": "path",
                 "data": {
-                  "pathName": "N2-Shoot2"
+                  "pathName": "N3-Shoot6"
                 }
               },
               {
@@ -120,13 +126,13 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.75
+                              "waitTime": 1.0
                             }
                           },
                           {
                             "type": "named",
                             "data": {
-                              "name": "ShootFrontofSpeaker"
+                              "name": "ShootN1"
                             }
                           },
                           {

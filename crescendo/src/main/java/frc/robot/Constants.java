@@ -77,7 +77,7 @@ public final class Constants {
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 3.41;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG = 3.15;
     public static final double POSITION_PID_AMP_SCORING_POS = -1.9; //-1.738;
-    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_N1 = 3.0714;
+    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_N1 = 3.071426;
 
     // 36 inch -- 1.31
     // 42 inch -- 1.336
@@ -316,7 +316,7 @@ public final class Constants {
       public static final int DIO_LED_WIN = 6;
 
       public static final Boolean DIO_ENABLE = false;
-      public static final Boolean DIO_DISABLE = false;
+      public static final Boolean DIO_DISABLE = true;
     }
 // public static class LineBreakConstants {
 

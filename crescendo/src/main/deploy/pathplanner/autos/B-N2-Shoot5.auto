@@ -104,9 +104,9 @@
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "wait",
                 "data": {
-                  "pathName": "N2-Shoot2"
+                  "waitTime": 1.5
                 }
               },
               {
@@ -120,13 +120,13 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.75
+                              "waitTime": 1.0
                             }
                           },
                           {
                             "type": "named",
                             "data": {
-                              "name": "ShootFrontofSpeaker"
+                              "name": "ShootN1"
                             }
                           },
                           {
