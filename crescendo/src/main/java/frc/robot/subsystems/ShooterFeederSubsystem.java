@@ -75,9 +75,9 @@ feeder_motor.setInverted(true);
 
     if (feed_type == ShooterFeederConstants.SHOOTER_FEEDER_STATE_FLOOR_FEEDING) {
       /* Check if bottom line sensor is obstructed */
-      if (bottomState == ShooterFeederConstants.LINEBREAK_BLOCKED) {
+      if (bottomState == LineBreakConstants.LINEBREAK_BLOCKED) {
         /* We are in this block if the line break sensor on the BOTTOM is blocked. */
-        if (topState == ShooterFeederConstants.LINEBREAK_OPEN) {
+        if (topState == LineBreakConstants.LINEBREAK_OPEN) {
           /*
             The bottom is blocked AND the top is NOT blocked.
             This is ideal from FLOOR FEEDING perspective, so
@@ -114,13 +114,13 @@ feeder_motor.setInverted(true);
        * We are in this block if we are HUMAN FEEDING.
        */
 
-      if (topState == ShooterFeederConstants.LINEBREAK_OPEN && bottomState == ShooterFeederConstants.LINEBREAK_OPEN) {
+      if (topState == LineBreakConstants.LINEBREAK_OPEN && bottomState == LineBreakConstants.LINEBREAK_OPEN) {
         feeder_motor.set(-0.4);
         shooter_subsystem.suck(-0.15);
         reached_top_sensor = false;
       }
       else if (reached_top_sensor) {
-        if (topState == ShooterFeederConstants.LINEBREAK_OPEN && bottomState == ShooterFeederConstants.LINEBREAK_BLOCKED) {
+        if (topState == LineBreakConstants.LINEBREAK_OPEN && bottomState == LineBreakConstants.LINEBREAK_BLOCKED) {
           stop();
           shooter_subsystem.stop();
         }
@@ -130,12 +130,12 @@ feeder_motor.setInverted(true);
         }
       }
       /* Check if bottom line sensor is obstructed */
-      else if (bottomState == ShooterFeederConstants.LINEBREAK_BLOCKED && topState == ShooterFeederConstants.LINEBREAK_BLOCKED) {
+      else if (bottomState == LineBreakConstants.LINEBREAK_BLOCKED && topState == LineBreakConstants.LINEBREAK_BLOCKED) {
         /* We are in this block if the line break sensor on the TOP is blocked. */
         feeder_motor.set(-0.15);
         shooter_subsystem.suck(-0.1);
       }
-      else if (bottomState == ShooterFeederConstants.LINEBREAK_BLOCKED && topState == ShooterFeederConstants.LINEBREAK_OPEN) {
+      else if (bottomState == LineBreakConstants.LINEBREAK_BLOCKED && topState == LineBreakConstants.LINEBREAK_OPEN) {
         /* We are in this block if the line break sensor on the bottom is blocked. */
         reached_top_sensor = true;
         shooter_subsystem.stop();

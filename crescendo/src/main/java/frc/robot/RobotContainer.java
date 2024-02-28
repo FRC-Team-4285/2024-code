@@ -44,6 +44,7 @@ public class RobotContainer {
   public static LineBreak m_lineBreak = new LineBreak();
   public ShooterFeederSubsystem m_shooterFeeder = new ShooterFeederSubsystem(this);
   public static ShooterSubsystem m_shooter = new ShooterSubsystem();
+  public static LEDSubsystem m_led = new LEDSubsystem();
   public static ArmPivotSubsystem m_ArmPivotSubsystem;
   private SendableChooser<String> mChooser;
 

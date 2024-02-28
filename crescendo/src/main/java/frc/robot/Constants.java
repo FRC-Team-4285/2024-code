@@ -154,8 +154,6 @@ public final class Constants {
     public static final int SHOOTER_FEEDER_STATE_FLOOR_FEEDING = 0;
     public static final int SHOOTER_FEEDER_STATE_HUMAN_FEEDING = 1;
 
-    public static final boolean LINEBREAK_BLOCKED = false;
-    public static final boolean LINEBREAK_OPEN = true;
   }
 
   public static final class SwerveConstants {
@@ -316,11 +314,16 @@ public final class Constants {
       public static final int DIO_LED_WIN = 6;
 
       public static final Boolean DIO_ENABLE = false;
-      public static final Boolean DIO_DISABLE = false;
+      public static final Boolean DIO_DISABLE = true;
     }
-// public static class LineBreakConstants {
 
-//     public static boolean LineBreakState = false;
 
-//   }
+public static class LineBreakConstants {
+
+    public static int DIO_BOTTOM_SENSOR = 8;
+    public static int DIO_TOP_SENSOR = 7;
+
+    public static final boolean LINEBREAK_BLOCKED = false;
+    public static final boolean LINEBREAK_OPEN = true;
+  }
 }

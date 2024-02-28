@@ -4,55 +4,25 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkLowLevel.MotorType;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.SparkMaxAlternateEncoder;
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.ShooterFeederPickUp;
-import frc.robot.subsystems.ShooterFeederSubsystem;
+import frc.robot.Constants.LineBreakConstants;
 
 
 public class LineBreak extends SubsystemBase {
-  /** Creates a new ExampleSubsystem. */
 
       public boolean resting_bottom_bitch_state = false;
       public boolean top_toe_hoe_state = false;
 
-      DigitalInput bottom_sensor = new DigitalInput(8);  
+      DigitalInput bottom_sensor = new DigitalInput(LineBreakConstants.DIO_BOTTOM_SENSOR);  
       DigitalInput top_sensor = new DigitalInput(7);
 
 
-
-
-public LineBreak() {
-
-
-
-
+  public LineBreak() {
 
   }
  
-
-// public void Sensor1 () {
-//     if (LineBreakConstants.LineBreakState = false) {
-       
-//         System.out.println("Note In Shoote");
-        
-//     }
-//     else {
-     
-//         System.out.println("Shooter Empty");
-//         return;
-//     }
-//   }
-
-//   public void stop() {
-//     floor_feeder_motor.set(0.0);
-//   }
-  
   /**
    * Example command factory method.
    *
