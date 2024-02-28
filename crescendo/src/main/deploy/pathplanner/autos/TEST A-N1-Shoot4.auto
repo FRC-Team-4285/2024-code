@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3771774811958186,
-      "y": 5.55
+      "x": 1.41,
+      "y": 7.0
     },
     "rotation": 180.0
   },
@@ -16,9 +16,9 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
+                "type": "path",
                 "data": {
-                  "waitTime": 0.75
+                  "pathName": "A-Shoot1"
                 }
               },
               {
@@ -40,7 +40,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.6
+                        "waitTime": 1.25
                       }
                     },
                     {
@@ -68,7 +68,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "B-N2"
+                  "pathName": "Shoot1-N1-Shoot4"
                 }
               },
               {
@@ -104,9 +104,9 @@
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "wait",
                 "data": {
-                  "pathName": "N2-Shoot2"
+                  "waitTime": 1.5
                 }
               },
               {
@@ -120,13 +120,13 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.75
+                              "waitTime": 1.0
                             }
                           },
                           {
                             "type": "named",
                             "data": {
-                              "name": "ShootFrontofSpeaker"
+                              "name": "ShootN1"
                             }
                           },
                           {

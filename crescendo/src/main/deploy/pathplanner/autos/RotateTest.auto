@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.0,
-      "y": 1.0
+      "x": 2.3521533028814288,
+      "y": 5.157622096716878
     },
-    "rotation": 180.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "3by3 Test Auto"
+            "pathName": "RotateTest"
           }
         }
       ]

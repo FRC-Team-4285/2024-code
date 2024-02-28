@@ -72,6 +72,8 @@ public class RobotContainer {
   private JoystickButton btn_aim_speaker;
   private JoystickButton btn_aim_amp;
   private JoystickButton btn_aim_human_feeder;
+  private JoystickButton btn_led_win_yes;
+  private JoystickButton btn_led_win_no;
 
   private JoystickButton btn_shooting_with_driver;  
   private JoystickButton btn_driver_fire;  
@@ -233,6 +235,12 @@ public class RobotContainer {
     btn_shooter_feeder = new JoystickButton(streamdeck, 3);
     btn_shooter_feeder.whileTrue(new ShooterFeederAMP(m_shooterFeeder));
 
+    btn_led_win_yes = new JoystickButton(driverJoystick, 10);
+    btn_led_win_yes.whileTrue(new LEDWinYes(m_led));
+
+    btn_led_win_no = new JoystickButton(driverJoystick, 9);
+    btn_led_win_no.whileTrue(new LEDWinNo(m_led));
+
     // Emergency Stop For Pivot
     // btn_armP_pivot_stop = new JoystickButton(streamdeck, 4);
     // btn_armP_pivot_stop.toggleOnTrue(m_ArmPivotSubsystem.stopCommand());
@@ -314,7 +322,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     // return Autos.exampleAuto(m_exampleSubsystem);
-    return AutoBuilder.buildAuto("C-Shoot3-N3-Shoot3");//"test"mChooser.getSelected()
+    return AutoBuilder.buildAuto("B-N2-Shoot5");//"test"mChooser.getSelected()
   }
 
   public SwerveBase getSwerveSubsytem() {
