@@ -8,24 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.8966479836522634,
-        "y": 7.000326399702681
+        "x": 2.8617398672974,
+        "y": 7.025503105536126
       },
       "isLocked": false,
       "linkedName": "N1"
     },
     {
       "anchor": {
-        "x": 2.8958,
-        "y": 7.0
+        "x": 2.9,
+        "y": 7.000326399702681
       },
       "prevControl": {
-        "x": 2.8981397630253705,
-        "y": 6.990576641485824
+        "x": 2.8851281761822785,
+        "y": 6.981736601839326
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "N1 Shoot"
+      "linkedName": "Shoot4"
     }
   ],
   "rotationTargets": [],
@@ -33,7 +33,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 1.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
@@ -48,5 +48,5 @@
     "rotation": 180.0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

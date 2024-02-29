@@ -264,19 +264,19 @@ public final class Constants {
     //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45)));
      
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
-        new Translation3d(-0.063, -0.3125, 0.562),// Get from CAD Model In meters-0.063, -0.3125, 0.562
+        new Translation3d(-0.063, 0.3125, 0.562),// Get from CAD Model In meters-0.063, -0.3125, 0.562
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
-        new Translation3d(0.063, -0.3125, 0.562),//0.063, -0.3125, 0.562
+        new Translation3d(-0.063, -0.3125, 0.562),//0.063, -0.3125, 0.562
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_3 = new Transform3d(
-        new Translation3d(0.063, 0.3125, 0.562),//0.063, 0.3125, 0.562
+        new Translation3d(0.063, -0.3125, 0.562),//0.063, 0.3125, 0.562
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
-        new Translation3d(-0.063, 0.3125, 0.562),//-0.063, 0.3125, 0.562
+        new Translation3d(0.063, 0.3125, 0.562),//-0.063, 0.3125, 0.562
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45)));
     
     //Lime Light 

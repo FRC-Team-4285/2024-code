@@ -33,10 +33,12 @@ public class LEDSubsystem extends SubsystemBase {
     Optional<Alliance> ally = DriverStation.getAlliance();
     if (ally.isPresent()) {
         if (ally.get() == Alliance.Red) {
+            //System.out.println("Alliance Red");
             set_red(LEDConstants.DIO_ENABLE);
             set_blue(LEDConstants.DIO_DISABLE);
         }
         if (ally.get() == Alliance.Blue) {
+            //System.out.println("Alliance Blue");
             set_red(LEDConstants.DIO_DISABLE);
             set_blue(LEDConstants.DIO_ENABLE);
         }
@@ -45,7 +47,7 @@ public class LEDSubsystem extends SubsystemBase {
         System.out.println("I'm unset!");
         set_red(LEDConstants.DIO_DISABLE);
         set_blue(LEDConstants.DIO_DISABLE);
-        set_win(LEDConstants.DIO_DISABLE);
+        //set_win(LEDConstants.DIO_DISABLE);
     }
   }
 

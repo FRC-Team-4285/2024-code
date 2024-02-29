@@ -116,7 +116,7 @@ feeder_motor.setInverted(true);
        */
 
       if (topState == LineBreakConstants.LINEBREAK_OPEN && bottomState == LineBreakConstants.LINEBREAK_OPEN) {
-        feeder_motor.set(-0.4);
+        feeder_motor.set(-0.1);//Change this Value to change motor intake speed.
         shooter_subsystem.suck(-0.15);
         reached_top_sensor = false;
       }

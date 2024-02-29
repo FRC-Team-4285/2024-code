@@ -8,24 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.694308765672166,
-        "y": 0.29249274650568324
+        "x": 3.8438663100604122,
+        "y": 2.4374395542140253
       },
       "isLocked": false,
       "linkedName": "N8"
     },
     {
       "anchor": {
-        "x": 2.21,
+        "x": 2.205906929628587,
         "y": 4.1
       },
       "prevControl": {
-        "x": 0.8896895703530137,
-        "y": 3.987651110694147
+        "x": 2.595897258302831,
+        "y": 2.242444389876904
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "C Shoot Mid"
+      "linkedName": "Shoot6"
     }
   ],
   "rotationTargets": [],

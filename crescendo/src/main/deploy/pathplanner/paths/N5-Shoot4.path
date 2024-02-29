@@ -4,28 +4,28 @@
     {
       "anchor": {
         "x": 8.3,
-        "y": 7.46
+        "y": 5.7836
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.339563843118188,
-        "y": 7.70230899131632
+        "x": 6.544549336129553,
+        "y": 6.620085829245293
       },
       "isLocked": false,
-      "linkedName": "N4"
+      "linkedName": "N5"
     },
     {
       "anchor": {
-        "x": 4.79934261531231,
-        "y": 5.55
+        "x": 2.9,
+        "y": 7.000326399702681
       },
       "prevControl": {
-        "x": 3.7993426153123098,
-        "y": 5.55
+        "x": 4.438601561288634,
+        "y": 7.20539772195934
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "A Stage Shoot"
+      "linkedName": "Shoot4"
     }
   ],
   "rotationTargets": [],
@@ -33,13 +33,13 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 1.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0,
+    "rotation": -153.4,
     "rotateFast": false
   },
   "reversed": false,
@@ -48,5 +48,5 @@
     "rotation": 180.0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }
