@@ -3,37 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.205906929628587,
-        "y": 4.1
+        "x": 0.8896895703530137,
+        "y": 4.289893615416685
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.4399011268331336,
-        "y": 2.778681091803989
+        "x": 1.5344235816676761,
+        "y": 3.192504162786104
       },
       "isLocked": false,
-      "linkedName": "Shoot6"
+      "linkedName": "Shoot3"
     },
     {
       "anchor": {
-        "x": 8.27,
-        "y": 0.7528
+        "x": 7.4516657295422855,
+        "y": 0.752
       },
       "prevControl": {
-        "x": 3.043635410928779,
-        "y": 2.684233751418573
+        "x": 6.4516657295422855,
+        "y": 0.7520000000000002
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "N8"
+      "linkedName": "N8Swipe"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 1.5,
+    "maxVelocity": 5.0,
+    "maxAcceleration": 2.25,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
@@ -45,7 +45,7 @@
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 153.4,
+    "rotation": 120.0,
     "velocity": 0
   },
   "useDefaultConstraints": false

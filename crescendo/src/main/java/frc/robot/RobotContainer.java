@@ -54,7 +54,7 @@ public class RobotContainer {
 
   /* Human interfaces */
   private final Joystick driverJoystick;
-  private final Joystick loupedeck;
+  private final Joystick streamdeck;
   // private JoystickButton btn_arm_pivot_down;
   private JoystickButton btn_arm_pivot_up;
   private JoystickButton btn_shooter_feeder;
@@ -72,8 +72,9 @@ public class RobotContainer {
   private JoystickButton btn_aim_speaker;
   private JoystickButton btn_aim_amp;
   private JoystickButton btn_aim_human_feeder;
-  private JoystickButton btn_led_win_yes;
-  private JoystickButton btn_led_win_no;
+  private JoystickButton btn_led_win;
+  private JoystickButton btn_shooter;
+  private JoystickButton btn_defence;
 
   private JoystickButton btn_shooting_with_driver;  
   private JoystickButton btn_driver_fire;  
@@ -102,7 +103,7 @@ public class RobotContainer {
     m_robot = robot;
 
     driverJoystick = new Joystick(0);
-    loupedeck = new Joystick(1);
+    streamdeck = new Joystick(1);
 
     limit = () -> 0.55 - 0.45 * driverJoystick.getRawAxis(SwerveConstants.sliderAxis);
     /* maps sliderAxis to be between 0.1 and 1.0 */
@@ -145,8 +146,8 @@ public class RobotContainer {
   }
 
   //
-  public Joystick getloupedeck() {
-    return loupedeck;
+  public Joystick getstreamdeck() {
+    return streamdeck;
   }
 
   /**
@@ -173,17 +174,40 @@ public class RobotContainer {
     // cancelling on release.
     // m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
 
-    // btn_arm_pivot_down = new JoystickButton(loupedeck, 11);
+    // btn_arm_pivot_down = new JoystickButton(streamdeck, 11);
     // btn_arm_pivot_down.whileTrue(new
     // ArmPivotDown(m_robot.getArmPivotSubsystem()));
 
     btn_reset_yaw = new JoystickButton(driverJoystick, 7);
     btn_reset_yaw.onTrue(new InstantCommand(() -> m_swerveBase.setNeedPigeonReset(true)));
 
+    
+    //  btn_shooting_with_driver= new JoystickButton(driverJoystick, 11);
+    // // btn_shooting_without_cameras.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));;
+    // btn_shooting_with_driver.whileTrue(new ShooterTest(m_shooter));
+   
+    // btn_driver_fire = new JoystickButton(driverJoystick, 12);
+    // btn_driver_fire.whileTrue(new ShooterFeederFire(m_shooterFeeder));
+
     // btn_arm_pivot_up = new JoystickButton(driverJoystick, 3);
     // btn_aim_speaker.whileTrue(new ArmPivotShooting(m_ArmPivotSubsystem));
 
-    btn_aim_speaker = new JoystickButton(loupedeck, 11);
+    // btn_aim_speaker = new JoystickButton(streamdeck, 1);
+    // btn_aim_speaker.whileTrue(
+    //     new TeleopSwerve(
+    //         m_swerveBase,
+    //         () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.translationAxis), limit.getAsDouble()),
+    //         () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.strafeAxis), limit.getAsDouble()),
+    //         () -> angleController.calculate(m_swerveBase.getPose().getRotation().getRadians(), m_swerveBase.getAngleToSpeaker().getRadians()),
+    //         () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
+    //     ));
+    // btn_aim_speaker.whileTrue(new ArmPivotShooting(m_ArmPivotSubsystem));
+
+    btn_aim_speaker = new JoystickButton(streamdeck, 6);
+    btn_aim_speaker.whileTrue(new ArmPivotShooting(m_ArmPivotSubsystem));
+   
+   btn_aim_speaker = new JoystickButton(driverJoystick, 6);
+    btn_aim_speaker.whileTrue(new ArmPivotShooting(m_ArmPivotSubsystem));
     btn_aim_speaker.whileTrue(
         new TeleopSwerve(
             m_swerveBase,
@@ -192,20 +216,8 @@ public class RobotContainer {
             () -> angleController.calculate(m_swerveBase.getPose().getRotation().getRadians(), m_swerveBase.getAngleToSpeaker().getRadians()),
             () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
         ));
-    btn_aim_speaker.whileTrue(new ArmPivotShooting(m_ArmPivotSubsystem));
-
-    btn_aim_speaker = new JoystickButton(driverJoystick, 6);
-    btn_aim_speaker.whileTrue(
-        new TeleopSwerve(
-            m_swerveBase,
-            () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.translationAxis), limit.getAsDouble()),
-            () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.strafeAxis), limit.getAsDouble()),
-            () -> angleController.calculate(m_swerveBase.getPose().getRotation().getRadians(), m_swerveBase.getAngleToSpeaker().getRadians()),
-            () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
-        ));
-    btn_aim_speaker.whileTrue(new ArmPivotShooting(m_ArmPivotSubsystem));
-
-    btn_aim_amp = new JoystickButton(loupedeck, 12);
+   
+    btn_aim_amp = new JoystickButton(streamdeck, 4);
     btn_aim_amp.whileTrue(
         new TeleopSwerve(
             m_swerveBase,
@@ -215,7 +227,7 @@ public class RobotContainer {
             () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
         ));
 
-    btn_aim_human_feeder = new JoystickButton(loupedeck, 13);
+    btn_aim_human_feeder = new JoystickButton(streamdeck, 12);
     btn_aim_human_feeder.whileTrue(
         new TeleopSwerve(
             m_swerveBase,
@@ -226,92 +238,89 @@ public class RobotContainer {
         ));
     
     // Intakes Note From Floor And Uses Line Breaks To Stop Note At Specific Position
-    btn_floor_feeder = new JoystickButton(driverJoystick, 2);//loupedeck 14
+    btn_floor_feeder = new JoystickButton(streamdeck, 15);
     btn_floor_feeder.whileTrue(new FloorFeederTest(m_intake));
     btn_floor_feeder.whileTrue(new ArmPivotErrected(m_ArmPivotSubsystem));
     btn_floor_feeder.whileTrue(new ShooterFeederPickUp(m_shooterFeeder));
     // btn_floor_feeder.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
 
-// Note intake no robot centric
-    btn_floor_feeder = new JoystickButton(loupedeck, 15);
-    btn_floor_feeder.whileTrue(new FloorFeederTest(m_intake));
-    btn_floor_feeder.whileTrue(new ArmPivotErrected(m_ArmPivotSubsystem));
-    btn_floor_feeder.whileTrue(new ShooterFeederPickUp(m_shooterFeeder));
+// // Note intake no robot centric
+//     btn_floor_feeder = new JoystickButton(streamdeck, 15);
+//     btn_floor_feeder.whileTrue(new FloorFeederTest(m_intake));
+//     btn_floor_feeder.whileTrue(new ArmPivotErrected(m_ArmPivotSubsystem));
+//     btn_floor_feeder.whileTrue(new ShooterFeederPickUp(m_shooterFeeder));
     // Turns on Shooter Wheels when held
-    // btn_arm_pivot_up = new JoystickButton(loupedeck, 2);
+    // btn_arm_pivot_up = new JoystickButton(streamdeck, 2);
     // btn_arm_pivot_up.whileTrue(new ShooterTest(m_robot.getShooterSubsystem()));
 
     // Will Push The Note At Full Speed Into Shooter
-    btn_arm_pivot_up = new JoystickButton(loupedeck, 2);
+    btn_arm_pivot_up = new JoystickButton(streamdeck, 10);
     btn_arm_pivot_up.whileTrue(new ShooterFeederFire(m_shooterFeeder));
 
+    btn_shooter = new JoystickButton(streamdeck, 9);
+    btn_shooter.whileTrue(new ShooterTest(m_shooter));
+
     // Feeds Note At Slower Speed For AMP
-    btn_shooter_feeder = new JoystickButton(loupedeck, 3);
+    btn_shooter_feeder = new JoystickButton(streamdeck, 5);
     btn_shooter_feeder.whileTrue(new ShooterFeederAMP(m_shooterFeeder));
 
-    btn_led_win_yes = new JoystickButton(driverJoystick, 10);
-    btn_led_win_yes.whileTrue(new LEDWinYes(m_led));
-
-    btn_led_win_no = new JoystickButton(driverJoystick, 9);
-    btn_led_win_no.whileTrue(new LEDWinNo(m_led));
+    btn_led_win = new JoystickButton(streamdeck, 3);
+    btn_led_win.whileFalse(new LEDWinYes(m_led));
+    btn_led_win.whileTrue(new LEDWinNo(m_led));
 
     // Emergency Stop For Pivot
-    // btn_armP_pivot_stop = new JoystickButton(loupedeck, 4);
+    // btn_armP_pivot_stop = new JoystickButton(streamdeck, 4);
     // btn_armP_pivot_stop.toggleOnTrue(m_ArmPivotSubsystem.stopCommand());
     // Moves Pivit Based of of feild position
 
     // IDK
-    // btn_shooting = new JoystickButton(driverJoystick, 12);
+    // btn_shooting = new JoystickButton(streamdeck, 12);
     // btn_shooting.whileTrue(new ArmPivotShooting (m_ArmPivotSubsystem));
 
     // Gets Note From Human Feeder And Uses Line Breaks To Stop Note At Specific Position
-    btn_human_feeder = new JoystickButton(driverJoystick, 10);// loupedeck 4
+    btn_human_feeder = new JoystickButton(streamdeck, 11);// streamdeck 4
     btn_human_feeder.whileTrue(new ArmPivotHumanFeeder (m_ArmPivotSubsystem));
     btn_human_feeder.whileTrue(new ShooterFeederHuman(m_shooterFeeder));
     //btn_human_feeder.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
     //btn_human_feeder.whileTrue(new ShooterFeederHuman(m_shooterFeeder));
 
     // Moves Arm Into Travel Position
-    btn_store = new JoystickButton(loupedeck, 5);
+    btn_store = new JoystickButton(streamdeck, 2);
     btn_store.whileTrue(new ArmPivotStore (m_ArmPivotSubsystem));
 
     // Moves Arm Into Starting Position
-    btn_store = new JoystickButton(loupedeck, 6);
+    btn_store = new JoystickButton(streamdeck, 6);
     btn_store.whileTrue(new ArmPivotErrected (m_ArmPivotSubsystem));
 
     // Shoots Note From Directly In Front Of Speaker
-    btn_shooting_without_cameras = new JoystickButton(loupedeck, 7);
+    btn_shooting_without_cameras = new JoystickButton(streamdeck, 7);
     // btn_shooting_without_cameras.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
     btn_shooting_without_cameras.whileTrue(new ShootingWithoutCameras(m_ArmPivotSubsystem));
     btn_shooting_without_cameras.whileTrue(new ShooterTest(m_shooter));
 
-    // Shoots Note From Front Leg Of Stage
-    btn_shooting_without_cameras_stage_leg = new JoystickButton(loupedeck,8);
-    // btn_shooting_without_cameras_stage_leg.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
-    btn_shooting_without_cameras_stage_leg.whileTrue(new ShootingWithoutCamerasStageLeg(m_ArmPivotSubsystem));
-    btn_shooting_without_cameras_stage_leg.whileTrue(new ShooterTest(m_shooter));
+    // // Shoots Note From Front Leg Of Stage
+    // btn_shooting_without_cameras_stage_leg = new JoystickButton(streamdeck,8);
+    // // btn_shooting_without_cameras_stage_leg.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));
+    // btn_shooting_without_cameras_stage_leg.whileTrue(new ShootingWithoutCamerasStageLeg(m_ArmPivotSubsystem));
+    // btn_shooting_without_cameras_stage_leg.whileTrue(new ShooterTest(m_shooter));
 
-    // Shoots Note From Right Leg Of Stage
-    btn_shooting_without_cameras_2nd_stage_leg = new JoystickButton(loupedeck, 9);
-    // btn_shooting_without_cameras_2nd_stage_leg.whileFalse(newArmPivotStore(m_robot.getArmPivotSubsystem()));
-    btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShootingWithoutCameras2ndStageLeg(m_ArmPivotSubsystem));
-    btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShooterTest(m_shooter));
+    // // Shoots Note From Right Leg Of Stage
+    // btn_shooting_without_cameras_2nd_stage_leg = new JoystickButton(streamdeck, 9);
+    // // btn_shooting_without_cameras_2nd_stage_leg.whileFalse(newArmPivotStore(m_robot.getArmPivotSubsystem()));
+    // btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShootingWithoutCameras2ndStageLeg(m_ArmPivotSubsystem));
+    // btn_shooting_without_cameras_2nd_stage_leg.whileTrue(new ShooterTest(m_shooter));
 
     // Shoots Note To Go Into AMP
-    btn_amp_scoring_pos = new JoystickButton(loupedeck, 10);// loupedeck 10
+    btn_amp_scoring_pos = new JoystickButton(streamdeck, 1);// streamdeck 10
     // btn_amp_scoring_pos.whileFalse(newArmPivotStore(m_robot.getArmPivotSubsystem()));
     btn_amp_scoring_pos.whileTrue(new AMPScoringPos(m_ArmPivotSubsystem));
     btn_amp_scoring_pos.whileTrue(new ShooterAMP(m_shooter));
 
-
-
-
-     btn_shooting_with_driver= new JoystickButton(driverJoystick, 11);
-    // btn_shooting_without_cameras.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));;
-    btn_shooting_with_driver.whileTrue(new ShooterTest(m_shooter));
-   
-    btn_driver_fire = new JoystickButton(driverJoystick, 12);
-    btn_driver_fire.whileTrue(new ShooterFeederFire(m_shooterFeeder));
+    btn_defence = new JoystickButton(streamdeck, 13);
+    btn_defence.whileTrue(new ShootingDefencePos(m_ArmPivotSubsystem));
+    btn_defence.whileTrue(new ShooterDefence(m_shooter));
+    btn_defence.whileTrue(new FloorFeederTest(m_intake));
+    btn_floor_feeder.whileTrue(new ShooterFeederPickUp(m_shooterFeeder));
 
     // Lets Pathplanner acsess commands 
     NamedCommands.registerCommand("Shoot", (new ArmPivotShooting(m_ArmPivotSubsystem)));
@@ -337,7 +346,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     // return Autos.exampleAuto(m_exampleSubsystem);
-    return AutoBuilder.buildAuto("B-N2-Shoot5");//"test"mChooser.getSelected()
+    return AutoBuilder.buildAuto("A-N1-Shoot4-N4-Shoot4");//"test"mChooser.getSelected()
   }
 
   public SwerveBase getSwerveSubsytem() {

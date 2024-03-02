@@ -287,7 +287,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
   }
 
   public Rotation2d getAmpAngle(){
-    return DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(-90) : Rotation2d.fromDegrees(90);
+    return DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(-270) : Rotation2d.fromDegrees(270);
   }
 
   public Pose2d getAmpPose(){
@@ -299,7 +299,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
   }
 
   public Rotation2d getHumanFeederAngle(){
-    return DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(-45) : Rotation2d.fromDegrees(45);
+    return DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(-120) : Rotation2d.fromDegrees(120);
   }
 
   public Pose2d getHumanFeederPose(){

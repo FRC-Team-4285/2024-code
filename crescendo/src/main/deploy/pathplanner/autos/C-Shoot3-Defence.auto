@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.41,
-      "y": 7.0
+      "x": 1.4356760304969556,
+      "y": 4.114397967513275
     },
     "rotation": 180.0
   },
@@ -18,7 +18,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "A-Shoot1"
+                  "pathName": "C-Shoot3"
                 }
               },
               {
@@ -40,7 +40,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 1.25
+                        "waitTime": 1.2
                       }
                     },
                     {
@@ -62,31 +62,38 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 4.0
+                  "waitTime": 4.1
                 }
               },
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Shoot1-N1"
+                  "pathName": "Shoot3-N8"
                 }
               },
               {
-                "type": "named",
+                "type": "parallel",
                 "data": {
-                  "name": "Errected"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "FeederIntake"
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Intake"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Errected"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "FeederIntake"
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -99,13 +106,13 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 1.5
+                  "waitTime": 1.41
                 }
               },
               {
                 "type": "path",
                 "data": {
-                  "pathName": "N1-Shoot4"
+                  "pathName": "N8 Turn"
                 }
               },
               {
@@ -125,7 +132,7 @@
                           {
                             "type": "named",
                             "data": {
-                              "name": "AlignShooter"
+                              "name": "ShootDefence"
                             }
                           },
                           {
@@ -158,17 +165,48 @@
                             "data": {
                               "name": "Shoot"
                             }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "AlignShooter"
-                            }
                           }
                         ]
                       }
                     }
                   ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "N8 Turn-N5"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Feed"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shoot"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootDefence"
                 }
               }
             ]
@@ -181,124 +219,35 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 4.0
+                  "waitTime": 5.0
                 }
               },
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Shoot4-N4"
+                  "pathName": "Mid-N5-N4"
                 }
               },
               {
-                "type": "sequential",
+                "type": "parallel",
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
+                      "type": "named",
                       "data": {
-                        "waitTime": 1.5
+                        "name": "Errected"
                       }
                     },
                     {
-                      "type": "parallel",
+                      "type": "named",
                       "data": {
-                        "commands": [
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Errected"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "FeederIntake"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Intake"
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "deadline",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "N4-Shoot4"
-                }
-              },
-              {
-                "type": "sequential",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "deadline",
-                      "data": {
-                        "commands": [
-                          {
-                            "type": "wait",
-                            "data": {
-                              "waitTime": 3.5
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "AlignShooter"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Shoot"
-                            }
-                          }
-                        ]
+                        "name": "Intake"
                       }
                     },
                     {
-                      "type": "parallel",
+                      "type": "named",
                       "data": {
-                        "commands": [
-                          {
-                            "type": "wait",
-                            "data": {
-                              "waitTime": 0.25
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Shoot"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Feed"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "AlignShooter"
-                            }
-                          }
-                        ]
+                        "name": "FeederIntake"
                       }
                     }
                   ]

@@ -65,19 +65,21 @@ public final class Constants {
     public static final int POSITION_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 11;
     public static final int POSITION_AMP_SCORING_POS = 12;
     public static final int POSITION_SHOOTING_WITHOUT_CAMERAS_N1 = 13;
+    public static final int POSITION_SHOOTING_DEFENCE = 14;
 
     public static final double POSITION_PID_STARTING = 0;// Robot Will go here on start
     public static final double POSITION_PID_INTAKE_FLOOR = POSITION_STARTING;
     public static final double POSITION_PID_INTAKE_FEEDER = 1.31;
     public static final double POSITION_PID_AMP_SCORING = -2.3333;
     public static final double POSITION_PID_HUMAN_FEEDER = -2.904;
-    public static final double POSITION_PID_STORE = 6.6;
+    public static final double POSITION_PID_STORE = 6.214284;
     public static final double POSITION_PID_ERRECTED = 0;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS = 2.1666;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 3.41;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG = 3.15;
     public static final double POSITION_PID_AMP_SCORING_POS = -1.9; //-1.738;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_N1 = 3.071426;
+    public static final double POSITION_PID_SHOOTING_DEFENCE = .2;
 
     // 36 inch -- 1.31
     // 42 inch -- 1.336
@@ -186,7 +188,7 @@ public final class Constants {
 
     public static Translation2d mDriveRadius = new Translation2d(trackWidth/2, wheelBase / 2);
     /* Swerve Profiling Values */
-    public static final double maxSpeed = 1.9; // NOT a speed unit; robot gets faster if this is lower 2.0//was 1.3
+    public static final double maxSpeed = 1.3; // NOT a speed unit; robot gets faster if this is lower 2.0//was 1.3
     public static final double maxAngularVelocity = 12.0;
 
     public static final int frontLeftRotationMotorId = 2;
@@ -264,19 +266,19 @@ public final class Constants {
     //     new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45)));
      
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_1 = new Transform3d(
-        new Translation3d(-0.063, 0.3125, 0.562),// Get from CAD Model In meters-0.063, -0.3125, 0.562
+        new Translation3d(-0.063, -0.3125, 0.562),// Get from CAD Model In meters-0.063, -0.3125, 0.562
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-45.0)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_2 = new Transform3d(
-        new Translation3d(-0.063, -0.3125, 0.562),//0.063, -0.3125, 0.562
+        new Translation3d(0.063, -0.3125, 0.562),//0.063, -0.3125, 0.562
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(-135)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_3 = new Transform3d(
-        new Translation3d(0.063, -0.3125, 0.562),//0.063, 0.3125, 0.562
+        new Translation3d(0.063, 0.3125, 0.562),//0.063, 0.3125, 0.562
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(135)));
 
     public static final Transform3d APRILTAG_CAMERA_TO_ROBOT_4 = new Transform3d(
-        new Translation3d(0.063, 0.3125, 0.562),//-0.063, 0.3125, 0.562
+        new Translation3d(-0.063, 0.3125, 0.562),//-0.063, 0.3125, 0.562
         new Rotation3d(0.0, Units.degreesToRadians(0.0), Units.degreesToRadians(45)));
     
     //Lime Light 

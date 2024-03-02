@@ -79,6 +79,18 @@ public class ShooterSubsystem extends SubsystemBase {
     shooter_motor_b.set(0.079);
   }
 
+   public void shootdefence1() {
+    is_firing = true;
+    shooter_motor_a.set(0.15);
+    shooter_motor_b.set(0.15);
+  }
+
+   public void shootdefence2() {
+    is_firing = true;
+    shooter_motor_a.set(0.1);
+    shooter_motor_b.set(0.1);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
