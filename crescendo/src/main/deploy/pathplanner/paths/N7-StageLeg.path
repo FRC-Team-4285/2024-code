@@ -3,43 +3,49 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.9,
-        "y": 7.0
+        "x": 8.387253639115354,
+        "y": 2.417940037780313
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.9273909824865756,
-        "y": 7.0
+        "x": 6.105810216371025,
+        "y": 0.33149177937310736
       },
       "isLocked": false,
-      "linkedName": "N1"
+      "linkedName": "N7"
     },
     {
       "anchor": {
-        "x": 0.7921919881844527,
-        "y": 6.8150809935824155
+        "x": 3.1613832348804856,
+        "y": 3.2271699697793705
       },
       "prevControl": {
-        "x": 0.7921919881844527,
-        "y": 6.8150809935824155
+        "x": 3.8438663100604127,
+        "y": 2.37894100491289
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Shoot1"
+      "linkedName": "Stage Leg"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.65,
+      "rotationDegrees": 145.0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 1.5,
-    "maxAcceleration": 2.5,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -120.0,
+    "rotation": 145.0,
     "rotateFast": false
   },
   "reversed": false,

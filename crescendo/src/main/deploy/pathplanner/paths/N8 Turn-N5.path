@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.3,
-        "y": 1.591
+        "x": 8.465251704850203,
+        "y": 1.5892105893475446
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.3,
-        "y": 2.591
+        "x": 8.465251704850203,
+        "y": 2.5892105893475446
       },
       "isLocked": false,
       "linkedName": "Mid-N7-N8"
     },
     {
       "anchor": {
-        "x": 8.3,
-        "y": 6.62
+        "x": 8.465251704850203,
+        "y": 6.737082927847566
       },
       "prevControl": {
-        "x": 8.3,
-        "y": 5.62
+        "x": 8.465251704850203,
+        "y": 5.737082927847566
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,20 +32,20 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 1.5,
+    "maxVelocity": 4.5,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0,
+    "rotation": -70.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": -90.0,
+    "rotation": -70.0,
     "velocity": 0
   },
   "useDefaultConstraints": false

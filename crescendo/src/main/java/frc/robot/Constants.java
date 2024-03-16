@@ -51,7 +51,7 @@ public final class Constants {
     public static final int MOTOR_ARM_PIVOT_B = 21;
 
     // PID Locations
-     public static final int POSITION_STARTING = 0;
+    //  public static final int POSITION_STARTING = 0;
     public static final int POSITION_INTAKE_FLOOR = 1;
     public static final int POSITION_INTAKE_FEEDER = 2;
     public static final int POSITION_TRAVEL = 3;
@@ -67,8 +67,8 @@ public final class Constants {
     public static final int POSITION_SHOOTING_WITHOUT_CAMERAS_N1 = 13;
     public static final int POSITION_SHOOTING_DEFENCE = 14;
 
-    public static final double POSITION_PID_STARTING = 0;// Robot Will go here on start
-    public static final double POSITION_PID_INTAKE_FLOOR = POSITION_STARTING;
+    // public static final double POSITION_PID_STARTING = 0;// Robot Will go here on start
+    public static final double POSITION_PID_INTAKE_FLOOR = 0;
     public static final double POSITION_PID_INTAKE_FEEDER = 1.31;
     public static final double POSITION_PID_AMP_SCORING = -2.3333;
     public static final double POSITION_PID_HUMAN_FEEDER = -2.904;
@@ -79,7 +79,7 @@ public final class Constants {
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG = 3.15;
     public static final double POSITION_PID_AMP_SCORING_POS = -1.9; //-1.738;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_N1 = 3.071426;
-    public static final double POSITION_PID_SHOOTING_DEFENCE = .2;
+    public static final double POSITION_PID_SHOOTING_DEFENCE = .1;
 
     // 36 inch -- 1.31
     // 42 inch -- 1.336
@@ -129,8 +129,8 @@ public final class Constants {
      */
 
     // NEO Motor
-    public static final int MOTOR_INTAKE_FLOOR = 13;
-
+    public static final int MOTOR_INTAKE_FLOOR_1 = 13;
+    public static final int MOTOR_INTAKE_FLOOR_2 = 16;
   }
 
   public static class ShooterConstants {
@@ -188,7 +188,7 @@ public final class Constants {
 
     public static Translation2d mDriveRadius = new Translation2d(trackWidth/2, wheelBase / 2);
     /* Swerve Profiling Values */
-    public static final double maxSpeed = 1.3; // NOT a speed unit; robot gets faster if this is lower 2.0//was 1.3
+    public static final double maxSpeed = 0.95 ; // NOT a speed unit; robot gets faster if this is lower 2.0//was 1.3
     public static final double maxAngularVelocity = 12.0;
 
     public static final int frontLeftRotationMotorId = 2;

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.4516657295422855,
-        "y": 0.752
+        "x": 7.470776366730883,
+        "y": 0.6629835587462148
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.445668857149679,
-        "y": 0.7133434209888375
+        "x": 8.464779494338273,
+        "y": 0.6243269797350524
       },
       "isLocked": false,
       "linkedName": "N8Swipe"
     },
     {
       "anchor": {
-        "x": 8.3,
-        "y": 1.591
+        "x": 8.465251704850203,
+        "y": 1.5892105893475446
       },
       "prevControl": {
-        "x": 8.281950694955519,
-        "y": 0.7484258843161573
+        "x": 8.447202399805722,
+        "y": 0.7466364736637019
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,7 +39,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0,
+    "rotation": -70.0,
     "rotateFast": false
   },
   "reversed": false,

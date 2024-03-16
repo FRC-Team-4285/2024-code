@@ -30,10 +30,10 @@ public class ArmPivotUp extends Command {
   public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-    m_subsystem.go_to_mode(ArmPivotConstants.POSITION_STARTING);
-  }
+  // @Override
+  // public void execute() {
+  //   m_subsystem.go_to_mode(ArmPivotConstants.POSITION_STARTING);
+  // }
 
   // Called once the command ends or is interrupted.
   @Override

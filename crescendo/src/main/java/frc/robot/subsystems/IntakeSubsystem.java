@@ -24,7 +24,8 @@ public class IntakeSubsystem extends SubsystemBase {
 
   public IntakeSubsystem() {
 
-    floor_feeder_motor = new CANSparkMax(IntakeConstants.MOTOR_INTAKE_FLOOR, MotorType.kBrushless);
+    floor_feeder_motor = new CANSparkMax(IntakeConstants.MOTOR_INTAKE_FLOOR_1, MotorType.kBrushless);
+    floor_feeder_motor = new CANSparkMax(IntakeConstants.MOTOR_INTAKE_FLOOR_2, MotorType.kBrushless);
     floor_feeder_encoder = floor_feeder_motor.getAlternateEncoder(SparkMaxAlternateEncoder.Type.kQuadrature, 4096);
     floor_feeder_pid = floor_feeder_motor.getPIDController();
     floor_feeder_pid.setFeedbackDevice(floor_feeder_encoder);

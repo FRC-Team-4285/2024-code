@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3771774811958186,
-      "y": 5.55
+      "x": 1.4,
+      "y": 4.114397967513275
     },
     "rotation": 180.0
   },
@@ -16,9 +16,9 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
+                "type": "path",
                 "data": {
-                  "waitTime": 0.75
+                  "pathName": "C-Shoot3"
                 }
               },
               {
@@ -40,7 +40,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.6
+                        "waitTime": 1.25
                       }
                     },
                     {
@@ -60,15 +60,9 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
-                "data": {
-                  "waitTime": 4.0
-                }
-              },
-              {
                 "type": "path",
                 "data": {
-                  "pathName": "B-N2"
+                  "pathName": "Shoot3-N3"
                 }
               },
               {
@@ -104,9 +98,9 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
+                "type": "path",
                 "data": {
-                  "waitTime": 1.5
+                  "pathName": "N3-Shoot3"
                 }
               },
               {
@@ -120,13 +114,25 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.0
+                              "waitTime": 1.75
                             }
                           },
                           {
                             "type": "named",
                             "data": {
-                              "name": "ShootN1"
+                              "name": "Errected"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Intake"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "FeederIntake"
                             }
                           },
                           {
@@ -139,7 +145,7 @@
                       }
                     },
                     {
-                      "type": "parallel",
+                      "type": "deadline",
                       "data": {
                         "commands": [
                           {
@@ -151,7 +157,7 @@
                           {
                             "type": "named",
                             "data": {
-                              "name": "Feed"
+                              "name": "ShootFrontofSpeaker"
                             }
                           },
                           {
@@ -176,13 +182,32 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 5.0
+                  "waitTime": 0.25
                 }
               },
               {
+                "type": "named",
+                "data": {
+                  "name": "Shoot"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Feed"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
                 "type": "path",
                 "data": {
-                  "pathName": "Shoot5-N6"
+                  "pathName": "Shoot3-N8"
                 }
               },
               {
@@ -192,7 +217,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 3.0
+                        "waitTime": 2.5
                       }
                     },
                     {
@@ -233,7 +258,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "N6-Shoot5"
+                  "pathName": "N8-Shoot3"
                 }
               },
               {
@@ -241,9 +266,34 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
+                      "type": "deadline",
                       "data": {
-                        "waitTime": 3.0
+                        "commands": [
+                          {
+                            "type": "wait",
+                            "data": {
+                              "waitTime": 3.25
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Errected"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Intake"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "FeederIntake"
+                            }
+                          }
+                        ]
                       }
                     },
                     {
@@ -253,13 +303,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.0
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "ShootN1"
+                              "waitTime": 0.75
                             }
                           },
                           {
@@ -267,36 +311,42 @@
                             "data": {
                               "name": "Shoot"
                             }
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "type": "parallel",
-                      "data": {
-                        "commands": [
-                          {
-                            "type": "wait",
-                            "data": {
-                              "waitTime": 0.25
-                            }
                           },
                           {
                             "type": "named",
                             "data": {
-                              "name": "Feed"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Shoot"
+                              "name": "ShootFrontofSpeaker"
                             }
                           }
                         ]
                       }
                     }
                   ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.25
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shoot"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Feed"
                 }
               }
             ]

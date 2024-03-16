@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
+import java.beans.Expression;
 import java.sql.Driver;
 
 import com.revrobotics.CANSparkBase;
@@ -30,6 +31,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ArmPivotConstants;
 
@@ -88,7 +90,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
       // arm_pid_controller.enableContinuousInput(-0.1, 0.1);
       // arm_pid_controller.setOutputRange(-0.1, 0.1);
       
-      desired_location = ArmPivotConstants.POSITION_PID_STARTING;
+      // desired_location = ArmPivotConstants.POSITION_PID_STARTING;
       
       // Define through-bore encoder attached to hex-shaft.
       // ENCA - DIO 8
@@ -239,38 +241,66 @@ public class ArmPivotSubsystem extends SubsystemBase {
 
 
 //with plus 15
-    angleTreeMap.put(45.0, 2.0);
-    angleTreeMap.put(51.0, 2.2381);
-    angleTreeMap.put(57.0, 2.3571);
-    angleTreeMap.put(63.0, 2.3571);
-    angleTreeMap.put(69.0, 2.5476);
-    angleTreeMap.put(75.0, 2.7142);
-    angleTreeMap.put(81.0, 2.7857);
-    angleTreeMap.put(87.0, 2.9285);
-    angleTreeMap.put(93.0, 2.8809);
-    angleTreeMap.put(99.0, 3.0238);
-    angleTreeMap.put(105.0, 3.0714);
-    angleTreeMap.put(111.0, 3.1666);
-    angleTreeMap.put(117.0, 3.1190);
-    angleTreeMap.put(123.0, 3.0714);
-    angleTreeMap.put(129.0, 3.1428);
-    angleTreeMap.put(135.0, 3.2380);
-    angleTreeMap.put(141.0, 3.2857);
-    angleTreeMap.put(147.0, 3.2619);
-    angleTreeMap.put(153.0, 3.2380);
-    angleTreeMap.put(159.0, 3.3333);
-    angleTreeMap.put(165.0, 3.3333);
-    angleTreeMap.put(171.0, 3.3809);
-    angleTreeMap.put(177.0, 3.3571);
-    angleTreeMap.put(183.0, 3.3809);
-    angleTreeMap.put(189.0, 3.3809);
-    angleTreeMap.put(195.0, 3.4285);
+    // angleTreeMap.put(45.0, 2.0);
+    // angleTreeMap.put(51.0, 2.2381);
+    // angleTreeMap.put(57.0, 2.3571);
+    // angleTreeMap.put(63.0, 2.3571);
+    // angleTreeMap.put(69.0, 2.5476);
+    // angleTreeMap.put(75.0, 2.7142);
+    // angleTreeMap.put(81.0, 2.7857);
+    // angleTreeMap.put(87.0, 2.9285);
+    // angleTreeMap.put(93.0, 2.8809);
+    // angleTreeMap.put(99.0, 3.0238);
+    // angleTreeMap.put(105.0, 3.0714);
+    // angleTreeMap.put(111.0, 3.1666);
+    // angleTreeMap.put(117.0, 3.1190);
+    // angleTreeMap.put(123.0, 3.0714);
+    // angleTreeMap.put(129.0, 3.1428);
+    // angleTreeMap.put(135.0, 3.2380);
+    // angleTreeMap.put(141.0, 3.2857);
+    // angleTreeMap.put(147.0, 3.2619);
+    // angleTreeMap.put(153.0, 3.2380);
+    // angleTreeMap.put(159.0, 3.3333);
+    // angleTreeMap.put(165.0, 3.3333);
+    // angleTreeMap.put(171.0, 3.3809);
+    // angleTreeMap.put(177.0, 3.3571);
+    // angleTreeMap.put(183.0, 3.3809);
+    // angleTreeMap.put(189.0, 3.3809);
+    // angleTreeMap.put(195.0, 3.4285);
     // 180 inch -- 1.5375
     // 186 inch -- 1.5425
     // 192 inch -- 1.54525
     // 198 inch -- 1.54
     // 204 inch -- 1.535
     // 216 inch --1.5375
+
+      //Tree Map Using Cameras At Home
+    angleTreeMap.put(48.0, 2.190476);
+    angleTreeMap.put(56.3, 2.285713);
+    angleTreeMap.put(65.6, 2.380951);
+    angleTreeMap.put(70.8, 2.499999);
+    angleTreeMap.put(80.7, 2.761903);
+    angleTreeMap.put(87.5, 2.880950);
+    angleTreeMap.put(96.3, 2.928569);
+    angleTreeMap.put(103.0, 3.047617);
+    angleTreeMap.put(109.9, 2.999998);
+    angleTreeMap.put(115.9, 3.071426);
+    angleTreeMap.put(124.0, 3.095236);
+    angleTreeMap.put(133.8, 3.190474);
+    angleTreeMap.put(142.0, 3.238093);
+    angleTreeMap.put(148.9, 3.380949);
+    angleTreeMap.put(161.2, 3.357140);
+    angleTreeMap.put(168.8, 3.404758);
+    angleTreeMap.put(181.0, 3.415860);//Tested With Auto Align
+    angleTreeMap.put(188.5, 3.422150);
+  //   angleTreeMap.put(153.0, 3.2380);
+  //   angleTreeMap.put(159.0, 3.3333);
+  //   angleTreeMap.put(165.0, 3.3333);
+  //   angleTreeMap.put(171.0, 3.3809);
+  //   angleTreeMap.put(177.0, 3.3571);
+  //   angleTreeMap.put(183.0, 3.3809);
+  //   angleTreeMap.put(189.0, 3.3809);
+  //   angleTreeMap.put(195.0, 3.4285);
   }
 
 
@@ -305,14 +335,17 @@ public class ArmPivotSubsystem extends SubsystemBase {
   public Pose2d getHumanFeederPose(){
     return humanfeederPose;
   }
+
+ 
+
   /**
    * Puts the arm into the desired mode.
    */
   public void go_to_mode(int MODE) {
-      if (MODE == ArmPivotConstants.POSITION_STARTING) {
-        desired_location = ArmPivotConstants.POSITION_PID_STARTING;
-      }
-      else if (MODE == ArmPivotConstants.POSITION_INTAKE_FLOOR) {
+      // if (MODE == ArmPivotConstants.POSITION_STARTING) {
+      //   desired_location = ArmPivotConstants.POSITION_PID_STARTING;
+      // }
+      if (MODE == ArmPivotConstants.POSITION_INTAKE_FLOOR) {
         desired_location = ArmPivotConstants.POSITION_PID_INTAKE_FLOOR;
       }
       else if (MODE == ArmPivotConstants.POSITION_INTAKE_FEEDER) {
@@ -348,6 +381,9 @@ public class ArmPivotSubsystem extends SubsystemBase {
       }
       else if (MODE == ArmPivotConstants.POSITION_SHOOTING_WITHOUT_CAMERAS_N1) {
         desired_location = ArmPivotConstants.POSITION_PID_SHOOTING_WITHOUT_CAMERAS_N1;
+      }
+       else if (MODE == ArmPivotConstants.POSITION_SHOOTING_DEFENCE) {
+        desired_location = ArmPivotConstants.POSITION_PID_SHOOTING_DEFENCE;
       }
       // Example
       // else if (MODE == ArmPivotConstants. (Name of COnstant)) {
@@ -421,6 +457,10 @@ public class ArmPivotSubsystem extends SubsystemBase {
   public void periodic() {
     // // This method will be called once per scheduler run
     // System.out.println(arm_pivot_encoder.isConnected() + " get" + arm_pivot_encoder.get() + " getDist " + arm_pivot_encoder.getDistance() + " getAbsPos" + arm_pivot_encoder.getAbsolutePosition() + " getPosOffset " + arm_pivot_encoder.getPositionOffset());
+    
+    speakerPose = field.getTagPose(7).get().toPose2d();
+    System.out.println(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(speakerPose.getTranslation())));
+  
 
     // // Get the current position from the encoder
     // double currentPosition = arm_pivot_encoder.get();

@@ -175,7 +175,8 @@ public class AprilTagSubsystem extends SubsystemBase {
     //   Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d5, visionPose5.timestampSeconds);
     // }
     // This method will be called once per scheduler run
-    // System.out.println("Pose: " + Robot.m_robotContainer.m_swerveBase.getPose3d());
+    //System.out.println("Pose: " + Robot.m_robotContainer.m_swerveBase.getPose3d());
+   
     publisher.set(Robot.m_robotContainer.m_swerveBase.getPose3d());
   }
 
