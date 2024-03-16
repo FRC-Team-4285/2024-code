@@ -72,6 +72,7 @@ public class RobotContainer {
   private JoystickButton btn_aim_speaker;
   private JoystickButton btn_aim_amp;
   private JoystickButton btn_aim_human_feeder;
+  private JoystickButton btn_aim_line;
   private JoystickButton btn_led_win;
   private JoystickButton btn_shooter;
   private JoystickButton btn_defence;
@@ -212,14 +213,14 @@ public class RobotContainer {
    
    btn_aim_speaker = new JoystickButton(driverJoystick, 6);
     btn_aim_speaker.whileTrue(new ArmPivotShooting(m_ArmPivotSubsystem));
-    btn_aim_speaker.whileTrue(
-        new TeleopSwerve(
-            m_swerveBase,
-            () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.translationAxis), limit.getAsDouble()),
-            () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.strafeAxis), limit.getAsDouble()),
-            () -> angleController.calculate(m_swerveBase.getPose().getRotation().getRadians(), m_swerveBase.getAngleToSpeaker().getRadians()),
-            () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
-        ));
+    // btn_aim_speaker.whileTrue(
+    //     new TeleopSwerve(
+    //         m_swerveBase,
+    //         () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.translationAxis), limit.getAsDouble()),
+    //         () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.strafeAxis), limit.getAsDouble()),
+    //         () -> angleController.calculate(m_swerveBase.getPose().getRotation().getRadians(), m_swerveBase.getAngleToSpeaker().getRadians()),
+    //         () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
+    //     ));
    
     btn_aim_amp = new JoystickButton(streamdeck, 10);
     btn_aim_amp.whileTrue(
@@ -238,6 +239,16 @@ public class RobotContainer {
             () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.translationAxis), limit.getAsDouble()),
             () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.strafeAxis), limit.getAsDouble()),
             () -> angleController.calculate(m_swerveBase.getPose().getRotation().getRadians(), m_ArmPivotSubsystem.getHumanFeederAngle().getRadians()),
+           () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
+        ));
+
+      btn_aim_line = new JoystickButton(streamdeck, 11);
+      btn_aim_line.whileTrue(
+        new TeleopSwerve(
+            m_swerveBase,
+            () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.translationAxis), limit.getAsDouble()),
+            () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.strafeAxis), limit.getAsDouble()),
+            () -> angleController.calculate(m_swerveBase.getPose().getRotation().getRadians(), m_ArmPivotSubsystem.getLineAngle().getRadians()),
            () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
         ));
     
@@ -361,7 +372,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     // return Autos.exampleAuto(m_exampleSubsystem);
-    return AutoBuilder.buildAuto("StraightLineTest");//mChooser.getSelected()
+    return AutoBuilder.buildAuto("A-N1-N4");//mChooser.getSelected()
   }
 
   public SwerveBase getSwerveSubsytem() {

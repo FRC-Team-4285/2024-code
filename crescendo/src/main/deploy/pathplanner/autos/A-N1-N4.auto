@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4,
-      "y": 4.114397967513275
+      "x": 1.41,
+      "y": 7.0
     },
     "rotation": 180.0
   },
@@ -40,7 +40,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 1.25
+                        "waitTime": 1.27
                       }
                     },
                     {
@@ -59,6 +59,12 @@
           "type": "deadline",
           "data": {
             "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 4.0
+                }
+              },
               {
                 "type": "path",
                 "data": {
@@ -104,69 +110,19 @@
                 }
               },
               {
-                "type": "sequential",
+                "type": "parallel",
                 "data": {
                   "commands": [
                     {
-                      "type": "deadline",
+                      "type": "named",
                       "data": {
-                        "commands": [
-                          {
-                            "type": "wait",
-                            "data": {
-                              "waitTime": 1.75
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Errected"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Intake"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "FeederIntake"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Shoot"
-                            }
-                          }
-                        ]
+                        "name": "ShootFrontofSpeaker"
                       }
                     },
                     {
-                      "type": "deadline",
+                      "type": "named",
                       "data": {
-                        "commands": [
-                          {
-                            "type": "wait",
-                            "data": {
-                              "waitTime": 0.25
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "ShootFrontofSpeaker"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Shoot"
-                            }
-                          }
-                        ]
+                        "name": "Shoot"
                       }
                     }
                   ]
@@ -272,7 +228,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 4.25
+                              "waitTime": 3.25
                             }
                           },
                           {
@@ -303,7 +259,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 0.25
+                              "waitTime": 1.25
                             }
                           },
                           {

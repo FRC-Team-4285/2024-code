@@ -74,7 +74,7 @@ public final class Constants {
     public static final double POSITION_PID_HUMAN_FEEDER = -2.904;
     public static final double POSITION_PID_STORE = 6.214284;
     public static final double POSITION_PID_ERRECTED = 0;
-    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS = 2.1666;
+    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS = 2.1666;//2.999998
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 3.41;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG = 3.15;
     public static final double POSITION_PID_AMP_SCORING_POS = -1.9; //-1.738;

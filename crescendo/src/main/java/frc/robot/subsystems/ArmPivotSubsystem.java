@@ -41,6 +41,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
   private Pose2d speakerPose;
   private Pose2d ampPose;
   private Pose2d humanfeederPose;
+  private Pose2d linePose;
   /** Pivots the arm. */
 
   private RelativeEncoder arm_pivot_encoder;
@@ -276,22 +277,39 @@ public class ArmPivotSubsystem extends SubsystemBase {
 
       //Tree Map Using Cameras At Home
     angleTreeMap.put(48.0, 2.190476);
+    angleTreeMap.put(52.15, 2.23805);
     angleTreeMap.put(56.3, 2.285713);
+    angleTreeMap.put(60.95, 2.333);
     angleTreeMap.put(65.6, 2.380951);
+    angleTreeMap.put(68.2, 2.4404);
     angleTreeMap.put(70.8, 2.499999);
+    angleTreeMap.put(75.75, 2.5859);
     angleTreeMap.put(80.7, 2.761903);
+    angleTreeMap.put(84.1, 2.8214);
     angleTreeMap.put(87.5, 2.880950);
+    angleTreeMap.put(91.9, 2.9047);
     angleTreeMap.put(96.3, 2.928569);
+    angleTreeMap.put(99.65, 2.98775);
     angleTreeMap.put(103.0, 3.047617);
+    angleTreeMap.put(106.45, 3.0238);
     angleTreeMap.put(109.9, 2.999998);
+    angleTreeMap.put(112.9, 3.03569);
     angleTreeMap.put(115.9, 3.071426);
+    angleTreeMap.put(119.95, 3.0833);
     angleTreeMap.put(124.0, 3.095236);
+    angleTreeMap.put(128.9, 3.1428);
     angleTreeMap.put(133.8, 3.190474);
+    angleTreeMap.put(137.9, 3.2142);
     angleTreeMap.put(142.0, 3.238093);
+    angleTreeMap.put(145.45, 3.30945);
     angleTreeMap.put(148.9, 3.380949);
+    angleTreeMap.put(155.05, 3.369);
     angleTreeMap.put(161.2, 3.357140);
+    angleTreeMap.put(165.0, 3.3809);
     angleTreeMap.put(168.8, 3.404758);
+    angleTreeMap.put(174.9, 3.41025);
     angleTreeMap.put(181.0, 3.415860);//Tested With Auto Align
+    angleTreeMap.put(184.75, 3.41895);
     angleTreeMap.put(188.5, 3.422150);
   //   angleTreeMap.put(153.0, 3.2380);
   //   angleTreeMap.put(159.0, 3.3333);
@@ -335,6 +353,19 @@ public class ArmPivotSubsystem extends SubsystemBase {
   public Pose2d getHumanFeederPose(){
     return humanfeederPose;
   }
+
+  public void setLinePose() {
+    speakerPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
+  }
+
+  public Rotation2d getLineAngle(){
+    return DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(-0) : Rotation2d.fromDegrees(0);
+  }
+
+  public Pose2d getLinePose(){
+    return linePose;
+  }
+
 
  
 
@@ -458,7 +489,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
     // // This method will be called once per scheduler run
     // System.out.println(arm_pivot_encoder.isConnected() + " get" + arm_pivot_encoder.get() + " getDist " + arm_pivot_encoder.getDistance() + " getAbsPos" + arm_pivot_encoder.getAbsolutePosition() + " getPosOffset " + arm_pivot_encoder.getPositionOffset());
     
-    speakerPose = field.getTagPose(7).get().toPose2d();
+    speakerPose = field.getTagPose(4).get().toPose2d();
     System.out.println(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(speakerPose.getTranslation())));
   
 
