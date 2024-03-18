@@ -78,6 +78,8 @@ public class RobotContainer {
   private JoystickButton btn_errected;
   private JoystickButton btn_line_scoring;
   private JoystickButton btn_cross_field;
+  private JoystickButton btn_reverse_feeder;
+
 
   private JoystickButton btn_shooting_with_driver;  
   private JoystickButton btn_driver_fire;  
@@ -229,6 +231,11 @@ public class RobotContainer {
     btn_floor_feeder.whileTrue(new ArmPivotErrected(m_ArmPivotSubsystem));
     btn_floor_feeder.whileTrue(new ShooterFeederPickUp(m_shooterFeeder));
 
+    btn_reverse_feeder = new JoystickButton(streamdeck, 4);
+    btn_reverse_feeder.whileTrue(new ReverseFeeder(m_intake));
+    btn_reverse_feeder.whileTrue(new ArmPivotErrected(m_ArmPivotSubsystem));
+    btn_reverse_feeder.whileTrue(new ShooterFeederHuman(m_shooterFeeder));
+
     btn_shooter = new JoystickButton(driverJoystick, 6);
     btn_shooter.whileTrue(new ShooterTest(m_shooter));
 
@@ -236,7 +243,7 @@ public class RobotContainer {
     btn_shooter_feeder = new JoystickButton(streamdeck, 8);
     btn_shooter_feeder.whileTrue(new ShooterFeederAMP(m_shooterFeeder));
 
-    btn_led_win = new JoystickButton(streamdeck, 4);
+    btn_led_win = new JoystickButton(streamdeck, 1);
     btn_led_win.whileFalse(new LEDWinYes(m_led));
     btn_led_win.whileTrue(new LEDWinNo(m_led));
 
@@ -319,7 +326,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     // return Autos.exampleAuto(m_exampleSubsystem);
-    return AutoBuilder.buildAuto("A-N1-N4");//mChooser.getSelected()
+    return AutoBuilder.buildAuto("StraightLineTest");//mChooser.getSelected()
   }
 
   public SwerveBase getSwerveSubsytem() {
