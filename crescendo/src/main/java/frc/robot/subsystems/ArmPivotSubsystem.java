@@ -354,8 +354,16 @@ public class ArmPivotSubsystem extends SubsystemBase {
     return humanfeederPose;
   }
 
-  public void setLinePose() {
+   public void setLinePose() {
     speakerPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
+  }
+
+  public Rotation2d getLineAngle(){
+    return DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(-0) : Rotation2d.fromDegrees(0);
+  }
+
+  public Pose2d getLinePose(){
+    return linePose;
   }
 
   

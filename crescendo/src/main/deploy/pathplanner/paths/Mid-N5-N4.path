@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.465251704850203,
-        "y": 6.737082927847566
+        "x": 8.3,
+        "y": 6.62
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.458896554248165,
-        "y": 6.725388773405126
+        "x": 8.293644849397962,
+        "y": 6.6083058455575605
       },
       "isLocked": false,
       "linkedName": "Mid-N4-N5"
@@ -32,8 +32,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 2.75,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },

@@ -2,7 +2,7 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4,
+      "x": 1.4356760304969556,
       "y": 4.114397967513275
     },
     "rotation": 180.0
@@ -60,9 +60,15 @@
           "data": {
             "commands": [
               {
+                "type": "wait",
+                "data": {
+                  "waitTime": 4.0
+                }
+              },
+              {
                 "type": "path",
                 "data": {
-                  "pathName": "Shoot3-N8"
+                  "pathName": "Shoot3-N3"
                 }
               },
               {
@@ -78,13 +84,13 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "FeederIntake"
+                        "name": "Errected"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Errected"
+                        "name": "FeederIntake"
                       }
                     }
                   ]
@@ -98,9 +104,15 @@
           "data": {
             "commands": [
               {
+                "type": "wait",
+                "data": {
+                  "waitTime": 1.5
+                }
+              },
+              {
                 "type": "path",
                 "data": {
-                  "pathName": "N8-StageLeg"
+                  "pathName": "N3-Shoot6"
                 }
               },
               {
@@ -114,38 +126,13 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 2.61
+                              "waitTime": 1.0
                             }
                           },
                           {
                             "type": "named",
                             "data": {
-                              "name": "FeederIntake"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Intake"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Errected"
-                            }
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "type": "deadline",
-                      "data": {
-                        "commands": [
-                          {
-                            "type": "wait",
-                            "data": {
-                              "waitTime": 0.5
+                              "name": "ShootN1"
                             }
                           },
                           {
@@ -153,11 +140,30 @@
                             "data": {
                               "name": "Shoot"
                             }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "parallel",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "wait",
+                            "data": {
+                              "waitTime": 0.25
+                            }
                           },
                           {
                             "type": "named",
                             "data": {
-                              "name": "AlignShooter"
+                              "name": "Feed"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Shoot"
                             }
                           }
                         ]
@@ -176,38 +182,13 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.25
+                  "waitTime": 5.0
                 }
               },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Feed"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shoot"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "AlignShooter"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "deadline",
-          "data": {
-            "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "StageLeg-N7"
+                  "pathName": "Shoot6-N8"
                 }
               },
               {
@@ -215,53 +196,15 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "named",
+                      "type": "wait",
                       "data": {
-                        "name": "Errected"
+                        "waitTime": 2.5
                       }
                     },
                     {
-                      "type": "named",
-                      "data": {
-                        "name": "FeederIntake"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Intake"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "deadline",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "N7-StageLeg"
-                }
-              },
-              {
-                "type": "sequential",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "deadline",
+                      "type": "parallel",
                       "data": {
                         "commands": [
-                          {
-                            "type": "wait",
-                            "data": {
-                              "waitTime": 2.62
-                            }
-                          },
                           {
                             "type": "named",
                             "data": {
@@ -282,31 +225,6 @@
                           }
                         ]
                       }
-                    },
-                    {
-                      "type": "deadline",
-                      "data": {
-                        "commands": [
-                          {
-                            "type": "wait",
-                            "data": {
-                              "waitTime": 0.5
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Shoot"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "AlignShooter"
-                            }
-                          }
-                        ]
-                      }
                     }
                   ]
                 }
@@ -319,21 +237,72 @@
           "data": {
             "commands": [
               {
-                "type": "named",
+                "type": "path",
                 "data": {
-                  "name": "Shoot"
+                  "pathName": "N8-Shoot6"
                 }
               },
               {
-                "type": "named",
+                "type": "sequential",
                 "data": {
-                  "name": "Feed"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "AlignShooter"
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 2.0
+                      }
+                    },
+                    {
+                      "type": "deadline",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "wait",
+                            "data": {
+                              "waitTime": 1.0
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "ShootN1"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Shoot"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "parallel",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "wait",
+                            "data": {
+                              "waitTime": 0.25
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Shoot"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Feed"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 }
               }
             ]

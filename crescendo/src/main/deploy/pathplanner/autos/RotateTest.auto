@@ -1,0 +1,30 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+<<<<<<< HEAD:crescendo/src/main/deploy/pathplanner/autos/StraightLineTest.auto
+      "x": 1.8354161173880559,
+      "y": 6.932078092184688
+=======
+      "x": 2.3521533028814288,
+      "y": 5.157622096716878
+>>>>>>> parent of 5a530a2 (Updates):crescendo/src/main/deploy/pathplanner/autos/RotateTest.auto
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "RotateTest"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

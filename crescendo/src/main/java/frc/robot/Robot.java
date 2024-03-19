@@ -39,7 +39,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.
     m_robotContainer = new RobotContainer(this);
     // m_climber = new ClimberSubsystem();
-
+ 
    // PortForwarder.add(5800, "photonvision.local", 5800);
   }
 
@@ -98,7 +98,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-
+ m_robotContainer.m_aprilTag.updatedPoseFromTag();
   }
 
   @Override

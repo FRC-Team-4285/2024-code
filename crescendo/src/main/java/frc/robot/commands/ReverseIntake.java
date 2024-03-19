@@ -8,7 +8,7 @@ import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
-public class ReverseFeeder extends Command {
+public class ReverseIntake extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private IntakeSubsystem m_subsystem;
 
@@ -17,7 +17,7 @@ public class ReverseFeeder extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ReverseFeeder(IntakeSubsystem subsystem) {
+  public ReverseIntake(IntakeSubsystem subsystem) {
     this.m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -45,4 +45,3 @@ public class ReverseFeeder extends Command {
     return false;
   }
 }
-

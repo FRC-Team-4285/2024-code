@@ -82,7 +82,7 @@ public class SwerveModule extends SubsystemBase {
     rotationMotor.setIdleMode(IdleMode.kBrake);
 
     //TODO if brownout error occurs then lower smart current
-    driveMotor.setSmartCurrentLimit(80);//was 60 change to help fix comminiczton error
+    driveMotor.setSmartCurrentLimit(85);//was 60 change to help fix comminiczton error
 
     rotationController = rotationMotor.getPIDController();
     driveController = driveMotor.getPIDController();

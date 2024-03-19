@@ -25,6 +25,7 @@ public class ShooterFeederSubsystem extends SubsystemBase {
   private RobotContainer m_robot_container;
   private boolean reached_top_sensor;
   private boolean reached_bottom_sensor;
+  private boolean is_firing;
 
   public ShooterFeederSubsystem(RobotContainer robot_container) {
     m_robot_container = robot_container;
@@ -51,6 +52,16 @@ feeder_motor.setInverted(true);
       feeder_motor_encoder
     );
 
+  }
+
+  /**
+   * @param speed
+   * @param direction
+   */
+
+  public void reverse() {
+    is_firing = true;
+    feeder_motor.set(0.15);
   }
 
   /**

@@ -44,7 +44,7 @@ public class LEDSubsystem extends SubsystemBase {
         }
     }
     else {
-        //System.out.println("I'm unset!");
+        System.out.println("I'm unset!");
         set_red(LEDConstants.DIO_DISABLE);
         set_blue(LEDConstants.DIO_DISABLE);
         //set_win(LEDConstants.DIO_DISABLE);

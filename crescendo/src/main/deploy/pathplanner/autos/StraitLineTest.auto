@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.8354161173880559,
-      "y": 6.932078092184688
+      "x": 0.72,
+      "y": 6.0
     },
     "rotation": 180.0
   },
@@ -12,9 +12,16 @@
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "deadline",
           "data": {
-            "pathName": "StraightLineTest"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Rotation Test"
+                }
+              }
+            ]
           }
         }
       ]
