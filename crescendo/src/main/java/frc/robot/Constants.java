@@ -131,6 +131,7 @@ public final class Constants {
 
     // NEO Motor
     public static final int MOTOR_INTAKE_FLOOR = 13;
+    public static final int MOTOR_INTAKE_FLOOR2 = 14;
 
   }
 
@@ -175,7 +176,7 @@ public final class Constants {
     public static final double wheelBase = Units.inchesToMeters(21.5);
 
     // nominal (real) divided by fudge factor
-    public static final double wheelDiameter = Units.inchesToMeters(4.0 / 1.0); // was 1.04085
+    public static final double wheelDiameter = Units.inchesToMeters(4.0 / 1.0); // was 1.04085   was 4
     public static final double wheelCircumference = wheelDiameter * Math.PI;
 
     public static final double driveGearRatio = 5.14; // Mk4 drive ratio
@@ -191,7 +192,7 @@ public final class Constants {
     public static Translation2d mDriveRadius = new Translation2d(trackWidth/2, wheelBase / 2);
     /* Swerve Profiling Values */
     public static final double maxSpeed = 1.3; // NOT a speed unit; Like I mean for real, this is Cal. "robot gets faster if this is lower 2.0" says wass Cal will tune this value
-    public static final double maxAngularVelocity = 24.0;// Also not a speed unti Calibartion value 24    35
+    public static final double maxAngularVelocity = 3.5;// Also not a speed unit Calibartion value was 12  24    35
 
     public static final int frontLeftRotationMotorId = 2;
     public static final int frontLeftDriveMotorId = 1;

@@ -127,7 +127,7 @@ public class RobotContainer {
     // SmartDashboard.putData("Auto Choices" ,  mChooser);
 
     // Controles rotaion Whne Auto Targeting
-    angleController = new PIDController(9, 0.0, 1);//0.5
+    angleController = new PIDController(9.0, 0.0, 0.0);//9   changed 3/21/2024 by cal ask wessly to make a sepret speed cosntant for this
     angleController.enableContinuousInput(-Math.PI, Math.PI);
     // m_swerveBase = new SwerveBase();
     m_swerveBase.setDefaultCommand(
@@ -138,6 +138,7 @@ public class RobotContainer {
             () -> -Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.rotationAxis),
                 limit.getAsDouble() * stopRotation.getAsDouble()),
             () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
+            //Sandman 
         ));
 
     // to bring back arm pivot
@@ -357,7 +358,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     // return Autos.exampleAuto(m_exampleSubsystem);
-    return AutoBuilder.buildAuto("StraitLineTest");//"test"mChooser.getSelected()
+    return AutoBuilder.buildAuto("B-N2-N1-N3");//"test"mChooser.getSelected()
   }
 
   public SwerveBase getSwerveSubsytem() {

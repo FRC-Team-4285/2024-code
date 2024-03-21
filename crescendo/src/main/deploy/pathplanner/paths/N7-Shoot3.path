@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.3,
-        "y": 5.7836
+        "x": 8.289756056946795,
+        "y": 2.447189312430883
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.544549336129553,
-        "y": 6.620085829245293
+        "x": 6.369053688226141,
+        "y": 1.1504714695890206
       },
       "isLocked": false,
-      "linkedName": "N5"
+      "linkedName": "N7"
     },
     {
       "anchor": {
-        "x": 2.9,
-        "y": 7.000326399702681
+        "x": 0.7336934388833163,
+        "y": 4.358141922934678
       },
       "prevControl": {
-        "x": 4.438601561288634,
-        "y": 7.20539772195934
+        "x": 2.751893389772529,
+        "y": 1.940201885154365
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Shoot4"
+      "linkedName": "Shoot3"
     }
   ],
   "rotationTargets": [],
@@ -34,12 +34,12 @@
   "globalConstraints": {
     "maxVelocity": 4.0,
     "maxAcceleration": 2.75,
-    "maxAngularVelocity": 540.0,
-    "maxAngularAcceleration": 720.0
+    "maxAngularVelocity": 250.0,
+    "maxAngularAcceleration": 200.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -153.4,
+    "rotation": 120.0,
     "rotateFast": false
   },
   "reversed": false,

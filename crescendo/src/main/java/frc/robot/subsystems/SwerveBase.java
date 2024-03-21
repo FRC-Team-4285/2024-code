@@ -95,13 +95,15 @@ public class SwerveBase extends SubsystemBase {
             this::getRobotRelativeChassisSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
             this::robotRelativeDrive, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
             new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-                    new PIDConstants(2.0, 0.0, 0.025),// d 0.025    0.5 under shoot 4over shoot
+                    new PIDConstants(5.75, 0.0, 0.0),// d 0.025    0.5 under shoot 4over shoot
                     //4.0,0.0,0.885 // Translation PID constants   0-9.99  under  0.885 -0.8855  over           new PIDConstants(5.0, 0.0, 0.00005), // Translation PID constants 
-                    new PIDConstants(5.0, 0.0, 0.0),//3.0001
+                    new PIDConstants(3.0, 0.0, 0.0),//3.0001  15 looked ok was 25
                     //4.0 // Rotation PID constants      0-9.99    2.5-3.0
+                    // betwen 3.43725 over and 8.43715 under    last tested 8.437                 8.4372 looks ok
                     5.7912, // Max module speed, in m/s
                     driveBaseRadius, // Drive base radius in meters. Distance from robot center to furthest module.
-                    new ReplanningConfig(true , true, 1 , 0.25) // Default path replanning config. See the API for the options here
+                    new ReplanningConfig(true , true, 0.5 , 0.45) // 0.5,0.25 0.6 to high 0.4 too low 0.5 nice Default path replanning config. See the API for the options here
+                    // above was true , true, 1 , 0.25
             ),
             () -> {
               // Boolean supplier that controls when the path will be mirrored for the red alliance

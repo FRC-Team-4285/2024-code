@@ -21,6 +21,10 @@ public class IntakeSubsystem extends SubsystemBase {
   private SparkPIDController floor_feeder_pid;
   private RelativeEncoder floor_feeder_encoder;
 
+  private CANSparkMax floor_feeder_motor2;
+  private SparkPIDController floor_feeder_pid2;
+  private RelativeEncoder floor_feeder_encoder2;
+
 
   public IntakeSubsystem() {
 
@@ -28,6 +32,11 @@ public class IntakeSubsystem extends SubsystemBase {
     floor_feeder_encoder = floor_feeder_motor.getAlternateEncoder(SparkMaxAlternateEncoder.Type.kQuadrature, 4096);
     floor_feeder_pid = floor_feeder_motor.getPIDController();
     floor_feeder_pid.setFeedbackDevice(floor_feeder_encoder);
+
+    floor_feeder_motor2 = new CANSparkMax(IntakeConstants.MOTOR_INTAKE_FLOOR2, MotorType.kBrushless);
+    floor_feeder_encoder2 = floor_feeder_motor2.getAlternateEncoder(SparkMaxAlternateEncoder.Type.kQuadrature, 4096);
+    floor_feeder_pid2 = floor_feeder_motor2.getPIDController();
+    floor_feeder_pid2.setFeedbackDevice(floor_feeder_encoder2); 
 
   }
 
@@ -38,14 +47,17 @@ public class IntakeSubsystem extends SubsystemBase {
   public void feed(double speed, boolean direction) {
     if (direction) {
       floor_feeder_motor.set(speed);
+      floor_feeder_motor2.set(speed);
     }
     else {
       floor_feeder_motor.set(-speed);
+      floor_feeder_motor2.set(-speed);
     }
   }
 
   public void stop() {
     floor_feeder_motor.set(0.0);
+    floor_feeder_motor2.set(0.0);
   }
 
   /**
