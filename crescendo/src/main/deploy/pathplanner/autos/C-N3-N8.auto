@@ -62,7 +62,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 4.0
+                  "waitTime": 2.5
                 }
               },
               {
@@ -104,12 +104,6 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
-                "data": {
-                  "waitTime": 1.5
-                }
-              },
-              {
                 "type": "path",
                 "data": {
                   "pathName": "N3-Shoot3"
@@ -126,7 +120,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.0
+                              "waitTime": 1.45
                             }
                           },
                           {
@@ -151,7 +145,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 0.25
+                              "waitTime": 0.15
                             }
                           },
                           {
@@ -247,9 +241,34 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
+                      "type": "deadline",
                       "data": {
-                        "waitTime": 2.0
+                        "commands": [
+                          {
+                            "type": "wait",
+                            "data": {
+                              "waitTime": 1.9
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Errected"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "FeederIntake"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Intake"
+                            }
+                          }
+                        ]
                       }
                     },
                     {
@@ -259,7 +278,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.0
+                              "waitTime": 1.5
                             }
                           },
                           {
@@ -284,7 +303,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 0.25
+                              "waitTime": 0.15
                             }
                           },
                           {
@@ -297,6 +316,57 @@
                             "type": "named",
                             "data": {
                               "name": "Feed"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "ShootFrontofSpeaker"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Shoot3-N7"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "parallel",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Errected"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Intake"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "FeederIntake"
                             }
                           }
                         ]

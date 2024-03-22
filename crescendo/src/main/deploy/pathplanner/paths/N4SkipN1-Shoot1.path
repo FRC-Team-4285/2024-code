@@ -8,27 +8,38 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.2723332028368795,
-        "y": 7.497835333727684
+        "x": 7.279151454412837,
+        "y": 7.711963210564156
       },
       "isLocked": false,
       "linkedName": "N4"
     },
     {
       "anchor": {
-        "x": 2.9,
-        "y": 7.0
+        "x": 0.7158327706968803,
+        "y": 6.770915422172725
       },
       "prevControl": {
-        "x": 3.8930889559753235,
-        "y": 7.117364072525805
+        "x": 3.323553224993902,
+        "y": 5.247697108128105
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "N1"
+      "linkedName": "Shoot1"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.8,
+      "rotationDegrees": 180.0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 0.9,
+      "rotationDegrees": -120.0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -39,7 +50,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -153.4,
+    "rotation": -120.0,
     "rotateFast": false
   },
   "reversed": false,

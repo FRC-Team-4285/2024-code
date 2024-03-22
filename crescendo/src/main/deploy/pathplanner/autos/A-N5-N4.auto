@@ -201,7 +201,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Shoot1-N4"
+                  "pathName": "Shoot1-N4SkipN1"
                 }
               },
               {
@@ -252,7 +252,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "N4-Shoot1"
+                  "pathName": "N4SkipN1-Shoot1"
                 }
               },
               {

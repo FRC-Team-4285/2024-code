@@ -60,12 +60,6 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
-                "data": {
-                  "waitTime": 4.0
-                }
-              },
-              {
                 "type": "path",
                 "data": {
                   "pathName": "Shoot1-N1"
@@ -104,12 +98,6 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
-                "data": {
-                  "waitTime": 1.5
-                }
-              },
-              {
                 "type": "path",
                 "data": {
                   "pathName": "N1-Shoot1"
@@ -126,7 +114,38 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.0
+                              "waitTime": 1.04
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Errected"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Intake"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "FeederIntake"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "deadline",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "wait",
+                            "data": {
+                              "waitTime": 0.6
                             }
                           },
                           {
@@ -151,7 +170,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 0.25
+                              "waitTime": 0.15
                             }
                           },
                           {
@@ -164,6 +183,12 @@
                             "type": "named",
                             "data": {
                               "name": "Shoot"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "ShootFrontofSpeaker"
                             }
                           }
                         ]
@@ -180,12 +205,6 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
-                "data": {
-                  "waitTime": 5.0
-                }
-              },
-              {
                 "type": "path",
                 "data": {
                   "pathName": "Shoot1-N5"
@@ -198,7 +217,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 2.5
+                        "waitTime": 2.0
                       }
                     },
                     {
@@ -247,31 +266,31 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 2.0
-                      }
-                    },
-                    {
                       "type": "deadline",
                       "data": {
                         "commands": [
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.0
+                              "waitTime": 1.8
                             }
                           },
                           {
                             "type": "named",
                             "data": {
-                              "name": "ShootN1"
+                              "name": "Intake"
                             }
                           },
                           {
                             "type": "named",
                             "data": {
-                              "name": "Shoot"
+                              "name": "Errected"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "FeederIntake"
                             }
                           }
                         ]
@@ -284,7 +303,32 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 0.25
+                              "waitTime": 1.5
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Shoot"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "ShootFrontofSpeaker"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "deadline",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "wait",
+                            "data": {
+                              "waitTime": 0.15
                             }
                           },
                           {
@@ -297,6 +341,63 @@
                             "type": "named",
                             "data": {
                               "name": "Feed"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "ShootFrontofSpeaker"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Shoot1-N4"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 1.5
+                      }
+                    },
+                    {
+                      "type": "parallel",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Intake"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Errected"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "FeederIntake"
                             }
                           }
                         ]

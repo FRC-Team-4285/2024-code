@@ -60,12 +60,6 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
-                "data": {
-                  "waitTime": 5.0
-                }
-              },
-              {
                 "type": "path",
                 "data": {
                   "pathName": "Shoot3-N8"
@@ -78,7 +72,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 2.5
+                        "waitTime": 2.0
                       }
                     },
                     {
@@ -127,9 +121,34 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
+                      "type": "deadline",
                       "data": {
-                        "waitTime": 2.0
+                        "commands": [
+                          {
+                            "type": "wait",
+                            "data": {
+                              "waitTime": 1.9
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Intake"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Errected"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "FeederIntake"
+                            }
+                          }
+                        ]
                       }
                     },
                     {
@@ -139,7 +158,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.0
+                              "waitTime": 1.5
                             }
                           },
                           {
@@ -164,7 +183,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 0.25
+                              "waitTime": 0.15
                             }
                           },
                           {
@@ -177,6 +196,12 @@
                             "type": "named",
                             "data": {
                               "name": "Feed"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "ShootFrontofSpeaker"
                             }
                           }
                         ]
@@ -193,12 +218,6 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
-                "data": {
-                  "waitTime": 5.0
-                }
-              },
-              {
                 "type": "path",
                 "data": {
                   "pathName": "Shoot3-N7"
@@ -211,7 +230,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 2.5
+                        "waitTime": 2.0
                       }
                     },
                     {
@@ -260,9 +279,34 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
+                      "type": "deadline",
                       "data": {
-                        "waitTime": 2.0
+                        "commands": [
+                          {
+                            "type": "wait",
+                            "data": {
+                              "waitTime": 2.0
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Intake"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Errected"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "FeederIntake"
+                            }
+                          }
+                        ]
                       }
                     },
                     {
@@ -272,7 +316,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.0
+                              "waitTime": 1.5
                             }
                           },
                           {
@@ -297,7 +341,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 0.25
+                              "waitTime": 0.15
                             }
                           },
                           {
@@ -310,6 +354,12 @@
                             "type": "named",
                             "data": {
                               "name": "Feed"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "ShootFrontofSpeaker"
                             }
                           }
                         ]

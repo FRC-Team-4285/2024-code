@@ -60,15 +60,90 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
+                "type": "path",
                 "data": {
-                  "waitTime": 5.0
+                  "pathName": "Shoot1-N1-S"
                 }
               },
               {
-                "type": "path",
+                "type": "parallel",
                 "data": {
-                  "pathName": "Shoot1-N4"
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Errected"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Intake"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "FeederIntake"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.25
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "FeederIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Errected"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.75
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shoot"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootN1"
                 }
               },
               {
@@ -78,7 +153,39 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 2.5
+                        "waitTime": 0.6
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Feed"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Shoot4-N4"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 2.0
                       }
                     },
                     {
@@ -119,7 +226,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "N4-Shoot1"
+                  "pathName": "N4-N1"
                 }
               },
               {
@@ -127,9 +234,34 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
+                      "type": "deadline",
                       "data": {
-                        "waitTime": 2.0
+                        "commands": [
+                          {
+                            "type": "wait",
+                            "data": {
+                              "waitTime": 1.75
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Intake"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Errected"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "FeederIntake"
+                            }
+                          }
+                        ]
                       }
                     },
                     {
@@ -139,13 +271,7 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.0
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "ShootFrontofSpeaker"
+                              "waitTime": 0.9
                             }
                           },
                           {
@@ -153,18 +279,24 @@
                             "data": {
                               "name": "Shoot"
                             }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "ShootN1"
+                            }
                           }
                         ]
                       }
                     },
                     {
-                      "type": "parallel",
+                      "type": "deadline",
                       "data": {
                         "commands": [
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 0.25
+                              "waitTime": 0.15
                             }
                           },
                           {
@@ -177,6 +309,12 @@
                             "type": "named",
                             "data": {
                               "name": "Feed"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "ShootN1"
                             }
                           }
                         ]
@@ -193,15 +331,9 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
-                "data": {
-                  "waitTime": 5.0
-                }
-              },
-              {
                 "type": "path",
                 "data": {
-                  "pathName": "Shoot1-N5"
+                  "pathName": "Shoot4-N5"
                 }
               },
               {
@@ -211,7 +343,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 2.5
+                        "waitTime": 2.0
                       }
                     },
                     {
@@ -252,7 +384,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "N5-Shoot1"
+                  "pathName": "N5-Shoot4"
                 }
               },
               {
@@ -260,31 +392,31 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 2.0
-                      }
-                    },
-                    {
                       "type": "deadline",
                       "data": {
                         "commands": [
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 1.0
+                              "waitTime": 2.0
                             }
                           },
                           {
                             "type": "named",
                             "data": {
-                              "name": "ShootFrontofSpeaker"
+                              "name": "Intake"
                             }
                           },
                           {
                             "type": "named",
                             "data": {
-                              "name": "Shoot"
+                              "name": "Errected"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "FeederIntake"
                             }
                           }
                         ]
@@ -297,7 +429,32 @@
                           {
                             "type": "wait",
                             "data": {
-                              "waitTime": 0.25
+                              "waitTime": 0.65
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Shoot"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "ShootN1"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "deadline",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "wait",
+                            "data": {
+                              "waitTime": 0.15
                             }
                           },
                           {
@@ -310,6 +467,12 @@
                             "type": "named",
                             "data": {
                               "name": "Feed"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "ShootN1"
                             }
                           }
                         ]

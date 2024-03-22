@@ -1,0 +1,38 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.7158327706968803,
+      "y": 6.770915422172725
+    },
+    "rotation": -120.0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Shoot1-N1-S"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootN1"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "folder": "A Autos",
+  "choreoAuto": false
+}
