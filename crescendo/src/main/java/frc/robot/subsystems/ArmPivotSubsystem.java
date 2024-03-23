@@ -31,9 +31,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
-import frc.robot.Constants.ArmPivotConstants;
+import frc.robot.Constants.*;
 
 public class ArmPivotSubsystem extends SubsystemBase {
   private final AprilTagFieldLayout field;
@@ -72,7 +73,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
     field = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
     this.mSwerveBase = mSwerveBase;
     //mSwerveBase = RobotContainer.m_swerveBase;
-    // goalPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
+    // goalPose = Constants.isRed == true ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
     
     angleTreeMap = new InterpolatingDoubleTreeMap();
 
@@ -323,7 +324,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
 
 
   public void setGoalPose() {
-    speakerPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
+    speakerPose = Constants.isRed == true ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
   }
 
   public Pose2d getSpeakerPose(){
@@ -331,11 +332,11 @@ public class ArmPivotSubsystem extends SubsystemBase {
   }
 
   public void setAmpPose(){
-    ampPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(5).get().toPose2d() : field.getTagPose(6).get().toPose2d();
+    ampPose = Constants.isRed == true ? field.getTagPose(5).get().toPose2d() : field.getTagPose(6).get().toPose2d();
   }
 
   public Rotation2d getAmpAngle(){
-    return DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(-270) : Rotation2d.fromDegrees(270);
+    return Constants.isRed == true ? Rotation2d.fromDegrees(-270) : Rotation2d.fromDegrees(270);
   }
 
   public Pose2d getAmpPose(){
@@ -343,11 +344,11 @@ public class ArmPivotSubsystem extends SubsystemBase {
   }
 
   public void setHumanFeederPose(){
-    humanfeederPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(9).get().toPose2d() : field.getTagPose(1).get().toPose2d();
+    humanfeederPose = Constants.isRed == true ? field.getTagPose(9).get().toPose2d() : field.getTagPose(1).get().toPose2d();
   }
 
   public Rotation2d getHumanFeederAngle(){
-    return DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(-120) : Rotation2d.fromDegrees(120);
+    return Constants.isRed == true ? Rotation2d.fromDegrees(-120) : Rotation2d.fromDegrees(120);
   }
 
   public Pose2d getHumanFeederPose(){
@@ -355,11 +356,11 @@ public class ArmPivotSubsystem extends SubsystemBase {
   }
 
    public void setLinePose() {
-    speakerPose = DriverStation.getAlliance().get() == Alliance.Red ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
+    speakerPose = Constants.isRed == true ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
   }
 
   public Rotation2d getLineAngle(){
-    return DriverStation.getAlliance().get() == Alliance.Red ? Rotation2d.fromDegrees(-0) : Rotation2d.fromDegrees(0);
+    return Constants.isRed == true ? Rotation2d.fromDegrees(-0) : Rotation2d.fromDegrees(0);
   }
 
   public Pose2d getLinePose(){

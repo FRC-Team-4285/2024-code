@@ -21,6 +21,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DigitalInput;
 
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
  * numerical or boolean
@@ -34,6 +35,8 @@ import edu.wpi.first.wpilibj.DigitalInput;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static boolean isRed = false;
+
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
@@ -214,7 +217,7 @@ public final class Constants {
     public static final int rearLeftRotationEncoderId = 2;
     public static final int rearRightRotationEncoderId = 3;
 
-    public static final double kTeleDriveMaxSpeedMetersPerSecond = 4.0; // Change Speed in Tele     1.875
+    public static final double kTeleDriveMaxSpeedMetersPerSecond = 10.0; // Change Speed in Tele     1.875
     public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = 4.0;//3.5
     public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3.0;
     public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 3.0;

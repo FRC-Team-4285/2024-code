@@ -97,7 +97,7 @@ public class SwerveBase extends SubsystemBase {
             new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
                     new PIDConstants(5.75, 0.0, 0.0),// d 0.025    0.5 under shoot 4over shoot
                     //4.0,0.0,0.885 // Translation PID constants   0-9.99  under  0.885 -0.8855  over           new PIDConstants(5.0, 0.0, 0.00005), // Translation PID constants 
-                    new PIDConstants(3.0, 0.0, 0.0),//3.0001  15 looked ok was 25
+                    new PIDConstants(3., 0.0, 0.0),//3.0001  15 looked ok was 25
                     //4.0 // Rotation PID constants      0-9.99    2.5-3.0
                     // betwen 3.43725 over and 8.43715 under    last tested 8.437                 8.4372 looks ok
                     5.7912, // Max module speed, in m/s
@@ -110,9 +110,9 @@ public class SwerveBase extends SubsystemBase {
               // This will flip the path being followed to the red side of the field.
               // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
 
-              var alliance = DriverStation.getAlliance();
-              if (alliance.isPresent()) {
-                return alliance.get() == DriverStation.Alliance.Red;
+              Boolean alliance = Constants.isRed;
+              if (alliance) {
+                return alliance == Constants.isRed;
               }
               return false;
             },
