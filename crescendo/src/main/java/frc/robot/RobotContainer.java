@@ -80,6 +80,8 @@ public class RobotContainer {
   private JoystickButton btn_cross_field;
   private JoystickButton btn_reverse_feeder;
   private JoystickButton btn_aim_line;
+  private JoystickButton btn_driver_N1;
+  private JoystickButton btn_trap_scoring;
 
 
   private JoystickButton btn_shooting_with_driver;  
@@ -185,12 +187,15 @@ public class RobotContainer {
     btn_reset_yaw.onTrue(new InstantCommand(() -> m_swerveBase.setNeedPigeonReset(true)));
 
     
-    //  btn_shooting_with_driver= new JoystickButton(driverJoystick, 11);
-    // // btn_shooting_without_cameras.whileFalse(new ArmPivotStore(m_robot.getArmPivotSubsystem()));;
-    // btn_shooting_with_driver.whileTrue(new ShooterTest(m_shooter));
+     btn_shooting_with_driver= new JoystickButton(driverJoystick, 11);
+     btn_shooting_with_driver.whileTrue(new ShooterTest(m_shooter));
    
     btn_driver_fire = new JoystickButton(driverJoystick, 12);
     btn_driver_fire.whileTrue(new ShooterFeederFire(m_shooterFeeder));
+
+    // btn_driver_N1 = new JoystickButton(driverJoystick, 10);
+    // btn_driver_N1.whileTrue(new ShootingWithoutCamerasN1(m_ArmPivotSubsystem));
+
 
     // btn_arm_pivot_up = new JoystickButton(driverJoystick, 3);
     // btn_aim_speaker.whileTrue(new ArmPivotShooting(m_ArmPivotSubsystem));
@@ -220,15 +225,15 @@ public class RobotContainer {
             () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
         ));
 
-        btn_aim_line = new JoystickButton(streamdeck, 1);
-        btn_aim_line.whileTrue(
-        new TeleopSwerve(
-            m_swerveBase,
-            () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.translationAxis), limit.getAsDouble()),
-            () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.strafeAxis), limit.getAsDouble()),
-            () -> angleController.calculate(m_swerveBase.getPose().getRotation().getRadians(), m_ArmPivotSubsystem.getLineAngle().getRadians()),
-           () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
-        ));
+        // btn_aim_line = new JoystickButton(streamdeck, 1);
+        // btn_aim_line.whileTrue(
+        // new TeleopSwerve(
+        //     m_swerveBase,
+        //     () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.translationAxis), limit.getAsDouble()),
+        //     () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.strafeAxis), limit.getAsDouble()),
+        //     () -> angleController.calculate(m_swerveBase.getPose().getRotation().getRadians(), m_ArmPivotSubsystem.getLineAngle().getRadians()),
+        //    () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
+        // ));
    
     // btn_aim_amp = new JoystickButton(streamdeck, 10);
     // btn_aim_amp.whileTrue(
@@ -310,6 +315,10 @@ public class RobotContainer {
     btn_line_scoring = new JoystickButton(streamdeck, 12);
     btn_line_scoring.whileTrue(new ArmPivotLineScoring(m_ArmPivotSubsystem));
     btn_line_scoring.whileTrue(new ShooterTest(m_shooter));
+
+    btn_trap_scoring = new JoystickButton(streamdeck, 1);
+    btn_trap_scoring.whileTrue(new ArmPivotTrap(m_ArmPivotSubsystem));
+    btn_trap_scoring.whileTrue(new ShooterTrapScoring(m_shooter));
 
     // // Shoots Note From Front Leg Of Stage
     // btn_shooting_without_cameras_stage_leg = new JoystickButton(streamdeck,8);

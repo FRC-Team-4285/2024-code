@@ -67,6 +67,7 @@ public final class Constants {
     public static final int POSITION_SHOOTING_WITHOUT_CAMERAS_N1 = 13;
     public static final int POSITION_SHOOTING_DEFENCE = 14;
     public static final int POSITION_LINE_SCORING = 15;
+    public static final int POSITION_TRAP_SCORING = 16;
 
     public static final double POSITION_PID_STARTING = 0;// Robot Will go here on start
     public static final double POSITION_PID_INTAKE_FLOOR = POSITION_STARTING;
@@ -79,8 +80,10 @@ public final class Constants {
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 3.41;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG = 3.15;
     public static final double POSITION_PID_AMP_SCORING_POS = -1.9; //-1.738;
-    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_N1 = 3.071426;
+    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_N1 = 3.25; //1.07126
     public static final double POSITION_PID_SHOOTING_DEFENCE = .1;
+    public static final double POSITION_PID_LINE_SCORING = 2.999998;
+    public static final double POSITION_PID_SHOOTING_TRAP = 1.761905;
 
     // 36 inch -- 1.31
     // 42 inch -- 1.336
@@ -211,10 +214,10 @@ public final class Constants {
     public static final int rearLeftRotationEncoderId = 2;
     public static final int rearRightRotationEncoderId = 3;
 
-    public static final double kTeleDriveMaxSpeedMetersPerSecond = 7.5 / 4.0; // Change Speed in Tele
-    public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = 3.5;
-    public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3;
-    public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 3;
+    public static final double kTeleDriveMaxSpeedMetersPerSecond = 4.0; // Change Speed in Tele     1.875
+    public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = 4.0;//3.5
+    public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3.0;
+    public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 3.0;
 
     public static final double cameraToFrontEdgeDistanceMeters = Units.inchesToMeters(7);
 

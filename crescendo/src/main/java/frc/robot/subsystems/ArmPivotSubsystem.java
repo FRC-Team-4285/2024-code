@@ -414,6 +414,14 @@ public class ArmPivotSubsystem extends SubsystemBase {
        else if (MODE == ArmPivotConstants.POSITION_SHOOTING_DEFENCE) {
         desired_location = ArmPivotConstants.POSITION_PID_SHOOTING_DEFENCE;
       }
+
+        else if (MODE == ArmPivotConstants.POSITION_TRAP_SCORING) {
+        desired_location = ArmPivotConstants.POSITION_PID_SHOOTING_TRAP;
+      }
+
+        else if (MODE == ArmPivotConstants.POSITION_LINE_SCORING) {
+        desired_location = ArmPivotConstants.POSITION_PID_LINE_SCORING;
+      }
       // Example
       // else if (MODE == ArmPivotConstants. (Name of COnstant)) {
       //   desired_location = ArmPivotConstants.(Comand);

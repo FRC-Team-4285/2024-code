@@ -64,10 +64,16 @@ public class ShooterSubsystem extends SubsystemBase {
     shooter_motor_b.set(0.90);
   }
 
+  public void trap() {
+    is_firing = true;
+    shooter_motor_a.set(0.95);
+    shooter_motor_b.set(0.95);
+  }
+
    public void crossfield() {
     is_firing = true;
-    shooter_motor_a.set(0.60);
-    shooter_motor_b.set(0.60);
+    shooter_motor_a.set(0.65);
+    shooter_motor_b.set(0.65);
   }
   public void suck(double speed) { 
     shooter_motor_a.set(speed);//0.85

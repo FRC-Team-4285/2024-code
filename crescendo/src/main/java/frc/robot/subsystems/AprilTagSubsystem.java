@@ -193,78 +193,78 @@ public class AprilTagSubsystem extends SubsystemBase {
   public void periodic() {  
     
 
-  //   photonEstimator1.run();
-  //   photonEstimator2.run();
-  //   photonEstimator3.run();
-  //   photonEstimator4.run();
+    photonEstimator1.run();
+    //photonEstimator2.run();
+    //photonEstimator3.run();
+    photonEstimator4.run();
     
-  //   // Pose3d cam1Pose = new Pose3d(new Translation3d(0, 0, 0), new Rotation3d(0, 0, 0));
+    // Pose3d cam1Pose = new Pose3d(new Translation3d(0, 0, 0), new Rotation3d(0, 0, 0));
     
-  //   // double lowestAmbiguity = Math.min(photonEstimator1.photonResults.getBestTarget().getPoseAmbiguity() , photonEstimator2.grabLatestEstimatedPose().)
-  //     visionPose1 = photonEstimator1.grabLatestEstimatedPose();
-  //     visionPose2 = photonEstimator2.grabLatestEstimatedPose();
-  //     visionPose3 = photonEstimator3.grabLatestEstimatedPose();
-  //     visionPose4 = photonEstimator4.grabLatestEstimatedPose();
+    // double lowestAmbiguity = Math.min(photonEstimator1.photonResults.getBestTarget().getPoseAmbiguity() , photonEstimator2.grabLatestEstimatedPose().)
+      visionPose1 = photonEstimator1.grabLatestEstimatedPose();
+      //visionPose2 = photonEstimator2.grabLatestEstimatedPose();
+      //visionPose3 = photonEstimator3.grabLatestEstimatedPose();
+      visionPose4 = photonEstimator4.grabLatestEstimatedPose();
  
-  //    //System.out.println("Camera5 Vision P+ose:" + visionPose5);
+     //System.out.println("Camera5 Vision P+ose:" + visionPose5);
      
-  //   if (visionPose1 != null) {
-  //     // New pose from vision
-  //     sawTag = true;
-  //     Pose2d pose2d1 = visionPose1.estimatedPose.toPose2d();
-  //     if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
-  //       pose2d1 = flipAlliance(pose2d1);
-  //     }
-  //     Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d1, visionPose1.timestampSeconds);
-  //   }
-  //   if (visionPose2 != null) {
-  //     // New pose from vision
-  //     sawTag = true;
-  //     Pose2d pose2d2 = visionPose2.estimatedPose.toPose2d();
-  //     if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
-  //       pose2d2 = flipAlliance(pose2d2);
-  //     }
-  //     Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d2, visionPose2.timestampSeconds);
-  //   }
-  //   if (visionPose3 != null) {
-  //     // New pose from vision
-  //     sawTag = true;
-  //     Pose2d pose2d3 = visionPose3.estimatedPose.toPose2d();
-  //     if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
-  //       pose2d3 = flipAlliance(pose2d3);
-  //     }
-  //     Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d3, visionPose3.timestampSeconds);
-  //   }
-  //   if (visionPose4 != null) {
-  //     // New pose from vision
-  //     sawTag = true;
-  //     Pose2d pose2d4 = visionPose4.estimatedPose.toPose2d();
-  //     if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
-  //       pose2d4 = flipAlliance(pose2d4);
-  //     }
-  //     Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d4, visionPose4.timestampSeconds);
-  //   }
+    if (visionPose1 != null) {
+      // New pose from vision
+      sawTag = true;
+      Pose2d pose2d1 = visionPose1.estimatedPose.toPose2d();
+      if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
+        pose2d1 = flipAlliance(pose2d1);
+      }
+      Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d1, visionPose1.timestampSeconds);
+    }
+    // if (visionPose2 != null) {
+    //   // New pose from vision
+    //   sawTag = true;
+    //   Pose2d pose2d2 = visionPose2.estimatedPose.toPose2d();
+    //   if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
+    //     pose2d2 = flipAlliance(pose2d2);
+    //   }
+    //   Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d2, visionPose2.timestampSeconds);
+    // }
+    // if (visionPose3 != null) {
+    //   // New pose from vision
+    //   sawTag = true;
+    //   Pose2d pose2d3 = visionPose3.estimatedPose.toPose2d();
+    //   if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
+    //     pose2d3 = flipAlliance(pose2d3);
+    //   }
+    //   Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d3, visionPose3.timestampSeconds);
+    // }
+    if (visionPose4 != null) {
+      // New pose from vision
+      sawTag = true;
+      Pose2d pose2d4 = visionPose4.estimatedPose.toPose2d();
+      if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
+        pose2d4 = flipAlliance(pose2d4);
+      }
+      Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d4, visionPose4.timestampSeconds);
+    }
     
-  //   LimelightHelpers.PoseEstimate limelightMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-tags");
-  //   if(limelightMeasurement.tagCount >= 1){
-  //         Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(limelightMeasurement.pose, limelightMeasurement.timestampSeconds);
-  //       }
-  //   // if (visionPose5 != null) {
-  //   //   // New pose from vision
-  //   //   sawTag = true;
-  //   //   Pose2d pose2d5 = visionPose5.estimatedPose.toPose2d();
-  //   //   if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
-  //   //     pose2d5 = flipAlliance(pose2d5);
-  //   //   }
-  //   //   Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d5, visionPose5.timestampSeconds);
-  //   // }
-  //   // This method will be called once per scheduler run
-  //   // System.out.println("Pose: " + Robot.m_robotContainer.m_swerveBase.getPose3d());
-  //   publisher.set(Robot.m_robotContainer.m_swerveBase.getPose3d());
-  // }
+    LimelightHelpers.PoseEstimate limelightMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-tags");
+    if(limelightMeasurement.tagCount >= 1){
+          Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(limelightMeasurement.pose, limelightMeasurement.timestampSeconds);
+        }
+    // if (visionPose5 != null) {
+    //   // New pose from vision
+    //   sawTag = true;
+    //   Pose2d pose2d5 = visionPose5.estimatedPose.toPose2d();
+    //   if (originPosition != OriginPosition.kBlueAllianceWallRightSide) {
+    //     pose2d5 = flipAlliance(pose2d5);
+    //   }
+    //   Robot.m_robotContainer.m_swerveBase.getOdometry().addVisionMeasurement(pose2d5, visionPose5.timestampSeconds);
+    // }
+    // This method will be called once per scheduler run
+    // System.out.println("Pose: " + Robot.m_robotContainer.m_swerveBase.getPose3d());
+    publisher.set(Robot.m_robotContainer.m_swerveBase.getPose3d());
+  }
 
-  // @Override
-  // public void simulationPeriodic() {
-  //   // This method will be called once per scheduler run during simulation
+  @Override
+  public void simulationPeriodic() {
+    // This method will be called once per scheduler run during simulation
   }
 }
