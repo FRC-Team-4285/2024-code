@@ -423,6 +423,10 @@ public class ArmPivotSubsystem extends SubsystemBase {
         else if (MODE == ArmPivotConstants.POSITION_LINE_SCORING) {
         desired_location = ArmPivotConstants.POSITION_PID_LINE_SCORING;
       }
+
+        else if (MODE == ArmPivotConstants.POSITION_FAR_FEEDER) {
+        desired_location = ArmPivotConstants.POSITION_PID_FAR_FEEDER;
+      }
       // Example
       // else if (MODE == ArmPivotConstants. (Name of COnstant)) {
       //   desired_location = ArmPivotConstants.(Comand);

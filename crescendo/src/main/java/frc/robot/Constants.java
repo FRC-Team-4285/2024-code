@@ -71,22 +71,25 @@ public final class Constants {
     public static final int POSITION_SHOOTING_DEFENCE = 14;
     public static final int POSITION_LINE_SCORING = 15;
     public static final int POSITION_TRAP_SCORING = 16;
+    public static final int POSITION_FAR_FEEDER = 17;
 
     public static final double POSITION_PID_STARTING = 0;// Robot Will go here on start
     public static final double POSITION_PID_INTAKE_FLOOR = POSITION_STARTING;
     public static final double POSITION_PID_INTAKE_FEEDER = 1.31;
     public static final double POSITION_PID_AMP_SCORING = -2.3333;
-    public static final double POSITION_PID_HUMAN_FEEDER = -2.904;
+    public static final double POSITION_PID_HUMAN_FEEDER = -2.499999; //-2.595237 //-2.666665
+    //-2.499999 Far Human Feeder
     public static final double POSITION_PID_STORE = 6.214284;
     public static final double POSITION_PID_ERRECTED = 0;
-    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS = 2.1666;
-    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 3.41;
+    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS =  2.833331 ;//2.1666   2.5   2.833331  2.880950
+    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 3.41; 
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG = 3.15;
     public static final double POSITION_PID_AMP_SCORING_POS = -1.9; //-1.738;
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_N1 = 3.25; //1.07126
     public static final double POSITION_PID_SHOOTING_DEFENCE = .1;
     public static final double POSITION_PID_LINE_SCORING = 2.999998;
     public static final double POSITION_PID_SHOOTING_TRAP = 1.761905;
+    public static final double POSITION_PID_FAR_FEEDER = 2.833331;
 
     // 36 inch -- 1.31
     // 42 inch -- 1.336

@@ -75,6 +75,12 @@ public class ShooterSubsystem extends SubsystemBase {
     shooter_motor_a.set(0.65);
     shooter_motor_b.set(0.65);
   }
+
+    public void farfeeder() {
+    is_firing = true;
+    shooter_motor_a.set(0.60);
+    shooter_motor_b.set(0.60);
+  }
   public void suck(double speed) { 
     shooter_motor_a.set(speed);//0.85
     shooter_motor_b.set(speed);

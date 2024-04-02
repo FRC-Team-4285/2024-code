@@ -127,8 +127,8 @@ feeder_motor.setInverted(true);
        */
 
       if (topState == LineBreakConstants.LINEBREAK_OPEN && bottomState == LineBreakConstants.LINEBREAK_OPEN) {
-        feeder_motor.set(-0.1);//Change this Value to change motor intake speed.
-        shooter_subsystem.suck(-0.15);
+        feeder_motor.set(-0.075);//Change this Value to change motor intake speed.
+        shooter_subsystem.suck(-0.20);
         reached_top_sensor = false;
       }
       else if (reached_top_sensor) {
@@ -137,15 +137,15 @@ feeder_motor.setInverted(true);
           shooter_subsystem.stop();
         }
         else {
-          feeder_motor.set(0.05);
+          feeder_motor.set(0.03);//0.05
           shooter_subsystem.stop();
         }
       }
       /* Check if bottom line sensor is obstructed */
       else if (bottomState == LineBreakConstants.LINEBREAK_BLOCKED && topState == LineBreakConstants.LINEBREAK_BLOCKED) {
         /* We are in this block if the line break sensor on the TOP is blocked. */
-        feeder_motor.set(-0.15);
-        shooter_subsystem.suck(-0.1);
+        feeder_motor.set(-0.05);
+        shooter_subsystem.suck(-0.05);
       }
       else if (bottomState == LineBreakConstants.LINEBREAK_BLOCKED && topState == LineBreakConstants.LINEBREAK_OPEN) {
         /* We are in this block if the line break sensor on the bottom is blocked. */

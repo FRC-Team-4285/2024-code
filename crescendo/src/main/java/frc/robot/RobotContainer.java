@@ -82,6 +82,7 @@ public class RobotContainer {
   private JoystickButton btn_aim_line;
   private JoystickButton btn_driver_N1;
   private JoystickButton btn_trap_scoring;
+  private JoystickButton btn_far_feeder;
 
 
   private JoystickButton btn_shooting_with_driver;  
@@ -187,8 +188,8 @@ public class RobotContainer {
     btn_reset_yaw.onTrue(new InstantCommand(() -> m_swerveBase.setNeedPigeonReset(true)));
 
     
-     btn_shooting_with_driver= new JoystickButton(driverJoystick, 11);
-     btn_shooting_with_driver.whileTrue(new ShooterTest(m_shooter));
+    btn_shooter_feeder = new JoystickButton(driverJoystick, 11);
+    btn_shooter_feeder.whileTrue(new ShooterFeederAMP(m_shooterFeeder));
    
     btn_driver_fire = new JoystickButton(driverJoystick, 12);
     btn_driver_fire.whileTrue(new ShooterFeederFire(m_shooterFeeder));
@@ -287,9 +288,13 @@ public class RobotContainer {
     btn_shooter_feeder = new JoystickButton(streamdeck, 8);
     btn_shooter_feeder.whileTrue(new ShooterFeederAMP(m_shooterFeeder));
 
-    btn_led_win = new JoystickButton(streamdeck, 2);
-    btn_led_win.whileFalse(new LEDWinYes(m_led));
-    btn_led_win.whileTrue(new LEDWinNo(m_led));
+    // btn_led_win = new JoystickButton(streamdeck, 2);
+    // btn_led_win.whileFalse(new LEDWinYes(m_led));
+    // btn_led_win.whileTrue(new LEDWinNo(m_led));
+
+    btn_far_feeder = new JoystickButton(streamdeck, 2);
+    btn_far_feeder.whileTrue(new ArmPivotFarHumanFeeder(m_ArmPivotSubsystem));
+    btn_far_feeder.whileTrue(new ShootingFarHumanFeeder(m_shooter));
 
     // Gets Note From Human Feeder And Uses Line Breaks To Stop Note At Specific Position
     btn_human_feeder = new JoystickButton(streamdeck, 9);
