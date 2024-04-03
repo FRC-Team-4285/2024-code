@@ -35,7 +35,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static boolean isRed = false;
+  public static boolean isRed = true;
 
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
@@ -200,7 +200,7 @@ public final class Constants {
 
     public static Translation2d mDriveRadius = new Translation2d(trackWidth/2, wheelBase / 2);
     /* Swerve Profiling Values */
-    public static final double maxSpeed = 1.3; // NOT a speed unit; Like I mean for real, this is Cal. "robot gets faster if this is lower 2.0" says wass Cal will tune this value
+    public static final double maxSpeed = 0.90; //last comp 1.3 NOT a speed unit; Like I mean for real, this is Cal. "robot gets faster if this is lower 2.0" says wass Cal will tune this value
     public static final double maxAngularVelocity = 3.5;// Also not a speed unit Calibartion value was 12  24    35
 
     public static final int frontLeftRotationMotorId = 2;
@@ -220,10 +220,12 @@ public final class Constants {
     public static final int rearLeftRotationEncoderId = 2;
     public static final int rearRightRotationEncoderId = 3;
 
-    public static final double kTeleDriveMaxSpeedMetersPerSecond = 10.0; // Change Speed in Tele     1.875
-    public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = 4.0;//3.5
-    public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3.0;
-    public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 3.0;
+    //Translational
+    public static final double kTeleDriveMaxSpeedMetersPerSecond = 5.5; // Change Speed in Tele     1.875n   was 10 at comp
+    public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 5.5;//3.0
+    //Roational
+    public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = 0.5;//3.5
+    public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 0.5;//3.0
 
     public static final double cameraToFrontEdgeDistanceMeters = Units.inchesToMeters(7);
 

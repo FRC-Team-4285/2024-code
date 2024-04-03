@@ -348,7 +348,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
   }
 
   public Rotation2d getHumanFeederAngle(){
-    return Constants.isRed == true ? Rotation2d.fromDegrees(-120) : Rotation2d.fromDegrees(120);
+    return Constants.isRed == true ? Rotation2d.fromDegrees(45) : Rotation2d.fromDegrees(135);
   }
 
   public Pose2d getHumanFeederPose(){

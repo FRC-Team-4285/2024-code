@@ -46,7 +46,7 @@ public class RobotContainer {
   public static ShooterSubsystem m_shooter = new ShooterSubsystem();
   public static LEDSubsystem m_led = new LEDSubsystem();
   public static ArmPivotSubsystem m_ArmPivotSubsystem;
-  private SendableChooser<String> mChooser;
+ private SendableChooser<String> mChooser;
 
   // public PowerDistributionPanel newPower = new PowerDistributionPanel(0);
   // public ClimberSubsystem m_climber = new ClimberSubsystem();
@@ -116,8 +116,7 @@ public class RobotContainer {
 
     limit = () -> 0.55 - 0.45 * driverJoystick.getRawAxis(SwerveConstants.sliderAxis);
     /* maps sliderAxis to be between 0.1 and 1.0 */
-    stopRotation = () -> driverJoystick.getRawButton(12) ? 0.0 : 1.0;
-    /* clamps rotation to zero if button 12 is pressed */
+    stopRotation = () -> driverJoystick.getRawButton(9) ? 0.0 : 1.0; //Locks Rotation
     Clamp  = (val, lim) -> (Math.abs(val) < lim) ? val : Math.copySign(lim, val);
     // mChooser = new SendableChooser<>();
     // mChooser.setDefaultOption("Default Auto", "C-Shoot3-N2-Shoot6");
@@ -130,7 +129,7 @@ public class RobotContainer {
     // SmartDashboard.putData("Auto Choices" ,  mChooser);
 
     // Controles rotaion Whne Auto Targeting
-    angleController = new PIDController(9.0, 0.0, 0.0);//9   changed 3/21/2024 by cal ask wessly to make a sepret speed cosntant for this
+    angleController = new PIDController(1.0, 0.0, 0.0);//9   changed 3/21/2024 by cal ask wessly to make a sepret speed cosntant for this
     angleController.enableContinuousInput(-Math.PI, Math.PI);
     // m_swerveBase = new SwerveBase();
     m_swerveBase.setDefaultCommand(
@@ -246,15 +245,15 @@ public class RobotContainer {
     //         () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
     //     ));
 
-    // btn_aim_human_feeder = new JoystickButton(streamdeck, 8);
-    // btn_aim_human_feeder.whileTrue(
-    //     new TeleopSwerve(
-    //         m_swerveBase,
-    //         () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.translationAxis), limit.getAsDouble()),
-    //         () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.strafeAxis), limit.getAsDouble()),
-    //         () -> angleController.calculate(m_swerveBase.getPose().getRotation().getRadians(), m_ArmPivotSubsystem.getHumanFeederAngle().getRadians()),
-    //        () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
-    //     ));
+    btn_aim_human_feeder = new JoystickButton(driverJoystick, 2);
+    btn_aim_human_feeder.whileTrue(
+        new TeleopSwerve(
+            m_swerveBase,
+            () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.translationAxis), limit.getAsDouble()),
+            () -> Clamp.apply(driverJoystick.getRawAxis(SwerveConstants.strafeAxis), limit.getAsDouble()),
+            () -> angleController.calculate(m_swerveBase.getPose().getRotation().getRadians(), m_ArmPivotSubsystem.getHumanFeederAngle().getRadians()),
+           () -> !driverJoystick.getRawButton(1) // inverted=fieldCentric, non-inverted=RobotCentric
+        ));
     
     // Intakes Note From Floor And Uses Line Breaks To Stop Note At Specific Position
     btn_floor_feeder = new JoystickButton(streamdeck, 5);
