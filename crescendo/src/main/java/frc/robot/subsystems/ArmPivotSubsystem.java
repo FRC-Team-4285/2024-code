@@ -355,17 +355,17 @@ public class ArmPivotSubsystem extends SubsystemBase {
     return humanfeederPose;
   }
 
-   public void setLinePose() {
-    speakerPose = Constants.isRed == true ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
-  }
+  //  public void setLinePose() {
+  //   linePose = Constants.isRed == true ? field.getTagPose(4).get().toPose2d() : field.getTagPose(7).get().toPose2d();
+  // }
 
-  public Rotation2d getLineAngle(){
-    return Constants.isRed == true ? Rotation2d.fromDegrees(-0) : Rotation2d.fromDegrees(0);
-  }
+  // public Rotation2d getLineAngle(){
+  //   return Constants.isRed == true ? Rotation2d.fromDegrees(-0) : Rotation2d.fromDegrees(0);
+  // }
 
-  public Pose2d getLinePose(){
-    return linePose;
-  }
+  // public Pose2d getLinePose(){
+  //   return linePose;
+  // }
 
   
   /**
@@ -500,8 +500,8 @@ public class ArmPivotSubsystem extends SubsystemBase {
     // // This method will be called once per scheduler run
     // System.out.println(arm_pivot_encoder.isConnected() + " get" + arm_pivot_encoder.get() + " getDist " + arm_pivot_encoder.getDistance() + " getAbsPos" + arm_pivot_encoder.getAbsolutePosition() + " getPosOffset " + arm_pivot_encoder.getPositionOffset());
     
-    speakerPose = field.getTagPose(4).get().toPose2d();
-    System.out.println(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(speakerPose.getTranslation())));
+    // speakerPose = field.getTagPose(4).get().toPose2d();
+    // System.out.println(Units.metersToInches(mSwerveBase.getOdometry().getEstimatedPosition().getTranslation().getDistance(speakerPose.getTranslation())));
   
 
     // // Get the current position from the encoder

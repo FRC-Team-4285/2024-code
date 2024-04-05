@@ -35,7 +35,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static boolean isRed = true;
+  public static boolean isRed = false;
 
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
@@ -81,7 +81,7 @@ public final class Constants {
     //-2.499999 Far Human Feeder
     public static final double POSITION_PID_STORE = 6.214284;
     public static final double POSITION_PID_ERRECTED = 0;
-    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS =  2.833331 ;//2.1666   2.5   2.833331  2.880950
+    public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS =  2.1666 ;//2.1666   2.5   2.833331  2.880950
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_2ND_STAGE_LEG = 3.41; 
     public static final double POSITION_PID_SHOOTING_WITHOUT_CAMERAS_STAGE_LEG = 3.15;
     public static final double POSITION_PID_AMP_SCORING_POS = -1.9; //-1.738;
@@ -200,7 +200,7 @@ public final class Constants {
 
     public static Translation2d mDriveRadius = new Translation2d(trackWidth/2, wheelBase / 2);
     /* Swerve Profiling Values */
-    public static final double maxSpeed = 0.90; //last comp 1.3 NOT a speed unit; Like I mean for real, this is Cal. "robot gets faster if this is lower 2.0" says wass Cal will tune this value
+    public static final double maxSpeed = 1.3; //last comp 1.3 NOT a speed unit; Like I mean for real, this is Cal. "robot gets faster if this is lower 2.0" says wass Cal will tune this value
     public static final double maxAngularVelocity = 3.5;// Also not a speed unit Calibartion value was 12  24    35
 
     public static final int frontLeftRotationMotorId = 2;

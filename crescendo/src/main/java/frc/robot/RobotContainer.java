@@ -371,7 +371,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     // return Autos.exampleAuto(m_exampleSubsystem);
-    return AutoBuilder.buildAuto("B-N2-N3-N1");//"test"mChooser.getSelected()
+    return AutoBuilder.buildAuto("A-N1-N4");//"test"mChooser.getSelected()
   }
 
   public SwerveBase getSwerveSubsytem() {
