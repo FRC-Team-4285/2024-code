@@ -9,9 +9,9 @@
     "C Autos",
     "Tests"
   ],
-  "defaultMaxVel": 4.0,
-  "defaultMaxAccel": 2.75,
-  "defaultMaxAngVel": 250.0,
-  "defaultMaxAngAccel": 200.0,
+  "defaultMaxVel": 3.5,
+  "defaultMaxAccel": 2.5,
+  "defaultMaxAngVel": 270.0,
+  "defaultMaxAngAccel": 180.0,
   "maxModuleSpeed": 5.5
 }
